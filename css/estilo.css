@@ -1,0 +1,156 @@
+   #n_ciclo{
+        background-color: whitesmoke;
+        color: green;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        width: 150px;
+    } 
+    #data_inicio{
+        background-color: whitesmoke;
+        color: green;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        
+    }
+
+    #data_fim{
+        background-color: whitesmoke;
+        color:green;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+    }
+   
+ 
+    #fp_diario{
+        background-color: whitesmoke;
+        color: green;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        width: 100px;
+    } 
+    #qtde_infra{
+        background-color: yellow;
+        color: green;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        width: 100px;
+    }
+
+    #qtde_dias_periodo{
+        background-color: yellow;
+        color: red;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    #qtde_dias_disponiveis{
+        background-color: yellow;
+        color: red;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
+    #qtde_ga_estimadas{
+        background-color: yellow;
+        color: red;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    #qtde_ust{
+        background-color: yellow;
+        color: red;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    #txt_inicio
+    {
+        background-color: whitesmoke;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+    #txt_fim
+    {
+        background-color: whitesmoke;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+
+    #txt_dias_off
+    {
+        background-color: whitesmoke;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+
+    #txt_t_urnas
+    {
+        background-color: whitesmoke;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 100px;
+        font-size: 20px;
+    }
+
+    #txt_t_baterias
+    {
+        background-color: whitesmoke;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 100px;
+        font-size: 20px;
+    }
+
+    #txt_n_os
+    {
+        background-color: whitesmoke;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+    #n_local
+    {
+        background-color: whitesmoke;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+    #txt_n_ciclo
+    {
+        background-color: yellow;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+
+    
+    
+
+   
+
