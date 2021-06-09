@@ -148,6 +148,27 @@
         width: 150px;
         font-size: 20px;
     }
+    #div_local
+    {
+        background-color: rgb(255, 252, 252);
+        color: rgb(218, 58, 58);
+        text-align: right;
+       
+    }
+    #div_usuario
+    {
+        background-color: rgb(255, 252, 252);
+        color: rgb(180, 12, 12);
+        text-align: right;
+       
+    }
+    #div_data
+    {
+        background-color: rgb(255, 252, 252);
+        color: rgb(114, 112, 112);
+        text-align: right;
+    }
+
 
     
     

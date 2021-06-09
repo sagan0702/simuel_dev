@@ -126,6 +126,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				</div>
 			</div>
 		</div>
+		<div class="card-footer text-muted">
+				SIMUEL 
+		</div>
+
 	</div>
 
 	<!-- <div="datai" hiden><?php echo $row[0]['data_inicio']; ?></div>

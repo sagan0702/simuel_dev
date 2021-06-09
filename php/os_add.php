@@ -254,7 +254,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			</div>
 			<div class="card-body">		
 				<div class="col-sm-12">
-					<h5 class="card-title">Campos <span class="text-danger">*</span> são obrigatórios!</h5>
+					
 					<!-- <form method="post">   -->
                     
                     <input type="hidden" id="txt_id_ciclo" value="<?=$id_ciclo?>">
@@ -279,7 +279,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                                     </div>
                         </div>
                     </div>    
-                    <div class="form-row">
+                    <div class="row">
                                 <div class="form-group col-md-2">
                                     <label>Local: </label>
                                     <div > <select name="n_local" id="n_local" onChange="update()">
@@ -291,7 +291,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                                     <input type="text" class="form-control" name="n_os" id="txt_n_os" required onkeypress="$(this).mask('00/0000')"/>
                                 </div>
                     </div>
-                    <div class="form-row">
+                    <div class="row">
                         
                         <div class="form-group col-md-2">
                                 <label for="campo3">Data Mínima:</label>
@@ -319,7 +319,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                             </div>
                     </div>      
 
-                    <div class="form-row">
+                    <div class="row">
                         <div class="form-group col-md-2">   
                                     
                                     <label>Lista de Dias-Off:</label>  
@@ -352,7 +352,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
                     </div>
 
-                    <div class="form-row">
+                    <div class="row">
                             <div class="form-group col-md-3">
                                 <label>Dias do período:  </label>
                                 <div id="qtde_dias_periodo"></div> 
@@ -371,7 +371,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                             </div>    
                     </div>
                    
-                   <div class="form-row">  
+                   <div class="row">  
                         <!-- <div class="form-group col-md-6">
 								<button type="submit" name="submit" value="submit" id="submit"  onclick="criarOS()" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Adicionar Ciclo</button>
 						</div>  -->

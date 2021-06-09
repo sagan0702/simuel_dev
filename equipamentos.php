@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Gerenciar Ciclos</title>
+	<title>Equipamentos</title>
 	<?php 
 
 	// session_start();
@@ -36,30 +36,30 @@
 <body>
 	<?php
 	$condition	=	'';
-	if(isset($_REQUEST['n_ciclo']) and $_REQUEST['n_ciclo']!=""){
-		$condition	.=	' AND n_ciclo LIKE "%'.$_REQUEST['n_ciclo'].'%" ';
+	if(isset($_REQUEST['tipo']) and $_REQUEST['tipo']!=""){
+		$condition	.=	' AND tipo LIKE "%'.$_REQUEST['tipo'].'%" ';
 	}
-	if(isset($_REQUEST['data_inicio']) and $_REQUEST['data_inicio']!=""){
-		$condition	.=	' AND data_inicio LIKE "%'.$_REQUEST['data_inicio'].'%" ';
+	if(isset($_REQUEST['modelo']) and $_REQUEST['modelo']!=""){
+		$condition	.=	' AND modelo LIKE "%'.$_REQUEST['modelo'].'%" ';
 	}
-	if(isset($_REQUEST['data_fim']) and $_REQUEST['data_fim']!=""){
-		$condition	.=	' AND data_fim LIKE "%'.$_REQUEST['data_fim'].'%" ';
+	if(isset($_REQUEST['em_garantia']) and $_REQUEST['em_garantia']!=""){
+		$condition	.=	' AND em_garantia LIKE "%'.$_REQUEST['em_garantia'].'%" ';
 	}
-	if(isset($_REQUEST['estado']) and $_REQUEST['estado']!=""){
-		$condition	.=	' AND estado LIKE "%'.$_REQUEST['estado'].'%" ';
+	if(isset($_REQUEST['fim_garantia']) and $_REQUEST['fim_garantia']!=""){
+		$condition	.=	' AND fim_garantia LIKE "%'.$_REQUEST['fim_garantia'].'%" ';
 	}
 		
-	$userData	=	$db->getAllRecords('ciclo','*',$condition,'ORDER BY id_ciclo DESC');
+	$userData	=	$db->getAllRecords('equipamentos','*',$condition,'ORDER BY id_equip DESC');
 	?>
    	<div class="container">
 	
 		
 		<div class="card"> <!--- FORM DE PESQUISA -->
 			<div class="card-header">
-			<h3>Gerenciar Ciclos</h3>
+			<h3>Gerenciar Equipamentos</h3>
 				<!-- <i class="fa fa-fw fa-globe"></i> <strong>Pequisar </strong>  -->
 				<a href="php/ciclo_add.php" class="float-left btn btn-dark btn-lg"> 
-				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar Ciclo</a></div> <!--- BOTÃO DE AÇÃO -->
+				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar Equipamento</a></div> <!--- BOTÃO DE AÇÃO -->
 			<div class="card-body"> <!--- MENSAGENS -->
 				<?php
 				if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rds"){
@@ -73,16 +73,21 @@
 				}
 				?>
 		<div>   <!--- MOSTRA A TABELA DE REGISTROS  -->
-		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Ciclos Cadastrados </h5>
+		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Equipamentos Cadastrados </h5>
 			<table class="table table-striped table-bordered table-sm">
 				<thead>
 					<tr class="bg-secondary text-white">
 						<td style="text-align: center;" >#</td>
-						<td style="text-align: center;" >Ciclo</td>
-						<td style="text-align: center;" >Data Inicio</td>
-						<td style="text-align: center;" >Data Fim</td>
-						<td style="text-align: center;" >Estado</td>
+						<td style="text-align: center;" >Tipo</td>
+						<td style="text-align: center;" >Modelo</td>
+						<td style="text-align: center;" >Descrição</td>
+						<td style="text-align: center;" >Fabricante</td>
+						<td style="text-align: center;" >Tipo Bateria</td>
+						<td style="text-align: center;" >Em garantia</td>
+						<td style="text-align: center;" >Fim da Garantia</td>
 						<td style="text-align: center;" class="text-center">Ação</td>
+						
+				
 					</tr>
 				</thead>
 				<tbody>
@@ -93,12 +98,17 @@
 							$s++;
 					?>
 					<tr>
+				
+
 						<td style="text-align: center;"><?php echo $s;?></td>
-						<td style="text-align: center;" ><?php echo $val['n_ciclo'];?></td>
-						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_inicio'])));;?></td>
-						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_fim'])));;?></td>
-						<td style="text-align: center;"><?php echo $val['estado'];?></td>
-						
+						<td style="text-align: center;" ><?php echo $val['tipo'];?></td>
+						<td style="text-align: center;"><?php echo $val['modelo'];?></td>
+						<td style="text-align: center;" ><?php echo $val['descricao'];?></td>
+						<td style="text-align: center;"><?php echo $val['fabricante'];?></td>
+						<td style="text-align: center;" ><?php echo $val['tipo_bateria'];?></td>
+						<td style="text-align: center;" ><?php echo $val['em_garantia'];?></td>
+						<td style="text-align: center;" ><?php echo $val['fim_garantia'];?></td>
+												
 						<td align="center">
 							<a href="php/ciclo_edit.php?editId=<?php echo $val['id_ciclo'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
 							<a href="php/ciclo_delete.php?delId=<?php echo $val['id_ciclo'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
@@ -120,26 +130,26 @@
 						<div class="row">
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label> Ciclo</label>
-									<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" value="<?php echo isset($_REQUEST['n_ciclo'])?$_REQUEST['n_ciclo']:''?>" placeholder="Digite o ciclo no formato 00/0000" onkeypress="$(this).mask('00/0000')">
+									<label> Tipo</label>
+									<input type="text" name="tipo" id="tipo" class="form-control" value="<?php echo isset($_REQUEST['tipo'])?$_REQUEST['tipo']:''?>" placeholder="Digite o ciclo no formato 00/0000" onkeypress="$(this).mask('00/0000')">
 								</div>
 							</div>
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label>Data de Início</label>
-									<input type="date" name="data_inicio" id="data_inicio" class="form-control" value="<?php echo isset($_REQUEST['data_inicio'])?$_REQUEST['data_inicio']:''?>" placeholder="Selecione a data de início">
+									<label>Modelo</label>
+									<input type="text" name="modelo" id="modelo" class="form-control" value="<?php echo isset($_REQUEST['modelo'])?$_REQUEST['modelo']:''?>" >
 								</div>
 							</div>
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label>Data de Término</label>
-									<input type="date" name="data_fim" id="data_fim" class="form-control" value="<?php echo isset($_REQUEST['data_fim'])?$_REQUEST['data_fim']:''?>" placeholder="Selecione a data de término">
+									<label>Fim da Garantia</label>
+									<input type="date" name="fim_garantia" id="fim_garantia" class="form-control" value="<?php echo isset($_REQUEST['fim_garantia'])?$_REQUEST['fim_garantia']:''?>" >
 								</div>
 							</div>
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label>Situação</label>
-									<input type="text" name="estado" id="estado" class="form-control" value="<?php echo isset($_REQUEST['estado'])?$_REQUEST['estado']:''?>" placeholder="Selecione a situação">
+									<label>Em garantia?</label>
+									<input type="text" name="em_garantia" id="em_garantia" class="form-control" value="<?php echo isset($_REQUEST['em_garantia'])?$_REQUEST['em_garantia']:''?>" >
 								</div>
 							</div>
 							<div class="col-sm-2">

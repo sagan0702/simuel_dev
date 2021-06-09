@@ -65,7 +65,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		}
 		?>
 						
-
 		<!--- CAMPOS DE EDITAR -->
 		<div class="card">  
 			<div class="card-header">
@@ -79,7 +78,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					<h3 class="card-title"><h5>Campos com<span class="text-danger">*</span> são obrigatórios!</h5>
 					<form method="post">
 
-
 					<div class="form-group ">
 
 						<div class="row">
@@ -89,7 +87,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 											<input type="text" name="id_local" value="<?php echo $row[0]['id_local'];?>" id="id_local" class="form-control" placeholder="" required>
 									</div>
 							</div>
-
 
 						<div class="row">
 									<div class="form-group col-md-6 ">
@@ -113,10 +110,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 										<input type="text" class="form-control"  value="<?php echo $row[0]['acesso']; ?>" name="acesso" id="acesso" />
 									</div>
 								</div>
-								
-							
-
-
 
 							</div>
 
@@ -129,14 +122,8 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			</div>
 		</div>
 	</div>
-
-	
-
 	    <script>
-		
-		
-		
 	</script>
-      
+    
 </body>
 </html>

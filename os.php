@@ -5,19 +5,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Gerenciar Ordens de Serviço</title>
-	<?php include_once('php/formatacao.php');
-	
-	
-	
-	
-	
+	<?php 
+	include_once('php/formatacao.php');
 	
 	?>
-	
 
-
-
-
+<?php
+        session_start();
+        include ("php/conexao.php");
+        // include ("php/bootstrapalert.php");
+        
+        $dadosConexao = mysqli_get_host_info($conexao);
+            if (!isset($_SESSION["usuario"])) {
+                header('Location: index.php');
+                exit();
+            }
+            include($_SESSION['menu']); 
+    ?>
 
 </head>
 <body>
@@ -42,9 +46,11 @@
 	$userData	=	$db->getAllRecords('os','*',$condition,'ORDER BY id_ciclo DESC');
 	?>
    	<div class="container">
-		<h3>Gerenciar OS</h3>
+	   
+		
 		<div class="card"> <!--- FORM DE PESQUISA -->
 			<div class="card-header">
+			<h3>Gerenciar OS</h3>
 				<!-- <i class="fa fa-fw fa-globe"></i> <strong>Pequisar </strong>  -->
 				<a href="php/os_add.php" class="float-left btn btn-dark btn-lg"> 
 				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar OS</a></div> <!--- BOTÃO DE AÇÃO -->
@@ -62,23 +68,23 @@
 				?>
 		<div>   <!--- MOSTRA A TABELA DE REGISTROS  -->
 		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Ordens de Serviço Cadastradas </h5>
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered table-sm">
 				<thead>
-					<tr class="bg-primary text-white">
-						<!-- <th style="text-align: center;" >#</th> -->
-						<th style="text-align: center;" >Local</th>
-						<th style="text-align: center;" >Ciclo</th>
-						<th style="text-align: center;" >OS</th>
-						<th style="text-align: center;" >Data Mínima</th>
-						<th style="text-align: center;" >Data Máxima</th>
-						<th style="text-align: center;" >Situação</th>
-						<th style="text-align: center;" >Dias_Off</th>
-						<th style="text-align: center;" >Total de Urnas</th>
-						<th style="text-align: center;" >Total de Baterias</th>
-						<th style="text-align: center;" >Total de QGA</th>
-						<th style="text-align: center;" >Total de Dias Disponiveis</th>
-						<th style="text-align: center;" >Total de UST</th>
-						<th style="text-align: center;" class="text-center">Ação</th>
+					<tr class="bg-secondary text-white">
+						<!-- <td style="text-align: center;" >#</td> -->
+						<td style="text-align: center;" >Local</td>
+						<td style="text-align: center;" >Ciclo</td>
+						<td style="text-align: center;" >OS</td>
+						<td style="text-align: center;" >Data Mínima</td>
+						<td style="text-align: center;" >Data Máxima</td>
+						<td style="text-align: center;" >Situação</td>
+						<td style="text-align: center;" >Dias_Off</td>
+						<td style="text-align: center;" >Total de Urnas</td>
+						<td style="text-align: center;" >Total de Baterias</td>
+						<td style="text-align: center;" >Total de QGA</td>
+						<td style="text-align: center;" >Total de Dias Disp</td>
+						<td style="text-align: center;" >Total de UST</td>
+						<td style="text-align: center;" class="text-center">Ação</td>
 					</tr>
 				</thead>
 				<tbody>

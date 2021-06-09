@@ -5,7 +5,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Gerenciar Usuários</title>
-	<?php include_once('php/formatacao.php');?>
+	<?php include_once('php/formatacao.php');
+	
+       
+
+        include ("php/conexao.php");
+		session_start();
+        include ("php/bootstrapalert.php");
+        
+        $dadosConexao = mysqli_get_host_info($conexao);
+            if (!isset($_SESSION["usuario"])) {
+                header('Location: index.php');
+                exit();
+            }
+            include($_SESSION['menu']); 
+    ?>
 </head>
 <body>
 	<?php
@@ -23,9 +37,10 @@
 	$userData	=	$db->getAllRecords('usuarios','*',$condition,'ORDER BY id_usuario DESC');
 	?>
    	<div class="container">
-		<h3>Gerenciar Usuários</h3>
+		
 		<div class="card"> <!--- FORM DE PESQUISA -->
 			<div class="card-header">
+			<h3>Gerenciar Usuários</h3>
 				<!-- <i class="fa fa-fw fa-globe"></i> <strong>Pequisar </strong>  -->
 				<a href="php/usuario_add.php" class="float-left btn btn-dark btn-lg"> 
 				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar Usuários</a></div> <!--- BOTÃO DE AÇÃO -->
@@ -43,18 +58,18 @@
 				?>
 		<div>   <!--- MOSTRA A TABELA DE REGISTROS  -->
 		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Usuários Cadastrados </h5>
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered table-sm">
 				<thead>
 					<tr class="bg-primary text-white">
-						<!-- <th style="text-align: center;" >#</th> -->
-						<th style="text-align: center;" >#</th>
-						<th style="text-align: center;" >Local</th>
-						<th style="text-align: center;" >Usuario</th>
-						<th style="text-align: center;" >Nome</th>
-						<th style="text-align: center;" >E-mail</th>
-						<th style="text-align: center;" >Senha</th>
-						<th style="text-align: center;" >Nivel de Acesso</th>
-						<th style="text-align: center;" class="text-center">Ação</th>
+						<!-- <td style="text-align: center;" >#</td> -->
+						<td style="text-align: center;" >#</td>
+						<td style="text-align: center;" >Local</td>
+						<td style="text-align: center;" >Usuario</td>
+						<td style="text-align: center;" >Nome</td>
+						<td style="text-align: center;" >E-mail</td>
+						<td style="text-align: center;" >Senha</td>
+						<td style="text-align: center;" >Nivel de Acesso</td>
+						<td style="text-align: center;" class="text-center">Ação</td>
 					</tr>
 				</thead>
 				<tbody>

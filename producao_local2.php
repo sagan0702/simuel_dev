@@ -4,13 +4,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Gerenciar Produção</title>
-	<?php include_once('php/formatacao.php');?>
-	<?php
-        session_start();
+	<title>Produção Produção</title>
+	<?php 
+
+	include_once('php/formatacao.php');
+	include_once('php/consulta_ciclo_os.php');
         include ("php/conexao.php");
         // include ("php/bootstrapalert.php");
-        
         $dadosConexao = mysqli_get_host_info($conexao);
             if (!isset($_SESSION["usuario"])) {
                 header('Location: index.php');
@@ -29,18 +29,18 @@
 	if(isset($_REQUEST['n_os']) and $_REQUEST['nome']!=""){
 		$condition	.=	' AND nome LIKE "%'.$_REQUEST['nome'].'%" ';
 	}
-	
-		
 	$userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
 	?>
+
    	<div class="container">
 		
 		<div class="card"> <!--- FORM DE PESQUISA -->
+			
 			<div class="card-header">
-			<h3>Gerenciar Produção</h3>
+			<h3>Produção Local</h3>
 				<!-- <i class="fa fa-fw fa-globe"></i> <strong>Pequisar </strong>  -->
-				<a href="php/producao_add.php" class="float-left btn btn-dark btn-lg"> 
-				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar Produção</a></div> <!--- BOTÃO DE AÇÃO -->
+				<a href="php/producao_local_add.php" class="float-left btn btn-dark btn-lg"> 
+				<i class="fa fa-fw fa-plus-circle"></i>  Enviar Produção</a></div> <!--- BOTÃO DE AÇÃO -->
 			<div class="card-body"> <!--- MENSAGENS -->
 				<?php
 				if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rds"){
@@ -56,12 +56,36 @@
 		<div>   <!--- MOSTRA A TABELA DE REGISTROS  -->
 
 		<!-- `id_producao`, `idciclo`, `idnvi`, `id_os`, `n_os`, `dt_envio`, `ue2009p`, `ue2010p`, `ue2011p`, `ue2013p`, `ue2015p`, `ue2020p`, `ue2022p`, `miv2022p`, `nue_sem_chamado`, `nue_com_chamado`, `bat_carga_ok`, `bat_sem_carga`, `bat_vazando`, `bat_oxidada`SELECT * FROM `producao` WHERE 1 -->
+		
+		<?php
+        include ("php/conexao.php");
+		// session_start();
+       
+        include ("php/bootstrapalert.php");
+    	?>
 
-
+		<!-- $_SESSION['max_id_ciclo'] = $max_id_ciclo;
+		$_SESSION['max_n_ciclo'] = $max_n_ciclo;
+		$_SESSION['max_id_os'] = $max_id_os;
+		$_SESSION['max_n_os'] = $max_n_os; -->
+		
+			<div class="row">
+							<div class="form-group col-md-4" >
+									<label><h6>Ciclo atual: </h5></label>
+									<div id="n_ciclo"><?= $_SESSION['max_n_ciclo'] ?></div>
+							</div>
+							<div class="form-group col-md-4" >
+									<label><h6>Nº da OS:  </h6></label>
+									<div id ="n_os"> <?= $_SESSION['max_n_os'] ?>  </div>
+							</div>
+														
+			</div>    
+		  
+		<!--------------- FORM TABELA 1 -------------------->
 		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Urnas com manutenção realizada </h5>
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered -sm">
 				<thead>
-					<tr class="bg-primary text-white">
+					<tr class="bg-secondary text-white">
 						<!-- <td style="text-align: center;" >#</td> -->
 						<td style="text-align: center;" >#</td>
 						<td style="text-align: center;" >Data de Envio</td>
@@ -72,8 +96,14 @@
 						<td style="text-align: center;" >UE2015</td>
 						<td style="text-align: center;" >UE2020</td>
 						<td style="text-align: center;" >UE2022</td>
-					
+						<td style="text-align: center;" >Nº de Urnas SEM chamado</td>
+						<td style="text-align: center;" >Nº de Urnas COM chamado</td>
+						<td style="text-align: center;" >Nº de baterias Com carga OK</td>
+						<td style="text-align: center;" >Nº de baterias Sem carga </td>
+						<td style="text-align: center;" >Nº de baterias com vazamento </td>
+						<td style="text-align: center;" >Nº de baterias oxidadas</td>
 						<td style="text-align: center;" class="text-center">Ação</td>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -84,8 +114,9 @@
 							$s++;
 					?>
 					<tr>
-						<!-- <td style="text-align: center;"><?php echo $s;?></td> -->
-						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['dt_envio'])));;?></td> 
+						<td style="text-align: center;"><?php echo $s;?></td> 
+						<!-- <td style="text-align: center;" ><?php ?></td>  -->
+						<td style="text-align: center;" ></td> 
 						<td style="text-align: center;" ><?php echo $val['ue2009p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2010p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2011p'];?></td>
@@ -93,13 +124,15 @@
 						<td style="text-align: center;" ><?php echo $val['ue2015p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2020p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2022p'];?></td>
-						
-						
-						
-
+						<td style="text-align: center;" ><?php echo $val['nue_sem_chamado'];?></td>
+						<td style="text-align: center;" ><?php echo $val['nue_com_chamado'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_carga_ok'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_sem_carga'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_vazando'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_oxidada'];?></td>
 						<td align="center">
-							<a href="php/producao_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
-							<a href="php/producao_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
+							<a href="php/producao_local_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
+							<a href="php/producao_local_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
 						</td>
 
 					</tr>
@@ -113,76 +146,7 @@
 			</table>
 		</div> 
 
-
-		<!--------------- FORM TABELA 2 -------------------->
-
 		
-		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Produção Geral </h5>
-			<table class="table table-striped table-bordered">
-				<thead>
-					<tr class="bg-primary text-white">
-						<!-- <td style="text-align: center;" >#</td> -->
-						<td style="text-align: center;" >#</td>
-						<td style="text-align: center;" >Nº de Urnas SEM chamado</td>
-						<td style="text-align: center;" >Nº de Urnas COM chamado</td>
-						<td style="text-align: center;" >Nº de baterias Com carga OK</td>
-						<td style="text-align: center;" >Nº de baterias Sem carga </td>
-						<td style="text-align: center;" >Nº de baterias com vazamento </td>
-						<td style="text-align: center;" >Nº de baterias oxidadas</td>
-						<td style="text-align: center;" >Observações</td>
-						<td style="text-align: center;" class="text-center">Ação</td>
-					</tr>
-				</thead>
-				<tbody>
-					<?php 
-					if(count($userData)>0){
-						$s	=	'';
-						foreach($userData as $val){
-							$s++;
-					?>
-					<tr>
-
-					<!-- `id_producao`, `idciclo`, `idnvi`, `id_os`, `n_os`, `dt_envio`, `ue2009p`, `ue2010p`, `ue2011p`, `ue2013p`, `ue2015p`, `ue2020p`, `ue2022p`, `miv2022p`, `nue_sem_chamado`, `nue_com_chamado`, `bat_carga_ok`, `bat_sem_carga`, `bat_vazando`, `bat_oxidada`SELECT * FROM `producao` WHERE 1 -->
-		
-						
-						<td style="text-align: center;" ><?php echo $val['nue_sem_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['nue_com_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_carga_ok'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_sem_carga'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_vazando'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_oxidada'];?></td>
-						<td style="text-align: center;" ><?php echo $val['observacao'];?></td>
-									
-						
-
-						<td align="center">
-							<a href="php/producao_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
-							<a href="php/producao_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
-						</td>
-
-					</tr>
-					<?php 
-						}
-					}else{
-					?>
-					<tr><td colspan="6" align="center">Nenhum registro encontrado!</td></tr>
-					<?php } ?>
-				</tbody>
-			</table>
-		</div> <!--/.col-sm-12-->
-
-
-
-
-
-
-
-
-
-
-
-
-		<!--------------- FIM DO FORM TABELA 2 -------------------->
 
 
 		<div class="col-sm-12"> <!--- CAMPOS DE PESQUISA -->
@@ -191,21 +155,21 @@
 						<div class="row">
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label>Nome</label>
-									<input type="text" name="nome" id="nome" class="form-control" value="<?php echo isset($_REQUEST['nome'])?$_REQUEST['nome']:''?>" placeholder="Digite o nome">
+									<label>Data de Envio</label>
+									<input type="text" name="dt_enviop" id="dt_enviop" class="form-control" value="<?php echo isset($_REQUEST['dt_envio'])?$_REQUEST['dt_envio']:''?>" placeholder="Digite a data ">
 								</div>
 							</div>
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label>Nome de Login</label>
-									<input type="text" name="usuario" id="usuario" class="form-control" value="<?php echo isset($_REQUEST['usuario'])?$_REQUEST['usuario']:''?>" placeholder="Digite o usuário">
+									<label>Ciclo</label>
+									<input type="text" name="usuario" id="usuario" class="form-control" value="<?php echo isset($_REQUEST['id_ciclo'])?$_REQUEST['id_ciclo']:''?>" placeholder="Digite o nº do Ciclo">
 								</div>
 							</div>
 
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label>Nivel de Acesso</label>
-									<input type="text" name="acesso" id="acesso" class="form-control" value="<?php echo isset($_REQUEST['acesso'])?$_REQUEST['acesso']:''?>" placeholder="Selecione o nivel de acesso">
+									<label>Nº da OS</label>
+									<input type="text" name="acesso" id="acesso" class="form-control" value="<?php echo isset($_REQUEST['id_os'])?$_REQUEST['id_os']:''?>" placeholder="Digite o nº da OS">
 								</div>
 							</div>
 
