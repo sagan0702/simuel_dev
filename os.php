@@ -171,12 +171,6 @@
 		<hr>  <!--- FIM DO FORM DE PESQUISA -->
 	</div>
 
-	<script>
-		$(document).ready(function() {
-			
-			var versaoJquery = $.fn.jquery;
-			//alert (versaoJquery)
-		});
-	</script>
+	
 </body>
 </html>

@@ -86,8 +86,6 @@
 						<td style="text-align: center;" >Em garantia</td>
 						<td style="text-align: center;" >Fim da Garantia</td>
 						<td style="text-align: center;" class="text-center">Ação</td>
-						
-				
 					</tr>
 				</thead>
 				<tbody>
@@ -98,8 +96,6 @@
 							$s++;
 					?>
 					<tr>
-				
-
 						<td style="text-align: center;"><?php echo $s;?></td>
 						<td style="text-align: center;" ><?php echo $val['tipo'];?></td>
 						<td style="text-align: center;"><?php echo $val['modelo'];?></td>
@@ -108,10 +104,9 @@
 						<td style="text-align: center;" ><?php echo $val['tipo_bateria'];?></td>
 						<td style="text-align: center;" ><?php echo $val['em_garantia'];?></td>
 						<td style="text-align: center;" ><?php echo $val['fim_garantia'];?></td>
-												
 						<td align="center">
-							<a href="php/ciclo_edit.php?editId=<?php echo $val['id_ciclo'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
-							<a href="php/ciclo_delete.php?delId=<?php echo $val['id_ciclo'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
+							<a href="php/equipamentos_edit.php?editId=<?php echo $val['id_equip'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
+							<a href="php/equipamentos_delete.php?delId=<?php echo $val['id_equip'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
 						</td>
 
 					</tr>
@@ -175,12 +170,6 @@
 		<hr>  <!--- FIM DO FORM DE PESQUISA -->
 	</div>
 
-	<script>
-		$(document).ready(function() {
-			
-			var versaoJquery = $.fn.jquery;
-			//alert (versaoJquery)
-		});
-	</script>
+	
 </body>
 </html>

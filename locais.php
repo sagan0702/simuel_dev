@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Gerenciar Ciclos</title>
+	<title>Gerenciar Locais</title>
 	<?php 
 
 	// session_start();
@@ -36,30 +36,24 @@
 <body>
 	<?php
 	$condition	=	'';
-	if(isset($_REQUEST['n_ciclo']) and $_REQUEST['n_ciclo']!=""){
-		$condition	.=	' AND n_ciclo LIKE "%'.$_REQUEST['n_ciclo'].'%" ';
+	if(isset($_REQUEST['local']) and $_REQUEST['local']!=""){
+		$condition	.=	' AND  local  LIKE "%'.$_REQUEST['local'].'%" ';
 	}
-	if(isset($_REQUEST['data_inicio']) and $_REQUEST['data_inicio']!=""){
-		$condition	.=	' AND data_inicio LIKE "%'.$_REQUEST['data_inicio'].'%" ';
+	if(isset($_REQUEST['sede']) and $_REQUEST['sede']!=""){
+		$condition	.=	' AND sede LIKE "%'.$_REQUEST['sede'].'%" ';
 	}
-	if(isset($_REQUEST['data_fim']) and $_REQUEST['data_fim']!=""){
-		$condition	.=	' AND data_fim LIKE "%'.$_REQUEST['data_fim'].'%" ';
-	}
-	if(isset($_REQUEST['estado']) and $_REQUEST['estado']!=""){
-		$condition	.=	' AND estado LIKE "%'.$_REQUEST['estado'].'%" ';
-	}
-		
-	$userData	=	$db->getAllRecords('ciclo','*',$condition,'ORDER BY id_ciclo DESC');
+			
+	$userData	=	$db->getAllRecords('local','*',$condition,'ORDER BY id_local DESC');
 	?>
    	<div class="container">
 	
 		
 		<div class="card"> <!--- FORM DE PESQUISA -->
 			<div class="card-header">
-			<h3>Gerenciar Ciclos</h3>
+			<h3>Gerenciar Locais</h3>
 				<!-- <i class="fa fa-fw fa-globe"></i> <strong>Pequisar </strong>  -->
-				<a href="php/ciclo_add.php" class="float-left btn btn-dark btn-lg"> 
-				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar Ciclo</a></div> <!--- BOTÃO DE AÇÃO -->
+				<a href="php/locais_add.php" class="float-left btn btn-dark btn-lg"> 
+				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar Local</a></div> <!--- BOTÃO DE AÇÃO -->
 			<div class="card-body"> <!--- MENSAGENS -->
 				<?php
 				if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rds"){
@@ -73,15 +67,26 @@
 				}
 				?>
 		<div>   <!--- MOSTRA A TABELA DE REGISTROS  -->
-		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Ciclos Cadastrados </h5>
+		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Locais Cadastrados </h5>
 			<table class="table table-striped table-bordered table-sm">
 				<thead>
+					<!-- `id_local`, `n_local`, `sede`, `qtde_ue2009`, `qtde_ue2010`, `qtde_ue2011`, `qtde_ue2013`,
+							`qtde_ue2015`, `qtde_ue2020`, `qtde_ue2022`, `qtde_miv_2022`, `qtde_baterias`, `data_atualizacao`, `qtde_infra` -->
+
+
 					<tr class="bg-secondary text-white">
 						<td style="text-align: center;" >#</td>
-						<td style="text-align: center;" >Ciclo</td>
-						<td style="text-align: center;" >Data Inicio</td>
-						<td style="text-align: center;" >Data Fim</td>
-						<td style="text-align: center;" >Estado</td>
+						<td style="text-align: center;" >Local</td>
+						<td style="text-align: center;" >Sede</td>
+						<td style="text-align: center;" >Nº de UE2009</td>
+						<td style="text-align: center;" >Nº de UE2010</td>
+						<td style="text-align: center;" >Nº de UE2011</td>
+						<td style="text-align: center;" >Nº de UE2013</td>
+						<td style="text-align: center;" >Nº de UE2015</td>
+						<td style="text-align: center;" >Nº de UE2020</td>
+						<td style="text-align: center;" >Nº de UE2022</td>
+						<td style="text-align: center;" >Nº de Baterias Reserva</td>
+						<td style="text-align: center;" >QInfra</td>
 						<td style="text-align: center;" class="text-center">Ação</td>
 					</tr>
 				</thead>
@@ -94,14 +99,21 @@
 					?>
 					<tr>
 						<td style="text-align: center;"><?php echo $s;?></td>
-						<td style="text-align: center;" ><?php echo $val['n_ciclo'];?></td>
-						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_inicio'])));;?></td>
-						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_fim'])));;?></td>
-						<td style="text-align: center;"><?php echo $val['estado'];?></td>
+						<td style="text-align: center;"><?php echo $val['n_local'];?></td>
+						<td style="text-align: center;"><?php echo $val['sede'];?></td>
+						<td style="text-align: center;"><?php echo $val['qtde_ue2009'];?></td>
+						<td style="text-align: center;"><?php echo $val['qtde_ue2010'];?></td>
+						<td style="text-align: center;"><?php echo $val['qtde_ue2011'];?></td>
+						<td style="text-align: center;"><?php echo $val['qtde_ue2013'];?></td>
+						<td style="text-align: center;"><?php echo $val['qtde_ue2015'];?></td>
+						<td style="text-align: center;"><?php echo $val['qtde_ue2020'];?></td>
+						<td style="text-align: center;"><?php echo $val['qtde_ue2022'];?></td>
+						<td style="text-align: center;"><?php echo $val['qtde_baterias'];?></td>
+						<td style="text-align: center;"><?php echo $val['qtde_infra'];?></td>
 						
 						<td align="center">
-							<a href="php/ciclo_edit.php?editId=<?php echo $val['id_ciclo'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
-							<a href="php/ciclo_delete.php?delId=<?php echo $val['id_ciclo'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
+							<a href="php/locais_edit.php?editId=<?php echo $val['id_local'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
+							<a href="php/locais_delete.php?delId=<?php echo $val['id_local'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
 						</td>
 
 					</tr>
@@ -120,35 +132,17 @@
 						<div class="row">
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label> Ciclo</label>
-									<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" value="<?php echo isset($_REQUEST['n_ciclo'])?$_REQUEST['n_ciclo']:''?>" placeholder="Digite o ciclo no formato 00/0000" onkeypress="$(this).mask('00/0000')">
+									<label> Local</label>
+									<input type="text" name="n_local" id="n_local" class="form-control" value="<?php echo isset($_REQUEST['n_local'])?$_REQUEST['n_local']:''?>" >
 								</div>
 							</div>
 							<div class="col-sm-2">
 								<div class="form-group">
-									<label>Data de Início</label>
-									<input type="date" name="data_inicio" id="data_inicio" class="form-control" value="<?php echo isset($_REQUEST['data_inicio'])?$_REQUEST['data_inicio']:''?>" placeholder="Selecione a data de início">
+									<label>Sede</label>
+									<input type="date" name="sede" id="sede" class="form-control" value="<?php echo isset($_REQUEST['sede'])?$_REQUEST['sede']:''?>" >
 								</div>
 							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
-									<label>Data de Término</label>
-									<input type="date" name="data_fim" id="data_fim" class="form-control" value="<?php echo isset($_REQUEST['data_fim'])?$_REQUEST['data_fim']:''?>" placeholder="Selecione a data de término">
-								</div>
-							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
-									<label>Situação</label>
-									<input type="text" name="estado" id="estado" class="form-control" value="<?php echo isset($_REQUEST['estado'])?$_REQUEST['estado']:''?>" placeholder="Selecione a situação">
-								</div>
-							</div>
-							<div class="col-sm-2">
-								
-							</div>
-
-							<div class="col-sm-4">
-
-							</div>
+							
 							<div class="col-sm-2">
 								
 								<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Pesquisar</button> 

@@ -23,23 +23,8 @@
     ?>
 
     <div class="container">
-        <div class="row">
        
-       
-        <?php   
-     
-        ?>
-         </div>
-        <div class="row">
-            <div class="form-group col-md-9">
-            <br><label>O usuário logado é: </label> <?= $_SESSION['usuario'] ?> 
-            </div>
-         
-            <div class="form-group col-md-3">
-                <br><?php print_r($dadosConexao) ?> 
-            </div>
-        </div>
-       
+        <?php    phpinfo(); ?>
 
         <footer>
         </footer>

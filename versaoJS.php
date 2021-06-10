@@ -9,35 +9,30 @@
     
 </head>
 <body>
-    <?php
-        session_start();
-        include ("php/conexao.php");
-        // include ("php/bootstrapalert.php");
-        
-        $dadosConexao = mysqli_get_host_info($conexao);
-            if (!isset($_SESSION["usuario"])) {
-                header('Location: index.php');
-                exit();
-            }
-            include($_SESSION['menu']); 
-    ?>
+        <div class="row">
+       
+            
+                <script type="text/javascript">
+            var version = 1.0;
+        </script>
 
-    <div class="container">
-        <div class="row">
-       
-       
-        <?php   
-     
-        ?>
-         </div>
-        <div class="row">
-            <div class="form-group col-md-9">
-            <br><label>O usuário logado é: </label> <?= $_SESSION['usuario'] ?> 
-            </div>
-         
-            <div class="form-group col-md-3">
-                <br><?php print_r($dadosConexao) ?> 
-            </div>
+        <script language="Javascript1.1"> version = 1.1; </script>
+        <script language="Javascript1.2"> version = 1.2; </script>
+        <script language="Javascript1.3"> version = 1.3; </script>
+        <script language="Javascript1.4"> version = 1.4; </script>
+        <script language="Javascript1.5"> version = 1.5; </script>
+        <script language="Javascript1.6"> version = 1.6; </script>
+        <script language="Javascript1.7"> version = 1.7; </script>
+        <script language="Javascript1.8"> version = 1.8; </script>
+        <script language="Javascript1.9"> version = 1.9; </script>
+
+        <script type="text/javascript">
+        alert(version);
+        </script>
+
+
+
+
         </div>
        
 
