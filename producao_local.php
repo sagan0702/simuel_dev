@@ -40,7 +40,7 @@
 			<h3>Produção Local</h3>
 				<!-- <i class="fa fa-fw fa-globe"></i> <strong>Pequisar </strong>  -->
 				<a href="php/producao_local_add.php" class="float-left btn btn-dark btn-lg"> 
-				<i class="fa fa-fw fa-plus-circle"></i>  Enviar Produção</a></div> <!--- BOTÃO DE AÇÃO -->
+				<i class="fa fa-fw fa-plus-circle"></i>  Enviar Produção</a></div> 
 			<div class="card-body"> <!--- MENSAGENS -->
 				<?php
 				if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rds"){
@@ -83,7 +83,7 @@
 		  
 		<!--------------- FORM TABELA 1 -------------------->
 		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Urnas com manutenção realizada </h5>
-			<table class="table table-striped table-bordered -sm">
+			<table class="table table-striped table-bordered -sm table-sm">
 				<thead>
 					<tr class="bg-secondary text-white">
 						<!-- <td style="text-align: center;" >#</td> -->
@@ -96,8 +96,14 @@
 						<td style="text-align: center;" >UE2015</td>
 						<td style="text-align: center;" >UE2020</td>
 						<td style="text-align: center;" >UE2022</td>
-					
+						<td style="text-align: center;" >Nº de Urnas SEM chamado</td>
+						<td style="text-align: center;" >Nº de Urnas COM chamado</td>
+						<td style="text-align: center;" >Nº de baterias Com carga OK</td>
+						<td style="text-align: center;" >Nº de baterias Sem carga </td>
+						<td style="text-align: center;" >Nº de baterias com vazamento </td>
+						<td style="text-align: center;" >Nº de baterias oxidadas</td>
 						<td style="text-align: center;" class="text-center">Ação</td>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -108,8 +114,16 @@
 							$s++;
 					?>
 					<tr>
+						<?php
+							$data =  substr($val['dt_envio'],0, 10);    
+							$data2 = implode("/",array_reverse(explode("-",$data)));;
+
+						?>
+							
 						<td style="text-align: center;"><?php echo $s;?></td> 
-						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['dt_envio'])));;?></td> 
+						<!-- <td style="text-align: center;" ><?php ?></td>  -->
+					
+						<td style="text-align: center;" ><?php echo $data2;?></td> 
 						<td style="text-align: center;" ><?php echo $val['ue2009p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2010p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2011p'];?></td>
@@ -117,7 +131,12 @@
 						<td style="text-align: center;" ><?php echo $val['ue2015p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2020p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2022p'];?></td>
-
+						<td style="text-align: center;" ><?php echo $val['nue_sem_chamado'];?></td>
+						<td style="text-align: center;" ><?php echo $val['nue_com_chamado'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_carga_ok'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_sem_carga'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_vazando'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_oxidada'];?></td>
 						<td align="center">
 							<a href="php/producao_local_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
 							<a href="php/producao_local_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
@@ -134,63 +153,7 @@
 			</table>
 		</div> 
 
-		<!--------------- FORM TABELA 2 -------------------->
-		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Produção Geral </h5>
-			<table class="table table-striped table-bordered">
-				<thead>
-					<tr class="bg-secondary text-white">
-						<!-- <td style="text-align: center;" >#</td> -->
-						<td style="text-align: center;" >#</td>
-						<td style="text-align: center;" >Nº de Urnas SEM chamado</td>
-						<td style="text-align: center;" >Nº de Urnas COM chamado</td>
-						<td style="text-align: center;" >Nº de baterias Com carga OK</td>
-						<td style="text-align: center;" >Nº de baterias Sem carga </td>
-						<td style="text-align: center;" >Nº de baterias com vazamento </td>
-						<td style="text-align: center;" >Nº de baterias oxidadas</td>
-						<td style="text-align: center;" >Observações</td>
-						<td style="text-align: center;" class="text-center">Ação</td>
-					</tr>
-				</thead>
-				<tbody>
-					<?php 
-					if(count($userData)>0){
-						$s	=	'';
-						foreach($userData as $val){
-							$s++;
-					?>
-					<tr>
-
-					<!-- `id_producao`, `idciclo`, `idnvi`, `id_os`, `n_os`, `dt_envio`, `ue2009p`, `ue2010p`, `ue2011p`, `ue2013p`, `ue2015p`, `ue2020p`, `ue2022p`, `miv2022p`, `nue_sem_chamado`, `nue_com_chamado`, `bat_carga_ok`, `bat_sem_carga`, `bat_vazando`, `bat_oxidada`SELECT * FROM `producao` WHERE 1 -->
 		
-						<td style="text-align: center;" ><?php echo $s;?></td> 
-						<td style="text-align: center;" ><?php echo $val['nue_sem_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['nue_com_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_carga_ok'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_sem_carga'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_vazando'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_oxidada'];?></td>
-						<td style="text-align: center;" ><?php echo $val['observacao'];?></td>
-									
-						
-
-						<td align="center">
-							<a href="php/producao_local_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
-							<a href="php/producao_local_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
-						</td>
-
-					</tr>
-					<?php 
-						}
-					}else{
-					?>
-					<tr><td colspan="6" align="center">Nenhum registro encontrado!</td></tr>
-					<?php } ?>
-				</tbody>
-			</table>
-		</div> <!--/.col-sm-12-->
-
-
-		<!--------------- FIM DO FORM TABELA 2 -------------------->
 
 
 		<div class="col-sm-12"> <!--- CAMPOS DE PESQUISA -->
@@ -239,11 +202,7 @@
 	</div>
 
 	<script>
-		$(document).ready(function() {
-			
-			var versaoJquery = $.fn.jquery;
-			//alert (versaoJquery)
-		});
+	
 	</script>
 </body>
 </html>

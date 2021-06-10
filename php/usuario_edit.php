@@ -120,6 +120,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					</form>
 				</div>
 			</div>
+			<div class="card-footer text-muted">
+					SIMUEL 
+				</div>
+
 		</div>
 	</div>
 	    <script>

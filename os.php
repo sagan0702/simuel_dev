@@ -167,8 +167,11 @@
 					</form>
 				</div>
 			</div>
+			<div class="card-footer text-muted">
+						SIMUEL 
+					</div>
 		</div>
-		<hr>  <!--- FIM DO FORM DE PESQUISA -->
+		
 	</div>
 
 	

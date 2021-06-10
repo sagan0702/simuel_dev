@@ -6,24 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Gerenciar Ciclos</title>
 	<?php 
-
-	// session_start();
-        
-	// if (!isset($_SESSION["usuario"])){
-		
-	// header('Location: index.php');
-	// exit();
-		
-	// }
-
 	include_once('php/formatacao.php');
     include ("php/bootstrapalert.php");
-
 	?>
 	<?php
         session_start();
         include ("php/conexao.php");
-        // include ("php/bootstrapalert.php");
+       
         
         $dadosConexao = mysqli_get_host_info($conexao);
             if (!isset($_SESSION["usuario"])) {
@@ -52,8 +41,6 @@
 	$userData	=	$db->getAllRecords('ciclo','*',$condition,'ORDER BY id_ciclo DESC');
 	?>
    	<div class="container">
-	
-		
 		<div class="card"> <!--- FORM DE PESQUISA -->
 			<div class="card-header">
 			<h3>Gerenciar Ciclos</h3>
@@ -93,11 +80,20 @@
 							$s++;
 					?>
 					<tr>
+						<?php
+						$est = $val['estado'];
+							if ($est == 1) {
+								$estado = "Aberto";
+								} else {
+								$estado = "Fechado";
+							}
+						?>
+
 						<td style="text-align: center;"><?php echo $s;?></td>
 						<td style="text-align: center;" ><?php echo $val['n_ciclo'];?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_inicio'])));;?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_fim'])));;?></td>
-						<td style="text-align: center;"><?php echo $val['estado'];?></td>
+						<td style="text-align: center;"><?php echo $estado;?></td>
 						
 						<td align="center">
 							<a href="php/ciclo_edit.php?editId=<?php echo $val['id_ciclo'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
@@ -118,37 +114,36 @@
 					<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Localizar </h5>
 					<form method="get">
 						<div class="row">
-							<div class="col-sm-2">
-								<div class="form-group">
+							
+								<div class="form-group col-md-2">
 									<label> Ciclo</label>
 									<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" value="<?php echo isset($_REQUEST['n_ciclo'])?$_REQUEST['n_ciclo']:''?>" placeholder="Digite o ciclo no formato 00/0000" onkeypress="$(this).mask('00/0000')">
 								</div>
-							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
+							
+							
+								<div class="form-group col-md-2">
 									<label>Data de Início</label>
-									<input type="date" name="data_inicio" id="data_inicio" class="form-control" value="<?php echo isset($_REQUEST['data_inicio'])?$_REQUEST['data_inicio']:''?>" placeholder="Selecione a data de início">
+									<input type="date" name="data_inicio" id="data_inicio" class="form-control" value="<?php echo isset($_REQUEST['data_inicio'])?$_REQUEST['data_inicio']:''?>" >
 								</div>
-							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
+							
+							
+								<div class="form-group col-md-2">
 									<label>Data de Término</label>
-									<input type="date" name="data_fim" id="data_fim" class="form-control" value="<?php echo isset($_REQUEST['data_fim'])?$_REQUEST['data_fim']:''?>" placeholder="Selecione a data de término">
+									<input type="date" name="data_fim" id="data_fim" class="form-control" value="<?php echo isset($_REQUEST['data_fim'])?$_REQUEST['data_fim']:''?>" >
 								</div>
-							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
+						
+							
+								<div class="form-group col-md-1">
 									<label>Situação</label>
-									<input type="text" name="estado" id="estado" class="form-control" value="<?php echo isset($_REQUEST['estado'])?$_REQUEST['estado']:''?>" placeholder="Selecione a situação">
+									<input type="text" name="estado" id="estado" class="form-control" onkeypress="$(this).mask('0')" value="<?php echo isset($_REQUEST['estado'])?$_REQUEST['estado']:''?>" >
 								</div>
-							</div>
-							<div class="col-sm-2">
-								
-							</div>
+							
+								<div class="form-group col-md-1">
+									<label><h6>Estado: 1-Aberto / 0-Fechado </label></h6>
+								</div>	
+						</div>
 
-							<div class="col-sm-4">
-
-							</div>
+						
 							<div class="col-sm-2">
 								
 								<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Pesquisar</button> 
@@ -159,18 +154,17 @@
 							</div>
 						</div>
 					</form>
+					
 				</div>
+				
 			</div>
+			<div class="card-footer text-muted">
+						SIMUEL 
+					</div>
 		</div>
-		<hr>  <!--- FIM DO FORM DE PESQUISA -->
+	
 	</div>
 
-	<script>
-		$(document).ready(function() {
-			
-			var versaoJquery = $.fn.jquery;
-			//alert (versaoJquery)
-		});
-	</script>
+	
 </body>
 </html>

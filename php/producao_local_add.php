@@ -1,5 +1,6 @@
 <?php include_once('config.php');
 if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
+	
 extract($_REQUEST);
 // 	if($n_os==""){
 // 		header('location:'.$_SERVER['PHP_SELF'].'?msg=un');
@@ -10,6 +11,7 @@ extract($_REQUEST);
 // 	}else{
 		
 		//converter para data br -> data mysql
+
 		var_dump($_POST);
 		$userCount	=	$db->getQueryCount('producao','id_producao');
 		if($userCount[0]['total']<20){
@@ -45,7 +47,7 @@ extract($_REQUEST);
 			header('location:'.$_SERVER['PHP_SELF'].'?msg=dsd');
 			exit;
 		}
-	// }
+	
 }
 ?>
 
@@ -60,8 +62,20 @@ extract($_REQUEST);
 	include_once('consulta_ciclo_os.php');
     include ("conexao.php");
 	// session_start();
-       
-	     
+	$dadosConexao = mysqli_get_host_info($conexao);
+	if (!isset($_SESSION["usuario"])) {
+		header('Location: ../index.php');
+		exit();
+	}
+
+	// $id_ciclo = $_SESSION['max_id_ciclo'];
+	// $id_os = $_SESSION['max_id_os'];
+    // $id_local = $_SESSION['id_local']; 
+  
+	// var_dump($id_ciclo, $id_os, $id_local );
+
+
+
     ?>
 </head>
 <body>
@@ -94,38 +108,27 @@ extract($_REQUEST);
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Produção</a>
 			</div>
 			<div class="card-body">		
-			
 					<form method="post">
-					<!-- CAMPOS AUX --->	
-					<div id="id_os" name="id_os"><?= $_SESSION['max_id_os'] ?></div>
-					<div id="id_ciclo" name="id_ciclo"><?= $_SESSION['max_id_ciclo'] ?></div>
-					<div id="id_local" name="id_local"><?= $_SESSION['id_local'] ?></div>
-					<div id="n_os" name="n_os"><?= $_SESSION['max_n_os'] ?></div>
-					<?php
-					// $id_ciclo = $_SESSION['max_id_ciclo'];
-					// $id_os = $_SESSION['max_id_os'];
-					// $id_local = $_SESSION['id_local'];
-							
-					
-					?>
-
 				
+					<input type="hidden" name="id_ciclo" value="<?php echo $_SESSION['max_id_ciclo']; ?>">
+					<input type="hidden" name="id_os" value="<?php echo $_SESSION['max_id_os']; ?>">
+					<input type="hidden" name="id_local" value="<?php echo $_SESSION['id_local']; ?>">
+					<input type="hidden" name="n_os" value="<?php echo $_SESSION['max_n_os']; ?>">
 
 					<!-- FIM CAMPOS AUX --->
-
 
 						<div class="row">
 						<div class="col-md-3 ">
 								<label>Nº do Ciclo: </label>
-								<div id="n_ciclo" name="n_ciclo"><?= $_SESSION['max_n_ciclo'] ?></div>
+								<div id="n_ciclo2" name="n_ciclo2"><?= $_SESSION['max_n_ciclo'] ?></div>
 							</div>
 							<div class="col-md-3 ">
 								<label>Nº da OS:</label>
-								<div id ="n_os" name="n_os" > <?= $_SESSION['max_n_os'] ?>  </div>
+								<div id ="n_os2" name="n_os2" > <?= $_SESSION['max_n_os'] ?>  </div>
 							</div>
 							<div class="col-md-3 ">
 								<label>Local:</label>
-								<div id ="local" name="n_local"  > <?= $_SESSION['local'] ?>  </div>
+								<div id ="n_local2" name="n_local2"  > <?= $_SESSION['local'] ?>  </div>
 							</div>
 							<div class="col-md-3 ">
 								<label>Data:</label>
@@ -161,8 +164,6 @@ extract($_REQUEST);
 								<label for="urna15">UE2015:</label>
 								<input type="text" class="form-control" name="ue2015p" id="ue2015p" onkeypress="$(this).mask('0000')"  >
 							</div>
-							
-						
 						</div>
 						
 						<div class="row">
@@ -222,40 +223,23 @@ extract($_REQUEST);
 								<input type="text" class="form-control" name="observacao" id="observacao" >
 								</div>	
 						</div>	
-						
-						
 						<div class="col-md-2 ">
 							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Adicionar Produção</button>
 						</div>
 					</form>
 				</div>
-						
 			</div> 
 			<div class="card-footer text-muted">
 				SIMUEL 
 			</div>
 		</div>
-	
-						
-
 	</div>
 	<div class="container my-4">	
 	</div>
  
 	<script>
-		$('#data_inicio').datepicker({	
-			format: "yyyy/mm/dd",	
-			language: "pt-BR",
-			startDate: '+0d',
-			
-		});
 		
-		$('#data_fim').datepicker({	
-				
-			format: "yyyy/mm/dd",
-			language: "pt-BR",
-			startDate: '+0d',
-		});
+	
 		
 		
 	</script>

@@ -77,40 +77,38 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			</div>
 			<div class="card-body">		
 				<div class="col-sm-6">
-					<h5 class="card-title">Campos <span class="text-danger">*</span> são obrigatórios!</h5>
+					
 					<form method="post">
 						<div class="row">
-							<div class="form-group col-md-6">
-								<label>Nº do Ciclo <span class="text-danger">*</span></label>
+							<div class="form-group">
+								<label>Nº do Ciclo </label>
 								<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" 
-								placeholder="" onkeypress="$(this).mask('00/0000')" style="width: 150px"/> 
+								placeholder="" onkeypress="$(this).mask('00/0000')" /> 
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group col-md-6 ">
-								<!-- <label>Data Inicio <span class="text-danger">*</span></label>
-								<input type="date" name="data_inicio" id="data_inicio" class="form-control" placeholder="Selecione a data de início" required> -->
-								<div class="input-group date">
+							<div class="form-group">
+								
 								<label>Data de Início</label>
-								<input type="text" class="form-control" name="data_inicio" id="data_inicio" style="width: 150px"/>
+								<div class="input-group date ">
+								<input type="text" class="form-control" name="data_inicio" id="data_inicio" />
 								</div>
 							</div>
-							<div class="form-group col-md-6">
-								<!-- <label>Data Fim <span class="text-danger">*</span></label>
-								<input type="date" class="form-control"  name="data_fim" id="data_fim"  placeholder="Selecione a data de término" required> -->
-								<div class="input-group date">
+							<div class="form-group">
+								
 								<label for="campo4">Data de Término:</label>
-								<input type="text" class="form-control" name="data_fim" id="data_fim" style="width: 150px"/>
+								<div class="input-group date">
+								<input type="text" class="form-control" name="data_fim" id="data_fim" />
 								</div>
 							</div>
 						</div> 
-						<div class="form-group col-md-6">
-							<label><span class="text-danger"></span></label>
+						<div class="form-group">
+							<label></label>
 							<input type="hidden" name="estado" id="estado"  value = "1" required>
 
 						</div>
 						<div class="row ">
-							<div class="form-group col-md-6">
+							<div class="form-group">
 								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Adicionar Ciclo</button>
 
 							</div>

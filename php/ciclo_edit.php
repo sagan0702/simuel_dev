@@ -18,6 +18,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	$data_inicio = implode("-",array_reverse(explode("/",$data_inicio)));
 	$data_fim = implode("-",array_reverse(explode("/",$data_fim)));
 
+
 	$data	=	array(
 					'n_ciclo'=>$n_ciclo,
 					'data_inicio'=>$data_inicio,
@@ -81,43 +82,58 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Ciclos</a>
 			</div>
 			<div class="card-body">
-				
 				<div class="col-sm-6">
-					<h3 class="card-title"><h5>Campos com<span class="text-danger">*</span> são obrigatórios!</h5>
 					<form method="post">
 						<div class="form-group">
-							<label><h6>Nº do Ciclo<span class="text-danger">*</span></label></h6>
+							<label><h6>Nº do Ciclo</label></h6>
 							<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" value="<?php echo $row[0]['n_ciclo']; ?>" placeholder="" onkeypress="$(this).mask('00/0000')" required>
 						</div>
 
 						<div class="row">
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-4">
 								<?php
 								$datai = $row[0]['data_inicio'];
 								$datai= implode("/",array_reverse(explode("-",$datai))); 
 								?>
-								<label><h6>Data Inicio <span class="text-danger">*</span></label></h6>
+								<label><h6>Data Inicio </label></h6>
 								<input type="text" name="data_inicio" id="data_inicio" class="form-control" value="<?php 
 								echo $datai ?>" placeholder="" required>
-								
-								
-								
 							</div>
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-4">
 								<?php
 								$dataf = $row[0]['data_fim'];
 								$dataf= implode("/",array_reverse(explode("-",$dataf))); 
 								?>
-								<label><h6>Data Fim <span class="text-danger">*</span></label></h6>
+								<label><h6>Data Fim </label></h6>
 								<input type="text" name="data_fim" id="data_fim" maxlength="12" class="form-control" value="<?php echo $dataf ?>" placeholder="" required>
-
-								
 							</div>
 						</div>	
-						<div class="form-group">
-							<label><h6>Estado <span class="text-danger">*</span></label></h6>
-							<input type="text" name="estado" id="estado" maxlength="12" class="form-control" value="<?php echo $row[0]['estado']; ?>" placeholder="" required>
+						<div class="row">
+							<div class="form-group col-md-1">
+								<label><h6>Estado </label></h6>
+								<input type="text" name="estado" id="estado" maxlength="12" class="form-control" value="<?php echo $row[0]['estado']; ?>" placeholder="" required>
+							</div>
+							
 						</div>
+						<div class="row">
+							<div class="form-group col-md-6">
+									<label><h6>Estado: 1-Aberto / 0-Fechado </label></h6>
+							</div>
+						</div>
+
+						
+
+						<!-- <div class="form-check">
+							<fieldset>
+								<legend>Estado</legend>   
+								<input type = "radio" name="r_estado" id="r_estado" value = "1" checked />
+								<label for = "dobro">Aberto</label>   
+								<input type = "radio" name="r_estado" id="r_estado" value = "0" />
+								<label for = "cubo">Fechado</label>
+							</fieldset>
+						</div> -->
+
+
 						<div class="form-group">
 							<input type="hidden" name="editId" id="editId" value="<?php echo $_REQUEST['editId']?>">
 							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-edit"></i> Atualizar dados</button>

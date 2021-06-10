@@ -123,6 +123,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				</div>
 			</div>
 		</div>
+		<div class="card-footer text-muted">
+					SIMUEL 
+				</div>
+
 	</div>
 	<div class="container my-4">	
 	</div>
