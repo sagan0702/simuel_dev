@@ -66,9 +66,10 @@
 					<tr class="bg-secondary text-white">
 						<td style="text-align: center;" >#</td>
 						<td style="text-align: center;" >Ciclo</td>
-						<td style="text-align: center;" >Data Inicio</td>
-						<td style="text-align: center;" >Data Fim</td>
-						<td style="text-align: center;" >Estado</td>
+						<td style="text-align: center;" >Data de Inicio</td>
+						<td style="text-align: center;" >Data de Término</td>
+						<td style="text-align: center;" >Situação</td>
+						<td style="text-align: center;" >Data de Atualização</td>
 						<td style="text-align: center;" class="text-center">Ação</td>
 					</tr>
 				</thead>
@@ -83,10 +84,15 @@
 						<?php
 						$est = $val['estado'];
 							if ($est == 1) {
-								$estado = "Aberto";
+								$estado = "Ativo";
 								} else {
 								$estado = "Fechado";
 							}
+						
+						
+							$data_atua =  substr($val['data_atualizacao'],0, 10);    
+							$data_atua = implode("/",array_reverse(explode("-",$data_atua)));;
+						
 						?>
 
 						<td style="text-align: center;"><?php echo $s;?></td>
@@ -94,7 +100,7 @@
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_inicio'])));;?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_fim'])));;?></td>
 						<td style="text-align: center;"><?php echo $estado;?></td>
-						
+						<td style="text-align: center;"><?php echo $data_atua;?></td>
 						<td align="center">
 							<a href="php/ciclo_edit.php?editId=<?php echo $val['id_ciclo'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
 							<a href="php/ciclo_delete.php?delId=<?php echo $val['id_ciclo'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
@@ -111,43 +117,33 @@
 			</table>
 		</div> <!--/.col-sm-12-->
 		<div class="col-sm-12"> <!--- CAMPOS DE PESQUISA -->
-					<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Localizar </h5>
+
+					<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Pesquisar Ciclos </h5>
 					<form method="get">
 						<div class="row">
-							
-								<div class="form-group col-md-2">
+								<div class="col-md-1">
 									<label> Ciclo</label>
-									<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" value="<?php echo isset($_REQUEST['n_ciclo'])?$_REQUEST['n_ciclo']:''?>" placeholder="Digite o ciclo no formato 00/0000" onkeypress="$(this).mask('00/0000')">
+									<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" value="<?php echo isset($_REQUEST['n_ciclo'])?$_REQUEST['n_ciclo']:''?>" placeholder="00/0000" onkeypress="$(this).mask('00/0000')">
 								</div>
-							
-							
-								<div class="form-group col-md-2">
+								<div class="col-sm-2">
 									<label>Data de Início</label>
-									<input type="date" name="data_inicio" id="data_inicio" class="form-control" value="<?php echo isset($_REQUEST['data_inicio'])?$_REQUEST['data_inicio']:''?>" >
+									<input type="date" name="data_inicio" id="data_inicio" class="form-control" value="<?php echo isset($_REQUEST['data_inicio'])?$_REQUEST['data_inicio']:''?>" placeholder="Selecione" >
 								</div>
-							
-							
-								<div class="form-group col-md-2">
+								<div class="col-sm-2">
 									<label>Data de Término</label>
-									<input type="date" name="data_fim" id="data_fim" class="form-control" value="<?php echo isset($_REQUEST['data_fim'])?$_REQUEST['data_fim']:''?>" >
+									<input type="date" name="data_fim" id="data_fim" class="form-control" placeholder="Selecione" value="<?php echo isset($_REQUEST['data_fim'])?$_REQUEST['data_fim']:''?>" >
 								</div>
-						
-							
-								<div class="form-group col-md-1">
+								<div class="col-sm-1">
 									<label>Situação</label>
-									<input type="text" name="estado" id="estado" class="form-control" onkeypress="$(this).mask('0')" value="<?php echo isset($_REQUEST['estado'])?$_REQUEST['estado']:''?>" >
+									<input type="text" name="estado" id="estado" class="form-control"  onkeypress="$(this).mask('0')" value="<?php echo isset($_REQUEST['estado'])?$_REQUEST['estado']:''?>" >
 								</div>
-							
 								<div class="form-group col-md-1">
-									<label><h6>Estado: 1-Aberto / 0-Fechado </label></h6>
+									<label p class="text-secondary" ><h6>Situação: 1-Ativo  0-Fechado </label></h6>
 								</div>	
 						</div>
-
-						
+						<div class="row">
 							<div class="col-sm-2">
-								
 								<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Pesquisar</button> 
-								
 							</div>
 							<div class="col-sm-2">
 									<a href="<?php echo $_SERVER['PHP_SELF'];?>" class="btn btn-danger"><i class="fa fa-fw fa-sync"></i>Limpar</a>

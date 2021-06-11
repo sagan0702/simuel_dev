@@ -99,7 +99,7 @@ extract($_REQUEST);
 		}
 
 		?>
-
+		
 			
 
 		<div class="card">   <!---CARD ADICIONAR --->
@@ -146,34 +146,34 @@ extract($_REQUEST);
 						
 							<div class="col-md-2">
 								<label for="urna09">UE2009:</label>
-								<input type="text" class="form-control" name="ue2009p" id="ue2009p"  onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" name="ue2009p" id="ue2009p" value="0" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna10">UE2010:</label>
-								<input type="text" class="form-control" name="ue2010p" id="ue2010p"  onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" name="ue2010p" id="ue2010p" value="0"  onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna11">UE2011:</label>
-								<input type="text" class="form-control"  name="ue2011p" id="ue2011p"  onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control"  name="ue2011p" id="ue2011p" value="0" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna13">UE2013:</label>
-								<input type="text" class="form-control" name="ue2013p" id="ue2013p"  onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" name="ue2013p" id="ue2013p" value="0" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna15">UE2015:</label>
-								<input type="text" class="form-control" name="ue2015p" id="ue2015p" onkeypress="$(this).mask('0000')"  >
+								<input type="text" class="form-control" name="ue2015p" id="ue2015p" value="0" onkeypress="$(this).mask('0000')"  >
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="col-md-2 ">
 								<label for="urna21">UE2020:</label>
-								<input type="text" class="form-control" name="ue2020p" id="ue2020p" onkeypress="$(this).mask('0000')"  >
+								<input type="text" class="form-control" name="ue2020p" id="ue2020p" value="0" onkeypress="$(this).mask('0000')"  >
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">UE2022:</label>
-								<input type="text" class="form-control" name="ue2022p" id="ue2022p" onkeypress="$(this).mask('0000')"  >
+								<input type="text" class="form-control" name="ue2022p" id="ue2022p" value="0" onkeypress="$(this).mask('0000')"  >
 							</div>
 						</div>
 						</br> <!--- QUEBRA DE LINHA NO LAYOUT -->
@@ -188,11 +188,11 @@ extract($_REQUEST);
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna21">Urnas COM chamado aberto:</label>
-								<input type="text" class="form-control" name="nue_com_chamado"  id="nue_com_chamado" onkeypress="$(this).mask('0000')" required>
+								<input type="text" class="form-control" name="nue_com_chamado"  id="nue_com_chamado" onkeypress="$(this).mask('0000')" value="0" required>
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Urnas SEM chamado aberto:</label>
-								<input type="text" class="form-control" name="nue_sem_chamado" id="nue_sem_chamado" onkeypress="$(this).mask('0000')" required>
+								<input type="text" class="form-control" name="nue_sem_chamado" id="nue_sem_chamado" onkeypress="$(this).mask('0000')" value="0" required>
 							</div>
 						</div>	
 						</br> <!--- QUEBRA DE LINHA NO LAYOUT -->
@@ -202,19 +202,19 @@ extract($_REQUEST);
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Recarregadas:</label>
-								<input type="text" class="form-control" name="bat_carga_ok" id="bat_carga_ok" onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" value="0" name="bat_carga_ok" id="bat_carga_ok" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Sem carga:</label>
-								<input type="text" class="form-control" name="bat_sem_carga" id="bat_sem_carga" onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" value="0" name="bat_sem_carga" id="bat_sem_carga" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Com vazamento:</label>
-								<input type="text" class="form-control" name="bat_vazando" id="bat_vazando" onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control"  value="0" name="bat_vazando" id="bat_vazando" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Com oxidação:</label>
-								<input type="text" class="form-control" name="bat_oxidada"  id="bat_oxidada" onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" value="0" name="bat_oxidada"  id="bat_oxidada" onkeypress="$(this).mask('0000')" >
 							</div>
 						</div>
 						<div class="row">
@@ -224,11 +224,12 @@ extract($_REQUEST);
 								</div>	
 						</div>	
 						<div class="col-md-2 ">
-							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Adicionar Produção</button>
+							<button type="submit" name="submit" value="submit" id="submit_prod" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Enviar Produção</button>
 						</div>
 					</form>
 				</div>
 			</div> 
+			
 			<div class="card-footer text-muted">
 				SIMUEL 
 			</div>

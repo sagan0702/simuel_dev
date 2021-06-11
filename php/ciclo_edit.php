@@ -117,7 +117,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						</div>
 						<div class="row">
 							<div class="form-group col-md-6">
-									<label><h6>Estado: 1-Aberto / 0-Fechado </label></h6>
+									<label><h6>Estado: 1-Ativo / 0-Fechado </label></h6>
 							</div>
 						</div>
 

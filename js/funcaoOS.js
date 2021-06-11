@@ -1,21 +1,17 @@
 $(document).ready( function () {
    tdiasoff.innerHTML = 0
-   
    var ArrayDiasOff = [];
    var total_dias_off = '0'
     $('#txt_inicio').datepicker({	
         format: "dd/mm/yyyy",	
         language: "pt-BR",
         startDate: '+0d',
-        
     });
-    
     $('#txt_fim').datepicker({	
         format: "dd/mm/yyyy",	
         language: "pt-BR",
         startDate: '+0d',
     });
-    
     $('#txt_dias_off').datepicker({	
         format: "dd/mm/yyyy",	
         language: "pt-BR",
@@ -25,53 +21,27 @@ $(document).ready( function () {
             inicio = $('#txt_inicio').val();
             fim = $('#txt_fim').val();
             if (dia_off <inicio || dia_off > fim) {
-               
                 alert(` Dia off ${date} INVÁLIDO. A data selecionada é menor que o inicio do período ou maior que o término!`);
-                
             } else {
-
                 alert(` Dia off ${date} adicionado com sucesso!`);
                 ArrayDiasOff.push(date) ;
                 var ul = document.getElementById("lista");
                 var li = document.createElement("li");
                 li.appendChild(document.createTextNode(date));
                 ul.appendChild(li);
-
-
-                // total_dias_off = Number(ArrayDiasOff.length);
-                // if (total_dias_off == "") {
-                //     total_dias_off = 0
-
-                // } else {
-                //     tdiasoff.innerHTML = total_dias_off;
-                // }
-                
-
-              
                 if (Number(ArrayDiasOff.length) == '') {
                     total_dias_off = 0
                     tdiasoff.innerHTML = total_dias_off;
-
                 } else {
                     total_dias_off = Number(ArrayDiasOff.length)
                     tdiasoff.innerHTML = total_dias_off;
                 }
-
-
             }
         },
     });
 
-   
-        
-
-    
 });
-
-
-
 function calcularOS() {
-    
     n_os = $('#txt_n_os').val();
     n_ciclo = $('#txt_n_ciclo').val();
     inicio = $('#txt_inicio').val();
@@ -82,7 +52,6 @@ function calcularOS() {
     fp_diario = $('#fp_diario').val();
     local = $('#n_local').val()
     //alert(`Data selecionada: Inicio: ${inicio}  Fim: ${fim}`);
-    
     // var total_dias_off = 0
     var ntbat = Number(tbaterias)
     var nturnas = Number(turnas)
@@ -96,17 +65,12 @@ function calcularOS() {
     //     // return false;
         
     // }
-
-   
     //  } else {
 
-   
-       
         //Quantidade de dias uteis do período:
-     
         qtde_dias = workingDaysBetweenDates(inicio, fim) 
         qtde_dias_periodo.innerHTML = `${qtde_dias}`
-                
+
         //Quantidade de dias disponíveis apos dias-off: 
         //alert(` Total de Dias ${qtde_dias} Total de Dias Off: ${total_dias_off} Total de Dias disp ${qddisp}`);
 
@@ -123,18 +87,15 @@ function calcularOS() {
         var qust =  (qga / qinfra)
         var Q_UST = qust.toFixed(1).toLocaleString('pt-BR')
         qtde_ust.innerHTML = `${Q_UST}`
-      
-     
+  
 }
 
 function addDiasOff() {
-   
 
 }
 
-
 function gravarOS() {
-    alert("Função CriarOS ativada");
+    // alert("Função CriarOS ativada");
     id_ciclo = $('#txt_id_ciclo').val();
     id_local = txt_id_local.innerHTML
     n_os = $('#txt_n_os').val();
@@ -206,9 +167,8 @@ function update() {
     txt_id_local.innerHTML = `${id_local}`
 }
     //update();
-    
 
-    function workingDaysBetweenDates(d0, d1) {
+function workingDaysBetweenDates(d0, d1) {
         var startDate = parseDate(d0);
         var endDate = parseDate(d1);
         
@@ -260,15 +220,15 @@ function update() {
     
         // substract the holiday dates from the original calculation and return to the DOM
         return days - z;
-    }
+}
     
-    function parseDate(input) {
+function parseDate(input) {
         // Transform date from text to date
       var parts = input.match(/(\d+)/g);
       // new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
       //return new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
       return new Date(parts[2], parts[1]-1, parts[0]); // months are 0-based alterado para formato BR
-    }
+}
 
 
 

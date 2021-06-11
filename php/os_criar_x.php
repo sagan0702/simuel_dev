@@ -38,7 +38,7 @@ $data_fim = implode("-",array_reverse(explode("/",$data_fim)));
     if (!$conexao->query($sqlInsertInto)) {
         echo "Error: " . $sql . "<br>" . $conexao->error;
     }else{
-        echo "Ordem de Serviço nº" . $n_os. " salva com sucesso!!!";
+        echo "Ordem de Serviço nº " . $n_os. " salva com sucesso!!!";
     }
 
   //encerro a conexão com o banco de dados

@@ -101,7 +101,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
         text-align: center;
         font-weight: bold;
         font-size: 20px;
-        padding: 5px, 0, 5px, 0;
     }
     #qtde_dias_disp{
         background-color: yellow;
@@ -109,7 +108,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
         text-align: center;
         font-weight: bold;
         font-size: 20px;
-        padding: 15px, 0, 15px, 0;
     }
     
     #qtde_ga{
@@ -118,7 +116,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
         text-align: center;
         font-weight: bold;
         font-size: 20px;
-        padding: 15px, 0, 15px, 0;
     }
 
     #qtde_ust{
@@ -127,7 +124,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
         text-align: center;
         font-weight: bold;
         font-size: 20px;
-        padding: 15px, 0, 15px, 0;
     }
 
     #txt_inicio
@@ -216,25 +212,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
         width: 100px;
         font-size: 20px;
     }
-
-    #btn_calcularOS
-    {
-
-    /* padding: 25px, 25px, 25px, 25px; */
-    margin-top: 35px ;    
-    margin-bottom: 35px   ;
-    }
-
-    #btn_gravarOS
-    {
-
-    /* padding: 25px, 25px, 25px, 25px; */
-    margin-bottom: 35px   ;
-    margin-top: 55px ;  
-       
-    }
-
-
     /* #p_total
     {
         background-color: whitesmoke;
@@ -247,8 +224,11 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 
 </style>
+
+
 </head>
 <body>
+
 	<!--- MENSAGENS -->
    	<div class="container">
 		<h3>Adicionar OS</h3>
@@ -273,8 +253,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				<i class="fa fa-fw fa-globe"></i> Gerenciar OS</a>
 			</div>
 			<div class="card-body">		
-				<!-- <div class="col-sm-12"> -->
+				<div class="col-sm-12">
+					
 					<!-- <form method="post">   -->
+                    
                     <input type="hidden" id="txt_id_ciclo" value="<?=$id_ciclo?>">
                     <div id="txt_id_local" type="hidden"></div>
                     <div class="row">
@@ -310,33 +292,46 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                                 </div>
                     </div>
                     <div class="row">
+                        
                         <div class="form-group col-md-2">
                                 <label for="campo3">Data Mínima:</label>
+                                    
                                         <input type="text" class="form-control" name="data_inicio" id="txt_inicio" />
+                                    
                         </div>
                         <div class="form-group col-md-2">
                                 <label for="campo4">Data Máxima:</label>
+                                    
                                         <input type="text" class="form-control" name="data_fim" id="txt_fim" />
+                                    
                                 </div>
                             <div class="form-group col-md-2">
                                 <label for="campo4">Selecione os Dias-Off:</label>
+                                   
                                         <input type="text" class="form-control" name="txt_dias_off" id="txt_dias_off"  />
+                                    
                             </div>
                             <div class="form-group col-md-2">
+                                
                                 <label for="stdiasoff">Total de dias Off:</label>    
+                                
                                 <div id="tdiasoff"></div>
                             </div>
                     </div>      
 
                     <div class="row">
                         <div class="form-group col-md-2">   
+                                    
                                     <label>Lista de Dias-Off:</label>  
                                     <div class="form-group col-md-12">  
                                     <div id="array_dias_off"></div>
                                     <ul class="list-group" id="lista"></ul>
                                     </div> 
+
                         </div>    
+
                         <div class="form-group col-md-6">
+                        
                                     <div class="form-group col-md-6">
                                         <label>Total de Urnas: </label>
                                         <input type="text" name="t_urnas" class="form-control" id="txt_t_urnas" required class="textboxclass" style="width: 150px" onkeypress="$(this).mask('00000')"/>
@@ -347,43 +342,52 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                                         <input type="text" name="t_baterias" class="form-control" id="txt_t_baterias" required class="textboxclass" style="width: 150px" onkeypress="$(this).mask('00000')" />
                                     </div>
                         </div>
-                    </div>    
-                    <div class="form-group col-md-6">
+                  
                         <div class="form-group col-md-6">
+                               
                                 <button id="btn_calcularOS" 
                                         class="btn btn-primary" onclick="calcularOS()">Calcular</button>  
+                                
                         </div>  
+
                     </div>
+
                     <div class="row">
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-3">
                                 <label>Dias do período:  </label>
                                 <div id="qtde_dias_periodo"></div> 
                             </div>
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-3">
                                 <label>Dias disponíveis:  </label>
                                 <div id="qtde_dias_disp"></div>
                             </div>
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-3">
                                 <label>QGA: </label>
                                 <div id="qtde_ga"></div>
                             </div>
-                            <div class="form-group col-md-2">   
+                            <div class="form-group col-md-3">   
                                 <label>UST:  </label>
                                 <div id="qtde_ust"></div>
                             </div>    
                     </div>
+                   
                    <div class="row">  
+                        <!-- <div class="form-group col-md-6">
+								<button type="submit" name="submit" value="submit" id="submit"  onclick="criarOS()" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Adicionar Ciclo</button>
+						</div>  -->
                         <div class="form-group col-md-8">
                                 <button id="btn_gravarOS" class="btn btn-primary" onclick="gravarOS()">Gravar OS</button>  
                         </div>
-                   </div> 
-	            <!-- </div> -->
-            </div>    
-        </div>        
-        <div class="container my-4">	
-        </div>
-                    <div class="card-footer text-muted">
-				        SIMUEL 
-		            </div>
+                        <!-- <div class="form-group col-md-8">
+                                <button id="btn_os_pdf" disable class="btn btn-primary">PDF</button>  
+                        </div>    -->
+                        
+                    </div> 
+					</form> 
+		
+	</div>
+	<div class="container my-4">	
+	</div>
+
 </body>
 </html>

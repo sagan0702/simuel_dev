@@ -46,13 +46,15 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Adicionar Ciclo</title>
-  	<?php include_once('formatacao.php');?>
+  	<?php include_once('formatacao.php');
+
+	?>
 </head>
 <body>
 
 	<!--- MENSAGENS -->
    	<div class="container">
-		<h3>Adicionar Ciclo</h3>
+		
 		<?php  
 		if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="un"){
 			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> O campo é obrigatório!</div>';
@@ -71,7 +73,9 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		?>
 
 		<div class="card">   <!---CARD ADICIONAR --->
-			<div class="card-header"><i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Ciclo</strong> 
+			<div class="card-header">
+			<h3>Adicionar Ciclo</h3>
+			<!-- <i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Ciclo</strong>  -->
 				<a href="/simuel/ciclos.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Ciclos</a>
 			</div>
@@ -80,27 +84,24 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					
 					<form method="post">
 						<div class="row">
-							<div class="form-group">
+							<div class="col-md-3 ">
 								<label>Nº do Ciclo </label>
 								<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" 
-								placeholder="" onkeypress="$(this).mask('00/0000')" /> 
+								placeholder="" onkeypress="$(this).mask('00/0000')" required/> 
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group">
-								
-								<label>Data de Início</label>
-								<div class="input-group date ">
-								<input type="text" class="form-control" name="data_inicio" id="data_inicio" />
+		
+								<div class="col-md-3 ">
+									<label>Data de Início</label>
+									<input type="text" class="form-control" name="data_inicio" id="data_inicio" required />
 								</div>
-							</div>
-							<div class="form-group">
-								
-								<label for="campo4">Data de Término:</label>
-								<div class="input-group date">
-								<input type="text" class="form-control" name="data_fim" id="data_fim" />
+
+								<div class="col-md-3 ">
+									<label for="campo4">Data de Término:</label>
+									<input type="text" class="form-control" name="data_fim" id="data_fim" required/>
 								</div>
-							</div>
+							
 						</div> 
 						<div class="form-group">
 							<label></label>
@@ -115,7 +116,11 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						</div>
 					</form>
 				</div>
+			
 			</div>
+			<div class="card-footer text-muted">
+				SIMUEL 
+		</div>
 		</div>
 	</div>
 	<div class="container my-4">	
@@ -134,6 +139,16 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			format: "yyyy/mm/dd",
 			language: "pt-BR",
 			startDate: '+0d',
+			onSelect: function addDiasOff (date) {
+            inicio = $('#data_inicio').val();
+            fim = $('#data_fim').val();
+            if (fim < inicio) {
+                alert(` Data  ${date} INVÁLIDO. A data selecionada é menor que o inicio do período!`);
+            } else {
+
+			}
+		}
+
 		});
 		
 		

@@ -43,7 +43,7 @@
 		$condition	.=	' AND situacao LIKE "%'.$_REQUEST['situacao'].'%" ';
 	}
 		
-	$userData	=	$db->getAllRecords('os','*',$condition,'ORDER BY id_ciclo DESC');
+	$userData	=	$db->getAllRecords('os','*',$condition,'ORDER BY id_os DESC');
 	?>
    	<div class="container">
 	   
@@ -72,18 +72,18 @@
 				<thead>
 					<tr class="bg-secondary text-white">
 						<!-- <td style="text-align: center;" >#</td> -->
-						<td style="text-align: center;" >Local</td>
+						<td style="text-align: center;" >Localidade    </td>
 						<td style="text-align: center;" >Ciclo</td>
 						<td style="text-align: center;" >OS</td>
 						<td style="text-align: center;" >Data Mínima</td>
 						<td style="text-align: center;" >Data Máxima</td>
 						<td style="text-align: center;" >Situação</td>
 						<td style="text-align: center;" >Dias_Off</td>
-						<td style="text-align: center;" >Total de Urnas</td>
-						<td style="text-align: center;" >Total de Baterias</td>
-						<td style="text-align: center;" >Total de QGA</td>
-						<td style="text-align: center;" >Total de Dias Disp</td>
-						<td style="text-align: center;" >Total de UST</td>
+						<td style="text-align: center;" >Urnas</td>
+						<td style="text-align: center;" >Baterias</td>
+						<td style="text-align: center;" >QGA</td>
+						<td style="text-align: center;" >Dias Disp</td>
+						<td style="text-align: center;" >UST</td>
 						<td style="text-align: center;" class="text-center">Ação</td>
 					</tr>
 				</thead>
@@ -95,22 +95,43 @@
 							$s++;
 					?>
 					<tr>
+						<?php
+						$id_loc = $val['id_local'];
+						$sql = "SELECT n_local FROM local WHERE id_local = '$id_loc' ";
+						$result = mysqli_query($conexao,$sql);
+						$row = mysqli_fetch_row($result);
+						$local = $row[0];
+						//var_dump($local) ;
+						
+						$id_c = $val['id_ciclo'];
+						$sql2 = "SELECT n_ciclo FROM `ciclo` WHERE id_ciclo = $id_c";
+						$result2 = mysqli_query($conexao,$sql2);
+						$row = mysqli_fetch_row($result2);
+						$ciclo = $row[0];
+						//var_dump($id_c) ;
+
+						$est = $val['situacao'];
+							if ($est == 1) {
+								$situacao = "Ativa";
+								} else {
+								$situacao = "Fechada";
+							}
+											
+						?>
+
 						<!-- <td style="text-align: center;"><?php echo $s;?></td> -->
-						<td style="text-align: center;" ><?php echo $val['id_local'];?></td>
-						<td style="text-align: center;" ><?php echo $val['id_ciclo'];?></td>
+						<td style="text-align: center;" ><?php echo $local;?></td>
+						<td style="text-align: center;" ><?php echo $ciclo;?></td>
 						<td style="text-align: center;" ><?php echo $val['n_os'];?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_minima'])));;?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_maxima'])));;?></td>
-						<td style="text-align: center;"><?php echo $val['situacao'];?></td>
+						<td style="text-align: center;"><?php echo $situacao;?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_dias_off'];?></td>
 						<td style="text-align: center;" ><?php echo $val['t_urnas'];?></td>
 						<td style="text-align: center;" ><?php echo $val['t_baterias'];?></td>
 						<td style="text-align: center;"><?php echo $val['t_urnas'] + $val['t_baterias'];?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_dias_disp'];?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_ust'];?></td>
-						
-						
-
 						<td align="center">
 							<a href="php/os_edit.php?editId=<?php echo $val['id_os'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
 							<a href="php/os_delete.php?delId=<?php echo $val['id_os'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
@@ -127,41 +148,36 @@
 			</table>
 		</div> <!--/.col-sm-12-->
 		<div class="col-sm-12"> <!--- CAMPOS DE PESQUISA -->
-					<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Localizar </h5>
+					<h5 class="card-title"><i  class="fa fa-fw fa-search"></i> Pesquisar OS </h5>
 					<form method="get">
-						<div class="row">
-							<div class="col-sm-2">
-								<div class="form-group">
+						<div class="row" >
+							<div class="col-lg-1">
 									<label> OS</label>
-									<input type="text" name="n_os" id="n_os" class="form-control" value="<?php echo isset($_REQUEST['n_os'])?$_REQUEST['n_os']:''?>" placeholder="Digite o número da OS no formato 00/0000" onkeypress="$(this).mask('00/0000')">
-								</div>
+									<input type="text" name="n_os" id="n_os" class="form-control" value="<?php echo isset($_REQUEST['n_os'])?$_REQUEST['n_os']:''?>" placeholder="00/0000" onkeypress="$(this).mask('00/0000')">
 							</div>
 							<div class="col-sm-2">
-								<div class="form-group">
 									<label>Data Mínima</label>
-									<input type="date" name="data_minima" id="data_minima" class="form-control" value="<?php echo isset($_REQUEST['data_minima'])?$_REQUEST['data_minima']:''?>" placeholder="Selecione a data mínima da OS">
-								</div>
+									<input type="date" name="data_minima" id="data_minima" class="form-control" value="<?php echo isset($_REQUEST['data_minima'])?$_REQUEST['data_minima']:''?>" placeholder="Selecione">
 							</div>
 							<div class="col-sm-2">
-								<div class="form-group">
 									<label>Data Máxima</label>
-									<input type="date" name="data_maxima" id="data_maxima" class="form-control" value="<?php echo isset($_REQUEST['data_maxima'])?$_REQUEST['data_maxima']:''?>" placeholder="Selecione a data máxima da OS">
-								</div>
+									<input type="date" name="data_maxima" id="data_maxima" class="form-control" value="<?php echo isset($_REQUEST['data_maxima'])?$_REQUEST['data_maxima']:''?>" placeholder="Selecione">
 							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
+							<div class="col-sm-1">
 									<label>Situação</label>
-									<input type="text" name="situacao" id="situacao" class="form-control" value="<?php echo isset($_REQUEST['situacao'])?$_REQUEST['situacao']:''?>" placeholder="Selecione a situação">
-								</div>
-							</div>
-							
-							<div class="col-sm-2">
+									<input type="text" name="situacao" id="situacao" class="form-control" value="<?php echo isset($_REQUEST['situacao'])?$_REQUEST['situacao']:''?>" placeholder="">
 								
+							</div>	
+							<div class="col-sm-1">
+									<label p class="text-secondary"><h6>Situação: 1-Ativa  0-Fechada </label></h6>
+							</div>
+						</div>	
+						<div class="row ">
+							<div class="col-sm-2">
 								<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Pesquisar</button> 
-								
 							</div>
 							<div class="col-sm-2">
-									<a href="<?php echo $_SERVER['PHP_SELF'];?>" class="btn btn-danger"><i class="fa fa-fw fa-sync"></i>Limpar</a>
+								<a href="<?php echo $_SERVER['PHP_SELF'];?>" class="btn btn-danger"><i class="fa fa-fw fa-sync"></i>Limpar</a>
 							</div>
 						</div>
 					</form>
@@ -169,7 +185,7 @@
 			</div>
 			<div class="card-footer text-muted">
 						SIMUEL 
-					</div>
+			</div>
 		</div>
 		
 	</div>

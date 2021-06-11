@@ -32,7 +32,7 @@
 	
 		
 	$userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
-	$userData2	=	$db->getAllRecords('local','*',$condition,'ORDER BY id_local DESC');
+	
 	?>
    	<div class="container">
 		
@@ -54,11 +54,31 @@
 				?>
 		<div>  
 
+		<?php
+						
+						
+						// $id_c = $val['id_ciclo'];
+						// $sql2 = "SELECT n_ciclo FROM `ciclo` WHERE id_ciclo = $id_c";
+						// $result2 = mysqli_query($conexao,$sql2);
+						// $row = mysqli_fetch_row($result2);
+						// $ciclo = $row[0];
+						//var_dump($id_c) ;
+
+						// $est = $val['situacao'];
+						// 	if ($est == 1) {
+						// 		$situacao = "Ativa";
+						// 		} else {
+						// 		$situacao = "Fechada";
+						// 	}
+											
+						// ?>
+		
+
 		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Urnas com manutenção realizada </h5>
 			<table class="table table-striped table-bordered table-sm">
 				<thead>
 					<tr class="bg-secondary text-white">
-						<td style="text-align: center;" >Local</td>		
+						<td style="text-align: center;" >Localidade</td>		
 						<td style="text-align: center;" >Data de Envio</td>
 						<td style="text-align: center;" >UE2009</td>
 						<td style="text-align: center;" >UE2010</td>
@@ -67,12 +87,12 @@
 						<td style="text-align: center;" >UE2015</td>
 						<td style="text-align: center;" >UE2020</td>
 						<td style="text-align: center;" >UE2022</td>
-						<td style="text-align: center;" >Nº de Urnas SEM chamado</td>
-						<td style="text-align: center;" >Nº de Urnas COM chamado</td>
-						<td style="text-align: center;" >Nº de baterias Com carga OK</td>
-						<td style="text-align: center;" >Nº de baterias Sem carga </td>
-						<td style="text-align: center;" >Nº de baterias com vazamento </td>
-						<td style="text-align: center;" >Nº de baterias oxidadas</td>
+						<td style="text-align: center;" >UEs SEM chamado</td>
+						<td style="text-align: center;" >UEs COM chamado</td>
+						<td style="text-align: center;" >BAT Com carga OK</td>
+						<td style="text-align: center;" >BAT Sem carga </td>
+						<td style="text-align: center;" >BAT com vazamento </td>
+						<td style="text-align: center;" >BAT oxidadas</td>
 						<td style="text-align: center;" class="text-center">Ação</td>
 					</tr>
 				</thead>
@@ -84,11 +104,19 @@
 							$s++;
 					?>
 					<tr>
+
+						
 						<?php
+						$id_loc = $val['id_local'];
+						$sql = "SELECT n_local FROM local WHERE id_local = '$id_loc' ";
+						$result = mysqli_query($conexao,$sql);
+						$row = mysqli_fetch_row($result);
+						$local = $row[0];
+						//var_dump($local) ;
 						$data =  substr($val['dt_envio'],0, 10);   
 						$data2 = implode("/",array_reverse(explode("-",$data)));;
 						?>
-						<td style="text-align: center;" ><?php echo $val['id_local'];?></td>
+						<td style="text-align: center;" ><?php echo $local;?></td>
 						<td style="text-align: center;" ><?php echo $data2 ?></td> 
 						<td style="text-align: center;" ><?php echo $val['ue2009p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2010p'];?></td>

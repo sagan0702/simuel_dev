@@ -127,7 +127,8 @@
                 Monitoramento
               </button>
               <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <li><a class="dropdown-item" href="monitorar_producao.php">Produção</a></li>
+                <li><a class="dropdown-item" href="status_producao.php">Status Total</a></li>
+                <li><a class="dropdown-item" href="monitorar_producao.php">Consultar Produção Enviada</a></li>
                 <li><a class="dropdown-item" href="#">Consultas</a></li>
               </ul>
         <!-- </div> -->
