@@ -76,7 +76,7 @@
 
 					<tr class="bg-secondary text-white">
 						<td style="text-align: center;" >#</td>
-						<td style="text-align: center;" >Local</td>
+						<td style="text-align: center;" >Localidade</td>
 						<td style="text-align: center;" >Sede</td>
 						<td style="text-align: center;" >Nº de UE2009</td>
 						<td style="text-align: center;" >Nº de UE2010</td>
