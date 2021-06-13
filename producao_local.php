@@ -21,17 +21,18 @@
 <body>
 	<?php
 	$condition	=	'';
-	if(isset($_REQUEST['dt_envio']) and $_REQUEST['dt_envio']!=""){
-		$condition	.=	' AND dt_envio LIKE "%'.$_REQUEST['dt_envio'].'%" ';
-	}
-	if(isset($_REQUEST['n_os']) and $_REQUEST['nome']!=""){
-		$condition	.=	' AND nome LIKE "%'.$_REQUEST['nome'].'%" ';
-	}
-		$userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
-		
+	 if(isset($_REQUEST['dt_envio']) and $_REQUEST['dt_envio']!=""){
+	 	$condition	.=	' AND dt_envio LIKE "%'.$_REQUEST['dt_envio'].'%" ';
+	 }
+	 if(isset($_REQUEST['n_os']) and $_REQUEST['nome']!=""){
+	 	$condition	.=	' AND nome LIKE "%'.$_REQUEST['nome'].'%" ';
+	 }
+		//$userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
+		//print_r($userData);
 		// teste 
-		$condition2	=	'WHERE id_local = 1';
-		$userData2	=	$db->getAllRecords('producao','*',$condition2,'ORDER BY id_producao DESC');
+		$condition =	"AND id_local = 2";
+		$userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
+		print_r($userData);
 		// teste
 	?>
 

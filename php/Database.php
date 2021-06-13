@@ -142,7 +142,8 @@ class Database{
      
     public function getAllRecords($tableName, $fields='*', $cond='', $orderBy='', $limit='')
     {
-        //echo "SELECT  $tableName.$fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." ".$limit;
+        //return "SELECT $fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." ".$limit;
+        "SELECT  $tableName.$fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." ".$limit; // comentada original
         //print "<br>SELECT $fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." ".$limit;
         $stmt = $this->pdo->prepare("SELECT $fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." ".$limit);
         //print "SELECT $fields FROM $tableName WHERE 1 ".$cond." ".$orderBy." " ;
