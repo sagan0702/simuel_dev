@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Gerenciar Produção</title>
+	<title>Status</title>
 	<?php include_once('php/formatacao.php');?>
 	<?php
         session_start();
@@ -23,22 +23,20 @@
 <body>
 	<?php
 	$condition	=	'';
-	if(isset($_REQUEST['dt_envio']) and $_REQUEST['usuario']!=""){
-		$condition	.=	' AND usuario LIKE "%'.$_REQUEST['usuario'].'%" ';
+	if(isset($_REQUEST['id_local']) and $_REQUEST['id_local']!=""){
+		$condition	.=	' AND id_local LIKE "%'.$_REQUEST['id_local'].'%" ';
 	}
-	if(isset($_REQUEST['dt_envio']) and $_REQUEST['nome']!=""){
-		$condition	.=	' AND nome LIKE "%'.$_REQUEST['nome'].'%" ';
-	}
+
 	
 		
-	$userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
+	$userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local ');
 	
 	?>
    	<div class="container">
 		
 		<div class="card"> <!--- FORM DE PESQUISA -->
 			<div class="card-header">
-			<h3>Gerenciar Produção</h3>
+			<h3>Status da Produção Semanal do STE</h3>
 			
 			<div class="card-body"> <!--- MENSAGENS -->
 				<?php
@@ -54,27 +52,9 @@
 				?>
 		<div>  
 
-		<?php
-						
-						
-						// $id_c = $val['id_ciclo'];
-						// $sql2 = "SELECT n_ciclo FROM `ciclo` WHERE id_ciclo = $id_c";
-						// $result2 = mysqli_query($conexao,$sql2);
-						// $row = mysqli_fetch_row($result2);
-						// $ciclo = $row[0];
-						//var_dump($id_c) ;
+			
 
-						// $est = $val['situacao'];
-						// 	if ($est == 1) {
-						// 		$situacao = "Ativa";
-						// 		} else {
-						// 		$situacao = "Fechada";
-						// 	}
-											
-						// ?>
-		
-
-		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Urnas com manutenção realizada </h5>
+		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Total de Urnas com manutenção realizada por Local </h5>
 			<table class="table table-striped table-bordered table-sm">
 				<thead>
 					<tr class="bg-secondary text-white">
@@ -104,7 +84,6 @@
 							$s++;
 					?>
 					<tr>
-
 						
 						<?php
 						$id_loc = $val['id_local'];
@@ -113,27 +92,27 @@
 						$row = mysqli_fetch_row($result);
 						$local = $row[0];
 						//var_dump($local) ;
-						$data =  substr($val['dt_envio'],0, 10);   
+						$data =  substr($val['data_atualizacao'],0, 10);   
 						$data2 = implode("/",array_reverse(explode("-",$data)));;
 						?>
-						<td style="text-align: center;" ><?php echo $local;?></td>
+						<td style="text-align: center;" ><?php echo $local ?></td>
 						<td style="text-align: center;" ><?php echo $data2 ?></td> 
-						<td style="text-align: center;" ><?php echo $val['ue2009p'];?></td>
-						<td style="text-align: center;" ><?php echo $val['ue2010p'];?></td>
-						<td style="text-align: center;" ><?php echo $val['ue2011p'];?></td>
-						<td style="text-align: center;" ><?php echo $val['ue2013p'];?></td>
-						<td style="text-align: center;" ><?php echo $val['ue2015p'];?></td>
-						<td style="text-align: center;" ><?php echo $val['ue2020p'];?></td>
-						<td style="text-align: center;" ><?php echo $val['ue2022p'];?></td>
-						<td style="text-align: center;" ><?php echo $val['nue_sem_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['nue_com_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_carga_ok'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_sem_carga'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_vazando'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_oxidada'];?></td>
+						<td style="text-align: center;" ><?php echo $val['totue2009'];?></td>
+						<td style="text-align: center;" ><?php echo $val['totue2010'];?></td>
+						<td style="text-align: center;" ><?php echo $val['totue2011'];?></td>
+						<td style="text-align: center;" ><?php echo $val['totue2013'];?></td>
+						<td style="text-align: center;" ><?php echo $val['totue2015'];?></td>
+						<td style="text-align: center;" ><?php echo $val['totue2020'];?></td>
+						<td style="text-align: center;" ><?php echo $val['totue2022'];?></td>
+						<td style="text-align: center;" ><?php echo $val['tnue_sem_chamado'];?></td>
+						<td style="text-align: center;" ><?php echo $val['tnue_com_chamado'];?></td>
+						<td style="text-align: center;" ><?php echo $val['tbat_carga_ok'];?></td>
+						<td style="text-align: center;" ><?php echo $val['tbat_sem_carga'];?></td>
+						<td style="text-align: center;" ><?php echo $val['tbat_vazando'];?></td>
+						<td style="text-align: center;" ><?php echo $val['tbat_oxidada'];?></td>
 						<td align="center" >
-							<a href="php/producao_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i></a>  
-							<a href="php/producao_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a>
+							<a href="php/status_edit.php?editId=<?php echo $val['id_local'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i>Limpar </a>  
+							<!-- <a href="php/status_delete.php?delId=<?php echo $val['id_local'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a> -->
 						</td>
 
 					</tr>
@@ -148,41 +127,9 @@
 			
 		</div> 
 
-		<!-- </div>  -->
+		
 
-		<div class="col-sm-12"> <!--- CAMPOS DE PESQUISA -->
-				<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Localizar </h5>
-					<form method="get">
-						<div class="row">
-							<div class="col-sm-2">
-								<div class="form-group">
-									<label>Local</label>
-									<input type="text" name="nome" id="nome" class="form-control" value="<?php echo isset($_REQUEST['id_local'])?$_REQUEST['id_local']:''?>" placeholder="">
-								</div>
-							</div>
-							
-
-							
-
-						</div>
-
-						<div class="row">	
-							<div class="col-sm-2">
-								
-								<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Pesquisar</button> 
-								
-							</div>
-							<div class="col-sm-2">
-									<a href="<?php echo $_SERVER['PHP_SELF'];?>" class="btn btn-danger"><i class="fa fa-fw fa-sync"></i>Limpar</a>
-							</div>
-
-
-						</div>
-					</form>
-				</div> 
-			</div>
-			
-		</div>
+	
 		<div class="card-footer text-muted">
 						SIMUEL 
 					</div>

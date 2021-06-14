@@ -27,9 +27,7 @@
 	 if(isset($_REQUEST['n_os']) and $_REQUEST['nome']!=""){
 	 	$condition	.=	' AND nome LIKE "%'.$_REQUEST['nome'].'%" ';
 	 }
-		//$userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
-		//print_r($userData);
-		// teste 
+		
 		$ids_local = $_SESSION['id_local'];
 		//echo $id_local;
 		$condition =	"AND id_local =".$ids_local;

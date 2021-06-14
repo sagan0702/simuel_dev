@@ -37,81 +37,39 @@ extract($_REQUEST);
 						);
 			$insert	=	$db->insert('producao',$data);
 
-		// --------- ATUALIZA TABELA STATUS  -------------------
+		// --------- atualiza tabela status  -------------------
 
 
 		// $ids_local = $_SESSION['id_local'];
 		// //echo $id_local;
 		// $condition =	"AND id_local =".$ids_local;
 		// $userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
-	
-	   // --- pegar valores de status 
 		session_start();
-       //print_r($data);
+       
+		print_r($data);
 		$ids_local = $_SESSION['id_local'];
 		echo "valor de id_local = ". $ids_local;
 		$condition =	"AND id_local =".$ids_local;
 		$userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local');
-		//var_dump($userData);
+		
 		//print_r($userData);
-        //--------------------
-		if(count($userData)>0){
-			$s	=	'';
-			foreach($userData as $val){
-				$s++;
-				$totue2009_v = $val['totue2009']; 
-				$totue2010_v = $val['totue2010']; 
-				$totue2011_v = $val['totue2011'];
-				$totue2013_v = $val['totue2013'];
-				$totue2015_v = $val['totue2015'];
-				$totue2020_v = $val['totue2020'];
-				$totue2022_v = $val['totue2022'];
-				$tnue_sem_chamado_v = $val['tnue_sem_chamado'];
-				$tnue_com_chamado_v = $val['tnue_com_chamado'];
-				$tbat_carga_ok_v = $val['tbat_carga_ok'];
-				$tbat_carga_ok_v = $val['tbat_sem_carga'];
-				$tbat_vazando_v = $val['tbat_vazando']; 
-				$tbat_oxidada_v = $val['tbat_oxidada'];
-		
-			}
-		}else{
-				
-		 } 			
-	
-		//  echo "Valor UE2009 tabela status ".$totue2009_v; 
-		//  echo "Valor UE2010 tabela status ".$totue2010_v;
-		//  echo "Valor UE2011 tabela status ".$totue2011_v;
-		//  echo "Valor UE2013 tabela status ".$totue2013_v;
-		//  echo "Valor UE2015 tabela status ".$totue2015_v;
-		//  echo "Valor UE2020 tabela status ".$totue2020_v;
-		//  echo "Valor UE2022 tabela status ".$totue2022_v;
-		//  echo "Valor tneu tabela status ".$tnue_sem_chamado_v;
-		//  echo "Valor tcue tabela status ".$tnue_com_chamado_v;
-		//  echo "Valor tbatcOK tabela status ".$tbat_carga_ok_v;
-		//  echo "Valor tbatSc tabela status ".$tbat_carga_ok_v;
-		//  echo "Valor tbatVaz tabela status ".$tbat_vazando_v;
-		//  echo "Valor tbatOxi tabela status ".$tbat_oxidada_v;
+		$totue2009_v = $val['totue2009'] + $ue2009p; 
+		$totue2010_v = $val['totue2010'] + $ue2010p;
+		$totue2011_v = $val['totue2011'] + $ue2011p;
+		$totue2013_v = $val['totue2013'] + $ue2013p;
+		$totue2015_v = $val['totue2015'] + $ue2015p;
+		$totue2020_v = $val['totue2020'] + $ue2020p;
+		$totue2022_v = $val['totue2022'] + $ue2022p;
+		$tnue_sem_chamado_v = $val['nue_sem_chamado'] + $nue_sem_chamado;
+		$tnue_com_chamado_v = $val['nue_com_chamado'] + $nue_com_chamado;
+		$tbat_carga_ok_v = $val['bat_carga_ok'] + $bat_carga_ok;
+		$tbat_carga_ok_v = $val['bat_sem_carga'] + $bat_sem_carga;
+		$tbat_vazando_v = $val['bat_vazando'] + $bat_vazando; 
+		$tbat_oxidada_v = $val['bat_oxidada'] + $bat_oxidada;
 
-
-
-
-		//------- somar os valores de status com os valores da producao atual
-
-		 $totue2009_v = $totue2009_v + $ue2009p; 
-		 $totue2010_v = $totue2010_v + $ue2010p;
-		 $totue2011_v = $totue2011_v + $ue2011p;
-		 $totue2013_v = $totue2013_v + $ue2013p;
-		 $totue2015_v = $totue2015_v + $ue2015p;
-		 $totue2020_v = $totue2020_v+ $ue2020p;
-		 $totue2022_v = $totue2022_v + $ue2022p;
-		 $tnue_sem_chamado_v = $tnue_sem_chamado_v + $nue_sem_chamado;
-		 $tnue_com_chamado_v = $tnue_com_chamado_v  + $nue_com_chamado;
-		 $tbat_carga_ok_v = $tbat_carga_ok_v + $bat_carga_ok;
-		 $tbat_sem_carga_v = $tbat_sem_carga_v + $bat_sem_carga;
-		 $tbat_vazando_v =  $tbat_vazando_v  + $bat_vazando; 
-		 $tbat_oxidada_v = $tbat_oxidada_v + $bat_oxidada;
-		
-		//------- inserir os valores na tabela status - update
+		echo "UE2015p adicionar producao -> ".$ue2015p;
+		echo "UE2015 valor atual da tabela producao-> ".$val['totue2015'];
+		echo "UE2015 valor da tabela status-> ".$val['totue2015'];
 
 			if($userCount[0]['total']<20){
 				$data	=	array(
@@ -146,15 +104,11 @@ extract($_REQUEST);
 			$update	=	$db->update('status',$data,array('id_local'=>$id_local));	
 			//$update	=	$db->update('status',$data,array('id_local'=>$id_local));		
 
-
-
-
-			
 			if($insert){
-				header('location:/simuel/producao_local.php?msg=ras');
+				//header('location:/simuel/producao_local.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel/producao_local.php?msg=rna');
+				//header('location:/simuel/producao_local.php?msg=rna');
 				exit;
 			}
 		}else{
