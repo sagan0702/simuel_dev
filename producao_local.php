@@ -30,10 +30,15 @@
 		//$userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
 		//print_r($userData);
 		// teste 
-		$condition =	"AND id_local = 2";
+		$ids_local = $_SESSION['id_local'];
+		//echo $id_local;
+		$condition =	"AND id_local =".$ids_local;
 		$userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
-		print_r($userData);
+		//print_r($userData);
 		// teste
+
+		
+		//include_once('php/status_update.php');
 	?>
 
    	<div class="container">

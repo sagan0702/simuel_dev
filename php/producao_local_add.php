@@ -12,7 +12,7 @@ extract($_REQUEST);
 		
 		//converter para data br -> data mysql
 
-		var_dump($_POST);
+		//var_dump($_POST);
 		$userCount	=	$db->getQueryCount('producao','id_producao');
 		if($userCount[0]['total']<20){
 			$data	=	array(
@@ -36,6 +36,47 @@ extract($_REQUEST);
 							'observacao'=>$observacao,
 						);
 			$insert	=	$db->insert('producao',$data);
+
+		// --------- atualiza tabela status  -------------------
+
+		$totue2009_v = $val['totue2009'];
+		$totue2010_v = $val['totue2010'];
+		$totue2011_v = $val['totue2011'];
+		$totue2013_v = $val['totue2013'];
+		$totue2015_v = $val['totue2015'];
+		$totue2020_v = $val['totue2020'];
+		$totue2022_v = $val['totue2022'];
+		$tnue_sem_chamado_v = $val['totue2009'];
+		$tnue_com_chamado_v = $val['totue2009'];
+		$tbat_carga_ok_v = $val['totue2009'];
+		$tbat_vazando_v = $val['totue2009'];
+		$tbat_oxidada_v = $val['totue2009'];
+
+			$userCount	=	$db->getQueryCount('status','id_status');
+			if($userCount[0]['total']<20){
+				$data	=	array(
+							
+								'id_local'=>$id_local,
+								'id_os'=>$id_os,
+								'totue2009'=>$ue2009p + $totue2009_v,
+								'totue2010'=>$ue2010p + $totue2010_v,
+								'totue2011'=>$ue2011p + $totue2011_v,
+								'totue2013'=>$ue2013p + $totue2013_v,
+								'totue2015'=>$ue2015p + $totue2015_v,
+								'totue2020'=>$ue2020p + $totue2020_v,
+								'totue2022'=>$ue2022p + $totue2022_v,
+								'tnue_sem_chamado'=>$nue_sem_chamado + $tnue_sem_chamado_v,
+								'tnue_com_chamado'=>$nue_com_chamado + $tnue_com_chamado_v ,
+								'tbat_carga_ok'=>$bat_carga_ok + $tbat_carga_ok_v,
+								'tbat_sem_carga'=>$bat_sem_carga + $tbat_carga_ok_v,
+								'tbat_vazando'=>$bat_vazando + $tbat_vazando_v,
+								'tbat_oxidada'=>$bat_oxidada + $tbat_oxidada_v,
+								
+							);
+						}
+			//$insert	=	$db->update ('status',$data);	
+			$update	=	$db->update('status',$data,array('id_local'=>$id_local));		
+
 			if($insert){
 				header('location:/simuel/producao_local.php?msg=ras');
 				exit;
