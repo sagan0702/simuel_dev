@@ -1,6 +1,5 @@
 <?php include_once('config.php');
 if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
-	
 extract($_REQUEST);
 // 	if($n_os==""){
 // 		header('location:'.$_SERVER['PHP_SELF'].'?msg=un');
@@ -9,9 +8,7 @@ extract($_REQUEST);
 // 		header('location:'.$_SERVER['PHP_SELF'].'?msg=ue');
 // 		exit;
 // 	}else{
-		
 		//converter para data br -> data mysql
-
 		//var_dump($_POST);
 		$userCount	=	$db->getQueryCount('producao','id_producao');
 		if($userCount[0]['total']<20){
@@ -36,15 +33,11 @@ extract($_REQUEST);
 							'observacao'=>$observacao,
 						);
 			$insert	=	$db->insert('producao',$data);
-
 		// --------- ATUALIZA TABELA STATUS  -------------------
-
-
 		// $ids_local = $_SESSION['id_local'];
 		// //echo $id_local;
 		// $condition =	"AND id_local =".$ids_local;
 		// $userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
-	
 	   // --- pegar valores de status 
 	    session_start();
        //print_r($data);
@@ -72,29 +65,11 @@ extract($_REQUEST);
 				$tbat_carga_ok_v = $val['tbat_sem_carga'];
 				$tbat_vazando_v = $val['tbat_vazando']; 
 				$tbat_oxidada_v = $val['tbat_oxidada'];
-		
+		        $tot_prod = $totue2009_v + $totue2010_v + $totue2011_v + $totue2013_v + $totue2015_v + $totue2020_v +$totue2022_v;
 			}
 		}else{
-				
-		 } 			
-	
-		//  echo "Valor UE2009 tabela status ".$totue2009_v; 
-		//  echo "Valor UE2010 tabela status ".$totue2010_v;
-		//  echo "Valor UE2011 tabela status ".$totue2011_v;
-		//  echo "Valor UE2013 tabela status ".$totue2013_v;
-		//  echo "Valor UE2015 tabela status ".$totue2015_v;
-		//  echo "Valor UE2020 tabela status ".$totue2020_v;
-		//  echo "Valor UE2022 tabela status ".$totue2022_v;
-		//  echo "Valor tneu tabela status ".$tnue_sem_chamado_v;
-		//  echo "Valor tcue tabela status ".$tnue_com_chamado_v;
-		//  echo "Valor tbatcOK tabela status ".$tbat_carga_ok_v;
-		//  echo "Valor tbatSc tabela status ".$tbat_carga_ok_v;
-		//  echo "Valor tbatVaz tabela status ".$tbat_vazando_v;
-		//  echo "Valor tbatOxi tabela status ".$tbat_oxidada_v;
-
-
-
-
+			
+		} 			
 		//------- somar os valores de status com os valores da producao atual
 
 		 $totue2009_v = $totue2009_v + $ue2009p; 
@@ -102,7 +77,7 @@ extract($_REQUEST);
 		 $totue2011_v = $totue2011_v + $ue2011p;
 		 $totue2013_v = $totue2013_v + $ue2013p;
 		 $totue2015_v = $totue2015_v + $ue2015p;
-		 $totue2020_v = $totue2020_v+ $ue2020p;
+		 $totue2020_v = $totue2020_v + $ue2020p;
 		 $totue2022_v = $totue2022_v + $ue2022p;
 		 $tnue_sem_chamado_v = $tnue_sem_chamado_v + $nue_sem_chamado;
 		 $tnue_com_chamado_v = $tnue_com_chamado_v  + $nue_com_chamado;
@@ -112,10 +87,8 @@ extract($_REQUEST);
 		 $tbat_oxidada_v = $tbat_oxidada_v + $bat_oxidada;
 		
 		//------- inserir os valores na tabela status - update
-
 			if($userCount[0]['total']<20){
 				$data	=	array(
-							
 								'id_local'=>$id_local,
 								'totue2009'=>$totue2009_v,
 								'totue2010'=>$totue2010_v,
@@ -130,7 +103,6 @@ extract($_REQUEST);
 								'tbat_sem_carga'=>$tbat_carga_ok_v,
 								'tbat_vazando'=>$tbat_vazando_v,
 								'tbat_oxidada'=>$tbat_oxidada_v,
-								
 							);
 						}
 						// $data	=	array(
@@ -141,15 +113,8 @@ extract($_REQUEST);
 						// 	);
 						// $update	=	$db->update('ciclo',$data,array('id_ciclo'=>$editId));
 
-
-
 			$update	=	$db->update('status',$data,array('id_local'=>$id_local));	
 			//$update	=	$db->update('status',$data,array('id_local'=>$id_local));		
-
-
-
-
-			
 			if($insert){
 				header('location:/simuel/producao_local.php?msg=ras');
 				exit;
@@ -279,11 +244,15 @@ extract($_REQUEST);
         width: 150px;
         font-size: 20px;
     }
-	
-    
- 
-	
-
+	#bat_oxidada
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
 	</style>
   	<?php include_once('formatacao.php');
 	include_once('consulta_ciclo_os.php');
@@ -299,6 +268,7 @@ extract($_REQUEST);
     // $id_local = $_SESSION['id_local']; 
 	// var_dump($id_ciclo, $id_os, $id_local );
     ?>
+	<script src="../js/funcaoOS.js"></script> 
 </head>
 <body>
 
@@ -337,19 +307,18 @@ extract($_REQUEST);
 						<div class="row">
 						<div class="col-md-3 ">
 								<label>Nº do Ciclo: </label>
-								<div id="n_ciclo2" name="n_ciclo2"><?= $_SESSION['max_n_ciclo'] ?></div>
+								<div id="n_ciclo2" name="n_ciclo2"><h5><?= $_SESSION['max_n_ciclo'] ?></h5></div>
 							</div>
 							<div class="col-md-3 ">
 								<label>Nº da OS:</label>
-								<div id ="n_os2" name="n_os2" > <?= $_SESSION['max_n_os'] ?>  </div>
+								<div id ="n_os2" name="n_os2" ><h5> <?= $_SESSION['max_n_os'] ?> </h5> </div>
 							</div>
 							<div class="col-md-3 ">
 								<label>Local:</label>
-								<div id ="n_local2" name="n_local2"  > <?= $_SESSION['local'] ?>  </div>
+								<div id ="n_local2" name="n_local2"  > <h5><?= $_SESSION['local'] ?> </h5> </div>
 							</div>
 							<div class="col-md-3 ">
-								<label>Data:</label>
-								<h6>  <?php echo date('d/m/Y') ?> <h6> 
+								<label><h5>Data:<?php echo date('d/m/Y')?></h5></label>
 							</div>
 						</div>
 						<div class="row">
@@ -359,33 +328,37 @@ extract($_REQUEST);
 							</div>
 							<div class="col-md-2">
 								<label for="urna09"><h5>UE2009:</h5></label>
-								<input type="text" class="form-control" name="ue2009p" id="ue2009p" value="0" onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" name="ue2009p" id="ue2009p" value="0" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()">
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna10"><h5>UE2010:</h5></label>
-								<input type="text" class="form-control" name="ue2010p" id="ue2010p" value="0"  onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" name="ue2010p" id="ue2010p" value="0"  onkeypress="$(this).mask('0000')" onfocusout="totalUrna()" >
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna11"><h5>UE2011:</h5></label>
-								<input type="text" class="form-control"  name="ue2011p" id="ue2011p" value="0" onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control"  name="ue2011p" id="ue2011p" value="0" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()">
 							</div>
 							<div class="col-md-2 ">
-								<label for="urna13">UE2013:</h5></label>
-								<input type="text" class="form-control" name="ue2013p" id="ue2013p" value="0" onkeypress="$(this).mask('0000')" >
+								<label for="urna13"><h5>UE2013:</h5></label>
+								<input type="text" class="form-control" name="ue2013p" id="ue2013p" value="0" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()">
 							</div>
 							<div class="col-md-2 ">
-								<label for="urna15">UE2015:</h5></label>
-								<input type="text" class="form-control" name="ue2015p" id="ue2015p" value="0" onkeypress="$(this).mask('0000')"  >
+								<label for="urna15"><h5>UE2015:</h5></label>
+								<input type="text" class="form-control" name="ue2015p" id="ue2015p" value="0" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()" >
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-2 ">
-								<label for="urna21">UE2020:</h5></label>
-								<input type="text" class="form-control" name="ue2020p" id="ue2020p" value="0" onkeypress="$(this).mask('0000')"  >
+								<label for="urna21"><h5>UE2020:</h5></label>
+								<input type="text" class="form-control" name="ue2020p" id="ue2020p" value="0"  onfocusout="totalUrna()" onkeypress="$(this).mask('0000')"  >
 							</div>
 							<div class="col-md-2">
-								<label for="urna22">UE2022:</h5></label>
-								<input type="text" class="form-control" name="ue2022p" id="ue2022p" value="0" onkeypress="$(this).mask('0000')"  >
+								<label for="urna22"><h5>UE2022:</h5></label>
+								<input type="text" class="form-control" name="ue2022p" id="ue2022p" onfocusout="totalUrna()" value="0" onkeypress="$(this).mask('0000')"  >
+							</div>
+							<div class="col-md-2">
+								<label for="urna22"><h5>Total de Urnas:</h5></label>
+                                <div id="total_urnas"></div>
 							</div>
 						</div>
 						</br> <!--- QUEBRA DE LINHA NO LAYOUT -->
@@ -435,16 +408,20 @@ extract($_REQUEST);
 								<input type="text" class="form-control" name="observacao" id="observacao" >
 								</div>	
 						</div>	
-						<div class="col-md-2 ">
-							<button type="submit" name="submit" value="submit" id="submit_prod" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Enviar Produção</button>
+						<div class="row">
+							<div class="col-lg-2 ">
+								</br>
+								<button type="submit" name="submit" value="submit" id="submit_prod" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Enviar Produção</button>
+							</div>
 						</div>
 					</form>
 				</div>
+				<div class="card-footer text-muted">
+				SIMUEL 
+				</div>
 			</div> 
 			
-			<div class="card-footer text-muted">
-				SIMUEL 
-			</div>
+			
 		</div>
 	</div>
 	<div class="container my-4">	

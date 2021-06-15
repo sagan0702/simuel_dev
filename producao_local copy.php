@@ -173,94 +173,53 @@
 		<!-- </div>  -->
 		<div class="col-sm-12"> <!--- TABELA DE STATUS - RESUMO -->
 	<?php
-	// $local = $_SESSION['id_local'] ;
-	// $consulta = "SELECT * FROM status WHERE id_local = $local ";
-	// $con = $conexao->query($consulta) or die($conexao->error); 
-
-	$ids_local = $_SESSION['id_local'];
-	//echo $id_local;
-	$condition =	"AND id_local =".$ids_local;
-	$userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local');
+	$local = $_SESSION['id_local'] ;
+	$consulta = "SELECT * FROM status WHERE id_local = $local ";
+	$con = $conexao->query($consulta) or die($conexao->error); 
 
 	?>
 			<h5 class="card-title"><i class="fa fa-fw fa-list"></i> Resumo Total (Produção Cumulativa) </h5>
-			
-			
-			 <div class="row">
-				<div class="form-group col-md-9">
-				<br><label>Data do último envio: </label> <? $data2; ?> 
-				</div>
-        	</div>
 			<table class="table table-striped table-bordered -sm table-sm">
-				<thead>
-					<tr class="bg-secondary text-white">
-						<td style="text-align: center;" >UE2009</td>
-						<td style="text-align: center;" >UE2010</td>
-						<td style="text-align: center;" >UE2011</td>
-						<td style="text-align: center;" >UE2013</td>
-						<td style="text-align: center;" >UE2015</td>
-						<td style="text-align: center;" >UE2020</td>
-						<td style="text-align: center;" >UE2022</td>
-						<td style="text-align: center;" >Total de UE</td>
-						<td style="text-align: center;" >UEs SEM chamado</td>
-						<td style="text-align: center;" >UEs COM chamado</td>
-						<td style="text-align: center;" >BAT carga OK</td>
-						<td style="text-align: center;" >BAT sem carga </td>
-						<td style="text-align: center;" >BAT com vazamento </td>
-						<td style="text-align: center;" >BAT oxidadas</td>
-						<td style="text-align: center;" class="text-center">Ação</td>
-					</tr>
-				</thead>
-				<tbody>
-					<?php 
-					if(count($userData)>0){
-						$s	=	'';
-						foreach($userData as $val){
-							$s++;
-							$stue2009 = $val['totue2009']; 
-                            $stue2010 = $val['totue2010']; 
-                            $stue2011 = $val['totue2011'];
-                            $stue2013 = $val['totue2013'];
-                            $stue2015 = $val['totue2015'];
-                            $stue2020 = $val['totue2020'];
-                            $stue2022 = $val['totue2022'];
-							
-					?>
-					<tr>
-						<?php
-							$data =  substr($val['data_atualizacao'],0, 10);    
-							$data2 = implode("/",array_reverse(explode("-",$data)));;
-							$tot_ue = $stue2009 + $stue2010 + $stue2011 + $stue2013 + $stue2015 + $stue2020 + $stue2022;
-						?>
-						<td style="text-align: center;" ><?php echo $val['totue2009'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2010'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2011'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2013'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2015'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2020'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2022'];?></td>
-						<td style="text-align: center;" ><?php echo $tot_ue ?></td>
-						<td style="text-align: center;" ><?php echo $val['tnue_sem_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tnue_com_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_carga_ok'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_sem_carga'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_vazando'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_oxidada'];?></td>
-						<td align="center">
-							<!-- <a href="php/producao_local_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> |  -->
-							<a href="php/producao_local_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
-						</td>
+							<thead>
+								<tr class="bg-secondary text-white">
+									<td style="text-align: center;" >UE2009</td>
+									<td style="text-align: center;" >UE2010</td>
+									<td style="text-align: center;" >UE2011</td>
+									<td style="text-align: center;" >UE2013</td>
+									<td style="text-align: center;" >UE2015</td>
+									<td style="text-align: center;" >UE2020</td>
+									<td style="text-align: center;" >UE2022</td>
+									<td style="text-align: center;" >Total de UE</td>
+									<td style="text-align: center;" >UEs SEM chamado</td>
+									<td style="text-align: center;" >UEs COM chamado</td>
+									<td style="text-align: center;" >BAT carga OK</td>
+									<td style="text-align: center;" >BAT sem carga </td>
+									<td style="text-align: center;" >BAT com vazamento </td>
+									<td style="text-align: center;" >BAT oxidadas</td>
+								</tr>
+							</thead>
+							<tbody>
+								<?php while($val = $con->fetch_array()) { ?>
+								<tr>
+									<td style="text-align: center;" ><?php echo $val['totue2009'];?></td>
+									<td style="text-align: center;" ><?php echo $val['totue2010'];?></td>
+									<td style="text-align: center;" ><?php echo $val['totue2011'];?></td>
+									<td style="text-align: center;" ><?php echo $val['totue2013'];?></td>
+									<td style="text-align: center;" ><?php echo $val['totue2015'];?></td>
+									<td style="text-align: center;" ><?php echo $val['totue2020'];?></td>
+									<td style="text-align: center;" ><?php echo $val['totue2022'];?></td>
+									<td style="text-align: center;" ><?php echo $totstatusue;?></td>
+									<td style="text-align: center;" ><?php echo $val['tnue_sem_chamado'];?></td>
+									<td style="text-align: center;" ><?php echo $val['tnue_com_chamado'];?></td>
+									<td style="text-align: center;" ><?php echo $val['tbat_carga_ok'];?></td>
+									<td style="text-align: center;" ><?php echo $val['tbat_sem_carga'];?></td>
+									<td style="text-align: center;" ><?php echo $val['tbat_vazando'];?></td>
+									<td style="text-align: center;" ><?php echo $val['tbat_oxidada'];?></td>
+								</tr>
+								<?php } ?>
+							</tbody>
+						</table>						<!---- fim da tabela de status -->
 
-					</tr>
-					<?php 
-						}
-					}else{
-					?>
-					<tr><td colspan="6" align="center">Nenhum registro encontrado!</td></tr>
-					<?php } ?>
-				</tbody>
-			</table>
-	
 			</div>
 			</div>
 

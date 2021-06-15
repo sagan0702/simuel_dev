@@ -16,7 +16,7 @@ $qtde_dias_disp= $_POST['qtde_dias_disp'];
 $fp_diario= $_POST['fp_diario'];
 $ust= $_POST['ust'];
 $qtde_ga= $_POST['qtde_ga'];
-$situacao = "ATIVA";
+$situacao = "1";
 
 
 // $sql = "SELECT * FROM os where n_os = '$n_os' and id_ciclo = $id_ciclo";

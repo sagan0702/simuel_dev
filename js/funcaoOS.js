@@ -51,6 +51,7 @@ function calcularOS() {
     tbaterias = $('#txt_t_baterias').val();
     fp_diario = $('#fp_diario').val();
     local = $('#n_local').val()
+    //total_urnas = $('#ue2009p').val() + $('#ue2010p').val() + $('#ue2011p').val() + $('#ue2013p').val() + $('#ue2015p')+ $('#ue2020p').val() + $('#ue2022p');
     //alert(`Data selecionada: Inicio: ${inicio}  Fim: ${fim}`);
     // var total_dias_off = 0
     var ntbat = Number(tbaterias)
@@ -70,7 +71,7 @@ function calcularOS() {
         //Quantidade de dias uteis do período:
         qtde_dias = workingDaysBetweenDates(inicio, fim) 
         qtde_dias_periodo.innerHTML = `${qtde_dias}`
-
+        //total_urnas.innerHTML = `${total_urnas}`
         //Quantidade de dias disponíveis apos dias-off: 
         //alert(` Total de Dias ${qtde_dias} Total de Dias Off: ${total_dias_off} Total de Dias disp ${qddisp}`);
 
@@ -86,9 +87,19 @@ function calcularOS() {
         //Quantidade de UST:  
         var qust =  (qga / qinfra)
         var Q_UST = qust.toFixed(1).toLocaleString('pt-BR')
-        qtde_ust.innerHTML = `${Q_UST}`
+        //qtde_ust.innerHTML = `${Q_UST}`
+        qtde_ust.innerHTML = "oooo"
   
 }
+
+function totalUrna() {
+
+ total_urnas = Number($('#ue2009p').val() + $('#ue2010p').val() + $('#ue2011p').val() + $('#ue2013p').val() + $('#ue2015p')+ $('#ue2020p').val() + $('#ue2022p'));
+ total_urnas.innerHTML = `${total_urnas}`
+ alert = `${total_urnas}`
+}
+
+
 
 function addDiasOff() {
 

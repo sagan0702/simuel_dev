@@ -33,7 +33,9 @@
 	if(isset($_REQUEST['acesso']) and $_REQUEST['acesso']!=""){
 		$condition	.=	' AND acesso LIKE "%'.$_REQUEST['acesso'].'%" ';
 	}
-		
+	// $ids_local = $_SESSION['id_local'];
+		//echo $id_local;
+	// $condition =	"AND id_local =".$ids_local;	
 	$userData	=	$db->getAllRecords('usuarios','*',$condition,'ORDER BY id_usuario DESC');
 	?>
    	<div class="container">
@@ -149,7 +151,9 @@
 				</div>
 			</div>
 		</div>
-		<hr>  <!--- FIM DO FORM DE PESQUISA -->
+		<div class="card-footer text-muted">
+						SIMUEL 
+					</div>
 	</div>
 
 	<script>
