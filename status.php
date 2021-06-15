@@ -36,9 +36,10 @@
 		
 		<div class="card"> <!--- FORM DE PESQUISA -->
 			<div class="card-header">
-			<h3>Status da Produção Semanal do STE</h3>
+			
 			
 			<div class="card-body"> <!--- MENSAGENS -->
+			<h3>Status da Produção Semanal do STE</h3>
 				<?php
 				if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rds"){
 					echo	'<div class="alert alert-success"><i class="fa fa-thumbs-up"></i> Registro Apagado com sucesso!</div>';
@@ -50,89 +51,87 @@
 					echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Há alguma coisa errada. <strong>Tente novamente!</strong></div>';
 				}
 				?>
-		<div>  
+			<!-- <div>   -->
 
-			
+			<h5 class="card-title"><i class="fa fa-th-list"></i></i> Total de Urnas com manutenção realizada por Local </h5>
+					<table class="table table-striped table-bordered table-sm">
+						<thead>
+							<tr class="bg-secondary text-white">
+								<td style="text-align: center;" >Localidade</td>		
+								<td style="text-align: center;" >Data de Envio</td>
+								<td style="text-align: center;" >UE2009</td>
+								<td style="text-align: center;" >UE2010</td>
+								<td style="text-align: center;" >UE2011</td>
+								<td style="text-align: center;" >UE2013</td>
+								<td style="text-align: center;" >UE2015</td>
+								<td style="text-align: center;" >UE2020</td>
+								<td style="text-align: center;" >UE2022</td>
+								<td style="text-align: center;" >UEs SEM chamado</td>
+								<td style="text-align: center;" >UEs COM chamado</td>
+								<td style="text-align: center;" >BAT Com carga OK</td>
+								<td style="text-align: center;" >BAT Sem carga </td>
+								<td style="text-align: center;" >BAT com vazamento </td>
+								<td style="text-align: center;" >BAT oxidadas</td>
+								<td style="text-align: center;" class="text-center">Ação</td>
+							</tr>
+						</thead>
+						<tbody>
+							<?php 
+							if(count($userData)>0){
+								$s	=	'';
+								foreach($userData as $val){
+									$s++;
+							?>
+							<tr>
+								
+								<?php
+								$id_loc = $val['id_local'];
+								$sql = "SELECT n_local FROM local WHERE id_local = '$id_loc' ";
+								$result = mysqli_query($conexao,$sql);
+								$row = mysqli_fetch_row($result);
+								$local = $row[0];
+								//var_dump($local) ;
+								$data =  substr($val['data_atualizacao'],0, 10);   
+								$data2 = implode("/",array_reverse(explode("-",$data)));;
+								?>
+								<td style="text-align: center;" ><?php echo $local ?></td>
+								<td style="text-align: center;" ><?php echo $data2 ?></td> 
+								<td style="text-align: center;" ><?php echo $val['totue2009'];?></td>
+								<td style="text-align: center;" ><?php echo $val['totue2010'];?></td>
+								<td style="text-align: center;" ><?php echo $val['totue2011'];?></td>
+								<td style="text-align: center;" ><?php echo $val['totue2013'];?></td>
+								<td style="text-align: center;" ><?php echo $val['totue2015'];?></td>
+								<td style="text-align: center;" ><?php echo $val['totue2020'];?></td>
+								<td style="text-align: center;" ><?php echo $val['totue2022'];?></td>
+								<td style="text-align: center;" ><?php echo $val['tnue_sem_chamado'];?></td>
+								<td style="text-align: center;" ><?php echo $val['tnue_com_chamado'];?></td>
+								<td style="text-align: center;" ><?php echo $val['tbat_carga_ok'];?></td>
+								<td style="text-align: center;" ><?php echo $val['tbat_sem_carga'];?></td>
+								<td style="text-align: center;" ><?php echo $val['tbat_vazando'];?></td>
+								<td style="text-align: center;" ><?php echo $val['tbat_oxidada'];?></td>
+								<td align="center" >
+									<a href="php/status_edit.php?editId=<?php echo $val['id_local'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i>Limpar </a>  
+									<!-- <a href="php/status_delete.php?delId=<?php echo $val['id_local'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a> -->
+								</td>
 
-		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Total de Urnas com manutenção realizada por Local </h5>
-			<table class="table table-striped table-bordered table-sm">
-				<thead>
-					<tr class="bg-secondary text-white">
-						<td style="text-align: center;" >Localidade</td>		
-						<td style="text-align: center;" >Data de Envio</td>
-						<td style="text-align: center;" >UE2009</td>
-						<td style="text-align: center;" >UE2010</td>
-						<td style="text-align: center;" >UE2011</td>
-						<td style="text-align: center;" >UE2013</td>
-						<td style="text-align: center;" >UE2015</td>
-						<td style="text-align: center;" >UE2020</td>
-						<td style="text-align: center;" >UE2022</td>
-						<td style="text-align: center;" >UEs SEM chamado</td>
-						<td style="text-align: center;" >UEs COM chamado</td>
-						<td style="text-align: center;" >BAT Com carga OK</td>
-						<td style="text-align: center;" >BAT Sem carga </td>
-						<td style="text-align: center;" >BAT com vazamento </td>
-						<td style="text-align: center;" >BAT oxidadas</td>
-						<td style="text-align: center;" class="text-center">Ação</td>
-					</tr>
-				</thead>
-				<tbody>
-					<?php 
-					if(count($userData)>0){
-						$s	=	'';
-						foreach($userData as $val){
-							$s++;
-					?>
-					<tr>
-						
-						<?php
-						$id_loc = $val['id_local'];
-						$sql = "SELECT n_local FROM local WHERE id_local = '$id_loc' ";
-						$result = mysqli_query($conexao,$sql);
-						$row = mysqli_fetch_row($result);
-						$local = $row[0];
-						//var_dump($local) ;
-						$data =  substr($val['data_atualizacao'],0, 10);   
-						$data2 = implode("/",array_reverse(explode("-",$data)));;
-						?>
-						<td style="text-align: center;" ><?php echo $local ?></td>
-						<td style="text-align: center;" ><?php echo $data2 ?></td> 
-						<td style="text-align: center;" ><?php echo $val['totue2009'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2010'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2011'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2013'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2015'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2020'];?></td>
-						<td style="text-align: center;" ><?php echo $val['totue2022'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tnue_sem_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tnue_com_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_carga_ok'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_sem_carga'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_vazando'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_oxidada'];?></td>
-						<td align="center" >
-							<a href="php/status_edit.php?editId=<?php echo $val['id_local'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i>Limpar </a>  
-							<!-- <a href="php/status_delete.php?delId=<?php echo $val['id_local'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a> -->
-						</td>
-
-					</tr>
-					<?php 
-						}
-					}else{
-					?>
-					<tr><td colspan="6" align="center">Nenhum registro encontrado!</td></tr>
-					<?php } ?>
-				</tbody>
-			</table>
-			
-		</div> 
-
-		
-
-	
-		<div class="card-footer text-muted">
+							</tr>
+							<?php 
+								}
+							}else{
+							?>
+							<tr><td colspan="6" align="center">Nenhum registro encontrado!</td></tr>
+							<?php } ?>
+						</tbody>
+					</table>
+					</div> 
+					</div> 
+					
+					<div class="card-footer text-muted">
 						SIMUEL 
 					</div>
+		</div> 
+
+					
 	</div>
 
 	<script>

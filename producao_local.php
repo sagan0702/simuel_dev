@@ -5,6 +5,27 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Produção Local</title>
+	<style>
+	#n_ciclo{
+        background-color:whitesmoke;
+        color: #585858;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 0, 0, 0, 0;
+    }
+
+	#n_os{
+        background-color:whitesmoke;
+        color: #585858;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 0, 0, 0, 0;
+    }
+</style>
+
+
 	<?php 
 	include_once('php/formatacao.php');
 	include_once('php/consulta_ciclo_os.php');
@@ -45,7 +66,7 @@
 			<h3>Produção Local</h3>
 				<!-- <i class="fa fa-fw fa-globe"></i> <strong>Pequisar </strong>  -->
 				<a href="php/producao_local_add.php" class="float-left btn btn-dark btn-lg"> 
-				<i class="fa fa-fw fa-plus-circle"></i>  Enviar Produção</a></div> 
+				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar Produção</a></div> 
 			<div class="card-body"> <!--- MENSAGENS -->
 				<?php
 				if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rds"){
@@ -66,12 +87,12 @@
     	?>
 				<div class="row">
 							<div class="form-group col-md-4" >
-									<label><h6>Ciclo atual: </h5></label>
-									<div id="n_ciclo"><?= $_SESSION['max_n_ciclo'] ?></div>
+									<label><h6>Ciclo atual: 
+									<div id="n_ciclo"><?= $_SESSION['max_n_ciclo'] ?></div></h5></label>
 							</div>
 							<div class="form-group col-md-4" >
-									<label><h6>Nº da OS:  </h6></label>
-									<div id ="n_os"> <?= $_SESSION['max_n_os'] ?>  </div>
+									<label><h6>Nº da OS:  <div id ="n_os"> <?= $_SESSION['max_n_os'] ?>  </div></h6></label>
+									
 							</div>
 			</div>    
 		<!--------------- FORM TABELA 1 -------------------->

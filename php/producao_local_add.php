@@ -46,7 +46,7 @@ extract($_REQUEST);
 		// $userData	=	$db->getAllRecords('producao','*',$condition,'ORDER BY id_producao DESC');
 	
 	   // --- pegar valores de status 
-		session_start();
+	    session_start();
        //print_r($data);
 		$ids_local = $_SESSION['id_local'];
 		echo "valor de id_local = ". $ids_local;
@@ -170,10 +170,125 @@ extract($_REQUEST);
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Adicionar Produção Local</title>
+	<style>
+	#ue2009p
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+    #ue2010p
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	#ue2011p
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	#ue2013p
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	#ue2015p
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	#ue2020p
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	#ue2022p
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	#nue_com_chamado
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	#nue_sem_chamado
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	#bat_carga_ok
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	#bat_sem_carga
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	#bat_vazando
+    {
+        background-color: #F5F6CE;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        width: 150px;
+        font-size: 20px;
+    }
+	
+    
+ 
+	
+
+	</style>
   	<?php include_once('formatacao.php');
 	include_once('consulta_ciclo_os.php');
     include ("conexao.php");
-	// session_start();
+	//session_start();
 	$dadosConexao = mysqli_get_host_info($conexao);
 	if (!isset($_SESSION["usuario"])) {
 		header('Location: ../index.php');
@@ -243,33 +358,33 @@ extract($_REQUEST);
 								<label> <h5>Total Urnas com STE realizado</h5></label>
 							</div>
 							<div class="col-md-2">
-								<label for="urna09">UE2009:</label>
+								<label for="urna09"><h5>UE2009:</h5></label>
 								<input type="text" class="form-control" name="ue2009p" id="ue2009p" value="0" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2 ">
-								<label for="urna10">UE2010:</label>
+								<label for="urna10"><h5>UE2010:</h5></label>
 								<input type="text" class="form-control" name="ue2010p" id="ue2010p" value="0"  onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2 ">
-								<label for="urna11">UE2011:</label>
+								<label for="urna11"><h5>UE2011:</h5></label>
 								<input type="text" class="form-control"  name="ue2011p" id="ue2011p" value="0" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2 ">
-								<label for="urna13">UE2013:</label>
+								<label for="urna13">UE2013:</h5></label>
 								<input type="text" class="form-control" name="ue2013p" id="ue2013p" value="0" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2 ">
-								<label for="urna15">UE2015:</label>
-								<input type="text" class="form-control" name="ue2015p" id="ue2015pa" value="0" onkeypress="$(this).mask('0000')"  >
+								<label for="urna15">UE2015:</h5></label>
+								<input type="text" class="form-control" name="ue2015p" id="ue2015p" value="0" onkeypress="$(this).mask('0000')"  >
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-2 ">
-								<label for="urna21">UE2020:</label>
+								<label for="urna21">UE2020:</h5></label>
 								<input type="text" class="form-control" name="ue2020p" id="ue2020p" value="0" onkeypress="$(this).mask('0000')"  >
 							</div>
 							<div class="col-md-2">
-								<label for="urna22">UE2022:</label>
+								<label for="urna22">UE2022:</h5></label>
 								<input type="text" class="form-control" name="ue2022p" id="ue2022p" value="0" onkeypress="$(this).mask('0000')"  >
 							</div>
 						</div>

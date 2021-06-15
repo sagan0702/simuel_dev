@@ -54,7 +54,19 @@
 
 
    
- <title>SIMUEL2</title>
+<title>SIMUEL2</title>
+<style>
+#div_local{
+        background-color:whitesmoke;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        font-size: 22px;
+        padding: 0, 0, 0, 0;
+    }
+</style>
+
+
 </head>
 <body>
 <div class = "header">
@@ -147,6 +159,7 @@
                 Configurações
               </button>
               <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <li><a class="dropdown-item" href="manutencao.php">Manutenção</a></li>  
                 <li><a class="dropdown-item" href="parametros.php">Parâmetros</a></li>  
                 <li><a class="dropdown-item" href="php_info.php">PHP Info</a></li>
                 <li><a class="dropdown-item" href="versaoJS.php">Versão JS</a></li>
