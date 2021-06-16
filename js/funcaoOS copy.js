@@ -144,27 +144,7 @@ function update() {
     var select = document.getElementById('n_local');
     var option = select.options[select.selectedIndex];
     var qinfratext = option.text ;
-    
-    
-    // $.ajax({
-    //     type: "POST",
-    //     url: '../ajax/consulta_local.php',
-    //     cache: false,
-    //     data:{ qinfratext:qinfratext},
-    //     success: function(dados){
-    //     alert(dados);
-    //     }
-    // });
-    
-    
-    
-    
-    
-    
-    
-    
-    // $('#local_sel').load('ajax/consulta_local.php');
-
+       
     switch (qinfratext) {
         case "NVI JPA":
             qinfra = 128
@@ -194,7 +174,7 @@ function update() {
     }
 
     qtde_infra.innerHTML = `${qinfra}`
-    //txt_id_local.innerHTML = `${id_local}`
+    txt_id_local.innerHTML = `${id_local}`
 }
     //update();
 

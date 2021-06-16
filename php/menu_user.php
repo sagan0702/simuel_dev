@@ -3,100 +3,179 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/jquery-ui.css" rel="stylesheet">
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery-ui.js"></script> 
-  - <script src="js/jquery.mask.min.js"></script>  
-    <script src="js/datepicker-pt-BR.js"></script>  
-  
-  
 
-  <title>SIMUEL2</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" >
+<link href="css/estilos.css" rel="stylesheet" >
+<script src="js/popper.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script> 
+<script src="js/bootstrap.bundle.min.js"></script>
+<!-- <script src="js/bootstrap.min.js" ></script> -->
+<script src="js/jquery.mask.min.js"></script>  
+<script src="js/datepicker-pt-BR.js"></script> 
+
+
+
+<link href="../css/bootstrap.min.css" rel="stylesheet" >
+<link href="../css/estilos.css" rel="stylesheet" >
+<script src="../js/popper.min.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery-ui.js"></script> 
+<script src="../js/bootstrap.bundle.min.js"></script>
+<!-- <script src="../js/bootstrap.min.js" ></script> -->
+<script src="../js/jquery.mask.min.js"></script>
+<script src="../js/datepicker-pt-BR.js"></script> 
+
+
+<!-- <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"> 
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="../css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/all.css" > 
+<link rel="stylesheet" href="../css/all.css" > 
+<link rel="stylesheet" href="../css/estilo.css" > 
+<link rel="stylesheet" href="../css/jquery-ui.css" > 
+<link rel="stylesheet" href="css/jquery-ui.css" > 
+<script src="js/bootstrap.min.js"></script>					
+<script src="js/jquery.min.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js" ></script>
+<script src="js/jquery.caret.js"></script> 
+ <script src="js/jquery-ui.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="js/jquery.mask.js"></script>
+<script src="../js/jquery.mask.js"></script>
+<script src="js/datepicker-pt-BR.js"></script>
+<script src="../js/datepicker-pt-BR.js"></script>  -->
+
+
+
+
+   
+<title>SIMUEL2</title>
+<style>
+#div_local{
+        background-color:whitesmoke;
+        color: black;
+        text-align: center;
+        font-weight: bold;
+        font-size: 22px;
+        padding: 0, 0, 0, 0;
+    }
+</style>
+
+
 </head>
 <body>
 <div class = "header">
+<?php
+        // session_start();
+        include ("php/conexao.php");
+        // include ("php/bootstrapalert.php");
+        
+        $dadosConexao = mysqli_get_host_info($conexao);
+            if (!isset($_SESSION["usuario"])) {
+                header('Location: ../index.php');
+                exit();
+            }
+            // include($_SESSION['menu']); 
+    ?>
+
+        
   <div class="container">
+
       <div class="row">
-        <h3> SIMUEL </h3> 
+              <h4> SIMUEL </h4> 
       </div>
       <div class="row">
-        <h3> Sistema de Manutenção de Urnas Eletrônicas</h3>  
-      </div>    
-      <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../simuel/p_inicial.php">Inicial</a>
-              </li>
-              <li class="nav-item dropdown">  <!-------------- ITEM CICLOS --------------->
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Ciclos/OS
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="../simuel/ciclos.php">Ciclos</a></li>
-                  <li><a class="dropdown-item" href="../simuel/os.php">OS</a></li>
-                </ul>
-              </li>
+      <!-- <div class="row justify-content-md-rigth"> -->
+        <div class="col-sm-9">
+          <h5> Sistema de Manutenção de Urnas Eletrônicas</h5>  
+        </div>
+        <div class="col-sm-1" id="div_data">
+          <h6>  <?php echo date('d/m/Y') ?> <h6> 
+        </div> 
+        <div class="col-sm-1" id="div_local">
+          <h6> <?= $_SESSION['local'] ?></h6>  
+        </div> 
+        <div class="col-sm-1" id="div_usuario">
+          <h6> <?= $_SESSION['usuario']?></h6>  
+        </div>
+      </div>
 
-              <li class="nav-item dropdown"> <!-------------- ITEM PRODUÇÃO --------------->
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Produção
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="../simuel/monitorar_producao.php">Gerenciar Produção</a></li>
-                  <li><a class="dropdown-item" href="../simuel/producao_local.php">Produção NVI</a></li>
-                  <li><a class="dropdown-item" href="../simuel/p_emissao_trd.php">Emissão TRD</a></li>    
-                  <li><a class="dropdown-item" href="#">Utilitários</a></li>
-                </ul>
-              </li>
 
-              <li class="nav-item dropdown"> <!-------------- ITEM MONITORAMENTO --------------->
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Monitoramento 
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="../simuel/p_situacao.php">Situação</a></li>
-                  <li><a class="dropdown-item" href="#">Painéis</a></li>
-                  <li><a class="dropdown-item" href="../simuel/p_consultar_parque.php">Parque de Urnas</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown"> <!-------------- ITEM EMPRESA --------------->
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Empresa 
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="../simuel/p_emissao_dcs.php">Emissão da DCS</a></li>
-                  <li><a class="dropdown-item" href="">Parque de Urnas</a></li>
-                  <li><a class="dropdown-item" href="">Informações dos Locais</a></li>
-                </ul>
-              </li>
+      
 
-              <li class="nav-item dropdown"> <!-------------- ITEM CONFIGURAÇÕES --------------->
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <div class="row">
+
+      <!-- <div class="btn-group">
+        <a href="p_inicial.php" class="btn btn-primary ">Inicio</a>
+        <a href="ciclos.php" class="btn btn-primary ">Ciclos</a>
+        <a href="os.php" class="btn btn-primary">OS</a>
+        <a href="p_equipamentos.php" class="btn btn-primary">Equipamentos</a>
+        <a href="producao_local.php" class="btn btn-primary">Enviar Produção</a>
+        <a href="monitorar_producao.php" class="btn btn-primary">Monitoramento</a>
+        <a href="p_configuracoes.php" class="btn btn-primary">Configurações</a>
+        <a href="../simuel/php/logout.php" class="btn btn-primary">Sair</a>
+        <a href="../simuel/php/logout.php" button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">Ciclos</a>
+            <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul> -->
+
+      <div class="btn-group">
+          <a href="p_inicial.php" class="btn btn-primary ">Inicio</a>
+          <!-- <a href="ciclos.php" class="btn btn-primary "  >Ciclos</a>
+          <a href="os.php" class="btn btn-primary" >OS</a> -->
+          <a href="producao_local.php" class="btn btn-primary">Produção</a>
+        <div class="btn-group"  aria-label="Button group with nested dropdown">
+        <!-- <div class="btn-group" > -->
+              <!-- <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" disabled>
+                Monitoramento
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <li><a class="dropdown-item" href="status.php">Status Total</a></li>
+                <li><a class="dropdown-item" href="monitorar_producao.php">Consultar Produção Enviada</a></li>
+                <li><a class="dropdown-item" href="#">Consultas</a></li>
+              </ul> -->
+        <!-- </div> -->
+        <!-- <div class="btn-group" role="group"> -->
+              <!-- <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Cadastros
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1" disabled>
+                <li><a class="dropdown-item" href="locais.php">Locais</a></li>  
+                <li><a class="dropdown-item" href="usuarios.php">Usuários</a></li>
+                <li><a class="dropdown-item" href="equipamentos.php">Equipamentos</a></li>
+                
+              </ul> -->
+
+              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Configurações
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="../simuel/equipamentos.php">Cadastro de Equipamentos</a></li>
-                  <li><a class="dropdown-item" href="../simuel/locais.php">Cadastro de Locais </a></li>
-                  <li><a class="dropdown-item" href="../simuel/usuarios.php">Cadastro de Usuarios </a></li>
-                  <li><a class="dropdown-item" href="../simuel/p_configuracoes.php">Configurações</a></li>
-                  <li><a class="dropdown-item" href="../simuel/phpinfo.php">PHP Info</a></li>
-                </ul>
-              </li>
-                  <li class="nav-item">
-                <a class="nav-link " href="../simuel/php/logout.php"  tabindex="-1" aria-disabled="true">Sair</a>
-              </li>
-            </ul>
-      </nav>
-  </div>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <!-- <li><a class="dropdown-item" href="manutencao.php" disabled >Manutenção</a></li>   -->
+                <!-- <li><a class="dropdown-item" href="parametros.php" disabled >Parâmetros</a></li>   -->
+                <li><a class="dropdown-item" href="php_info.php">PHP Info</a></li>
+                <!-- <li><a class="dropdown-item" href="versaoJS.php" disabled>Versão JS</a></li> -->
+                
+              </ul>
 
+        </div>
+        <a href="../simuel/php/logout.php" class="btn btn-primary">Sair</a>
+      </div>
+
+
+    </div>
+
+      
+    
+  </div>
 </div>
 </body>
 </html>

@@ -308,6 +308,11 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                                     <label for="campo2">Nº da OS:</label>
                                     <input type="text" class="form-control" name="n_os" id="txt_n_os" required onkeypress="$(this).mask('00/0000')"/>
                                 </div>
+                                <div class="form-group col-md-2">
+                                    <label>Local2: </label>
+                                    <div id ="local_sel"> </select>
+                                    </div>
+                                </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-2">
@@ -374,7 +379,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                     </div>
                    <div class="row">  
                         <div class="form-group col-md-8">
-                                <button id="btn_gravarOS" class="btn btn-primary" onclick="gravarOS()">Gravar OS</button>  
+                                <button id="btn_gravarOS" class="btn btn-primary" onclick="gravarOS()" >Gravar OS</button>  
                         </div>
                    </div> 
 	            <!-- </div> -->
