@@ -136,7 +136,7 @@ function gravarOS() {
             alert(dados);
             }
         });
-        window.history.back();
+        //window.history.back();
 }
 var qinfra
 
@@ -194,7 +194,7 @@ function update() {
     }
 
     qtde_infra.innerHTML = `${qinfra}`
-    //txt_id_local.innerHTML = `${id_local}`
+    txt_id_local.innerHTML = `${id_local}`
 }
     //update();
 

@@ -47,7 +47,7 @@
 		
 		
 	
-		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Equipamentos por local </h5>
+		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Equipamentos do local </h5>
 			<table class="table table-striped table-bordered table-sm">
 				<thead>
 					<tr class="bg-secondary text-white">
@@ -62,7 +62,7 @@
                         <td style="text-align: center;" >Total UE</td>
 						<td style="text-align: center;" >Baterias Reserva</td>
 						<td style="text-align: center;" >Atualização</td>
-						<td style="text-align: center;" class="text-center">Ação</td>
+						<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
 					</tr>
 				</thead>
 				<tbody>
@@ -103,10 +103,10 @@
                         <td style="text-align: center;" ><?php echo $tot_ue;?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_baterias'];?></td>
 						<td style="text-align: center;" ><?php echo $data2;?></td>
-						<td align="center" >
+						<!-- <td align="center" >
 							<a href="php/producao_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i></a>  
 							<a href="php/producao_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a>
-						</td>
+						</td> -->
 					</tr>
 					<?php 
 						}

@@ -276,7 +276,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 				<!-- <div class="col-sm-12"> -->
 					<!-- <form method="post">   -->
                     <input type="hidden" id="txt_id_ciclo" value="<?=$id_ciclo?>">
-                    <div id="txt_id_local" type="hidden"></div>
+                   
                     <div class="row">
                         <div class="form-group col-md-4" >
                                 <label><h5>Ciclo atual: </h5></label>
@@ -295,6 +295,9 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                                     <div id ="fp_diario">
                                         <?=$fp_diario?> 
                                     </div>
+                        </div>
+                        <div class="form-group col-md-1" >
+                            <div id="txt_id_local" type="hidden"></div>
                         </div>
                     </div>    
                     <div class="row">

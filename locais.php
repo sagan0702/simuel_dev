@@ -87,7 +87,7 @@
 						<td style="text-align: center;" >Nº de UE2022</td>
 						<td style="text-align: center;" >Nº de Baterias Reserva</td>
 						<td style="text-align: center;" >QInfra</td>
-						<td style="text-align: center;" class="text-center">Ação</td>
+						<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
 					</tr>
 				</thead>
 				<tbody>
