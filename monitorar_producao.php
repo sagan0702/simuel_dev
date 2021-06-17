@@ -38,7 +38,7 @@
 		
 		<div class="card"> <!--- FORM DE PESQUISA -->
 			<div class="card-header">
-			<h3>Gerenciar Produção</h3>
+			<h3>Registro de Produção Enviada pelos Locais</h3>
 			
 			<div class="card-body"> <!--- MENSAGENS -->
 				<?php
@@ -64,14 +64,14 @@
 						// $ciclo = $row[0];
 						//var_dump($id_c) ;
 
-						// $est = $val['situacao'];
-						// 	if ($est == 1) {
-						// 		$situacao = "Ativa";
-						// 		} else {
-						// 		$situacao = "Fechada";
-						// 	}
+							$est = $val['situacao'];
+							if ($est == 1) {
+								$situacao = "Ativa";
+								} else {
+								$situacao = "Fechada";
+							}
 											
-						// ?>
+						 ?>
 		
 
 		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Urnas com manutenção realizada </h5>
@@ -89,8 +89,8 @@
 						<td style="text-align: center;" >UE2022</td>
 						<td style="text-align: center;" >UEs SEM chamado</td>
 						<td style="text-align: center;" >UEs COM chamado</td>
-						<td style="text-align: center;" >BAT Com carga OK</td>
-						<td style="text-align: center;" >BAT Sem carga </td>
+						<td style="text-align: center;" >BAT Reserva</td>
+						<td style="text-align: center;" >BAT Substituídas </td>
 						<td style="text-align: center;" >BAT com vazamento </td>
 						<td style="text-align: center;" >BAT oxidadas</td>
 						<td style="text-align: center;" class="text-center">Ação</td>
@@ -116,7 +116,7 @@
 						$data =  substr($val['dt_envio'],0, 10);   
 						$data2 = implode("/",array_reverse(explode("-",$data)));;
 						?>
-						<td style="text-align: center;" ><?php echo $local;?></td>
+						<td style="text-align: center;" ><strong><?php echo $local;?></strong></td>
 						<td style="text-align: center;" ><?php echo $data2 ?></td> 
 						<td style="text-align: center;" ><?php echo $val['ue2009p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2010p'];?></td>
@@ -160,36 +160,24 @@
 									<input type="text" name="nome" id="nome" class="form-control" value="<?php echo isset($_REQUEST['id_local'])?$_REQUEST['id_local']:''?>" placeholder="">
 								</div>
 							</div>
-							
-
-							
-
 						</div>
-
 						<div class="row">	
 							<div class="col-sm-2">
-								
 								<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Pesquisar</button> 
-								
 							</div>
 							<div class="col-sm-2">
 									<a href="<?php echo $_SERVER['PHP_SELF'];?>" class="btn btn-danger"><i class="fa fa-fw fa-sync"></i>Limpar</a>
 							</div>
-
-
 						</div>
 					</form>
 				</div> 
 			</div>
-			
 		</div>
-		<div class="card-footer text-muted">
+					<div class="card-footer text-muted">
 						SIMUEL 
 					</div>
 	</div>
-
 	<script>
-		
 	</script>
 </body>
 </html>

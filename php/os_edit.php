@@ -5,23 +5,26 @@ if(isset($_REQUEST['editId']) and $_REQUEST['editId']!=""){
 
 if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	extract($_REQUEST);
-	if($n_ciclo==""){
+	if($n_os==""){
 		header('location:'.$_SERVER['PHP_SELF'].'?msg=un&editId='.$_REQUEST['editId']);
 		exit;
-	}elseif($data_inicio==""){
+	}elseif($data_minima==""){
 		header('location:'.$_SERVER['PHP_SELF'].'?msg=ue&editId='.$_REQUEST['editId']);
 		exit;
-	}elseif($data_fim==""){
+	}elseif($data_maxima==""){
 		header('location:'.$_SERVER['PHP_SELF'].'?msg=up&editId='.$_REQUEST['editId']);
 		exit;
+	}elseif($estado==""){
+	header('location:'.$_SERVER['PHP_SELF'].'?msg=up&editId='.$_REQUEST['editId']);
+	exit;
 	}
-	$data_inicio = implode("-",array_reverse(explode("/",$data_inicio)));
-	$data_fim = implode("-",array_reverse(explode("/",$data_fim)));
+	$data_minima = implode("-",array_reverse(explode("/",$data_minima)));
+	$data_maxima = implode("-",array_reverse(explode("/",$data_maxima)));
 
 	$data	=	array(
-					'n_ciclo'=>$n_ciclo,
-					'data_inicio'=>$data_minima,
-					'data_fim'=>$data_maxima,
+					'n_os'=>$n_os,
+					'data_minima'=>$data_minima,
+					'data_maxima'=>$data_maxima,
 					'estado'=>$estado,
 					);
 	$update	=	$db->update('os',$data,array('id_os'=>$editId));
@@ -32,7 +35,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		header('location: /simuel/os.php?msg=rnu');
 		exit;
 	}
-}
+ }
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -83,10 +86,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			<div class="card-body">
 				
 				<div class="col-sm-6">
-					<h3 class="card-title"><h5>Campos com<span class="text-danger">*</span> são obrigatórios!</h5>
+					
 					<form method="post">
 						<div class="form-group">
-							<label><h6>Nº da OS<span class="text-danger">*</span></label></h6>
+							<label><h6>Nº da OS</label></h6>
 							<input type="text" name="n_os" id="n_os" class="form-control" value="<?php echo $row[0]['n_os']; ?>" placeholder="" onkeypress="$(this).mask('00/0000')" required>
 						</div>
 
@@ -96,7 +99,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 								$datai = $row[0]['data_minima'];
 								$datai= implode("/",array_reverse(explode("-",$datai))); 
 								?>
-								<label><h6>Data Mínima <span class="text-danger">*</span></label></h6>
+								<label><h6>Data Mínima </label></h6>
 								<input type="text" name="data_minima" id="data_minima" class="form-control" value="<?php 
 								echo $datai ?>" placeholder="" required>
 								
@@ -108,25 +111,16 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 								$dataf = $row[0]['data_maxima'];
 								$dataf= implode("/",array_reverse(explode("-",$dataf))); 
 								?>
-								<label><h6>Data Máxima <span class="text-danger">*</span></label></h6>
+								<label><h6>Data Máxima </label></h6>
 								<input type="text" name="data_maxima" id="data_maxima" maxlength="12" class="form-control" value="<?php echo $dataf ?>" placeholder="" required>
 
 								
 							</div>
 						</div>
 						<div class="row">
-
-
-
 						</div>
-						
-
-
-
-
-
 						<div class="form-group">
-							<label><h6>Estado <span class="text-danger">*</span></label></h6>
+							<label><h6>Estado </label></h6>
 							<input type="text" name="estado" id="estado" maxlength="12" class="form-control" value="<?php echo $row[0]['estado']; ?>" placeholder="" required>
 						</div>
 						<div class="form-group">
@@ -138,9 +132,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			</div>
 		</div>
 	</div>
-
-
-
 	    <script>
 		$('#data_minima').datepicker({	
 			format: "yyyy/mm/dd",
@@ -148,10 +139,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			startDate: 'datai',
 		
 		});
-		
-	
-		
-
 		$('#data_maxima').datepicker({	
 				
 			format: "yyyy/mm/dd",
@@ -159,8 +146,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			startDate: '+0d',
 			
 		});
-		
-		
+	
 	</script>
       
 </body>

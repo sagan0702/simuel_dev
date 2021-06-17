@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Inicial</title>
-    
 </head>
 <body>
     <?php
@@ -23,31 +21,20 @@
             $ids_local = $_SESSION['id_local'];
 		    //echo $id_local;
 		    $condition =	"AND id_local =".$ids_local;
-
             $userData	=	$db->getAllRecords('local','*',$condition,'ORDER BY id_local ');
-
     ?>
-
     <div class="container">
-       
         <div class="row">
             <div class="form-group col-md-9">
             <br><label>O usuário logado é: </label> <?= $_SESSION['usuario'] ?> 
             </div>
-         
             <div class="form-group col-md-4">
                 <br><?php print_r($dadosConexao) ?> 
             </div>
         </div>
-       
-       
-
-   	
+       <br>
 		<div class="card"> 
-		
-		
-	
-		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Equipamentos do local </h5>
+		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Parque de equipamentos </h5>
 			<table class="table table-striped table-bordered table-sm">
 				<thead>
 					<tr class="bg-secondary text-white">
@@ -90,7 +77,10 @@
 						$data =  substr($val['data_atualizacao'],0, 10);   
 						$data2 = implode("/",array_reverse(explode("-",$data)));;
                         $tot_ue = $totue2009 + $totue2010 + $totue2011 + $totue2013 + $totue2015 + $totue2020 + $totue2022;
-                        
+						$sql = "SELECT qtde_baterias FROM local WHERE id_local = '$id_loc' ";
+						$result = mysqli_query($conexao,$sql);
+						$row = mysqli_fetch_row($result);
+						$local = $row[0];		
 						?>
 						<td style="text-align: center;" ><?php echo $local;?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_ue2009'];?></td>
@@ -119,7 +109,9 @@
             <footer>
             </footer>
             </div> 
-            
+            <p class="lead">
+			SIMUEL v1.0
+			</p>
             <div class="card-footer text-muted">
 						SIMUEL 
 					</div>  

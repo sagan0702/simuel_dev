@@ -116,7 +116,6 @@ function gravarOS() {
     tbaterias = $('#txt_t_baterias').val();
     qtde_dias_periodo = qtde_dias_periodo.innerHTML
     qtde_dias_off = tdiasoff.innerHTML
-    //qtde_dias_off2 = parseFloat(qtde_dias_off)
     qtde_dias_disp = qtde_dias_disp.innerHTML
     fp_diario = fp_diario.innerHTML
     ust = qtde_ust.innerHTML

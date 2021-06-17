@@ -11,15 +11,12 @@
         include ("php/conexao.php");
 		include ("php/consulta_ciclo_os.php");
         // include ("php/bootstrapalert.php");
-        
-       
             if (!isset($_SESSION["usuario"])) {
                 header('Location: index.php');
                 exit();
             }
             include($_SESSION['menu']); 
     ?>
-
 </head>
 <body>
 	<?php
@@ -27,12 +24,8 @@
 	if(isset($_REQUEST['id_local']) and $_REQUEST['id_local']!=""){
 		$condition	.=	' AND id_local LIKE "%'.$_REQUEST['id_local'].'%" ';
 	}
-
-	
-		
 	$userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local ');
 	$userData2	=	$db->getAllRecords('os','*',$condition,'ORDER BY id_os');
-	
 	?>
    	<div class="container">
 		
@@ -54,11 +47,7 @@
 				}
 				?>
 			<!-- <div>   -->
-
-		
-
-
-					<h5 class="card-title"><i class="fa fa-th-list"></i></i> Total de Urnas com manutenção realizada por Local </h5>
+					<h5 class="card-title"><i class="fa fa-th-list"></i></i> Total de Urnas com Manutenção Preventiva (STE) realizada por Local </h5>
 					<table class="table table-striped table-bordered table-sm">
 						<thead>
 							<tr class="bg-secondary text-white">
@@ -74,7 +63,7 @@
 								<td style="text-align: center;" >Total Urnas</td>
 								<td style="text-align: center;" >Total da OS </td>
 								<td style="text-align: center;" >% realizado </td>
-								<td style="text-align: center;" >Ação</td>
+								<!-- <td style="text-align: center;" >Ação</td> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -90,9 +79,6 @@
 									$stotue2015 = $val['totue2015'];
 									$stotue2020 = $val['totue2020'];
 									$stotue2022 = $val['totue2022'];
-									
-
-
 							?>
 							<tr>
 								
@@ -125,7 +111,7 @@
 								$perc_totf = number_format($perc_tot, 2);
 				
 								?>
-								<td style="text-align: center;" ><?php echo $local ?></td>
+								<td style="text-align: center;" ><strong><?php echo $local ?></strong></td>
 								<td style="text-align: center;" ><?php echo $data2 ?></td> 
 								<td style="text-align: center;" ><?php echo $val['totue2009'];?></td>
 								<td style="text-align: center;" ><?php echo $val['totue2010'];?></td>
@@ -134,10 +120,10 @@
 								<td style="text-align: center;" ><?php echo $val['totue2015'];?></td>
 								<td style="text-align: center;" ><?php echo $val['totue2020'];?></td>
 								<td style="text-align: center;" ><?php echo $val['totue2022'];?></td>
-								<td style="text-align: center;" ><?php echo $stot_urna;?></td>
-								<td style="text-align: center;" ><?php echo $t_urna_os;?></td>
-								<td style="text-align: center;" ><?php echo $perc_totf."%";?></td>
-								<td style="text-align: center;" ><?php echo "" ;?></td>
+								<td style="text-align: center;" ><strong><?php echo $stot_urna;?></strong></td>
+								<td style="text-align: center;" ><strong><?php echo $t_urna_os;?></strong></td>
+								<td style="text-align: center;" ><strong><?php echo $perc_totf."%";?></strong></td>
+								<!-- <td style="text-align: center;" ><?php echo "" ;?></strong></td> -->
 								<!-- <td align="center" > -->
 									<!-- <a href="php/status_edit.php?editId=<?php echo $val['id_local'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i>Limpar </a>   -->
 									<!-- <a href="php/status_delete.php?delId=<?php echo $val['id_local'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a> -->
@@ -152,20 +138,18 @@
 							<?php } ?>
 						</tbody>
 					</table>
-
-
-					////				
-					<h5 class="card-title"><i class="fa fa-th-list"></i></i> Total de Urnas com manutenção realizada por Local </h5>
+			
+					<h5 class="card-title"><i class="fa fa-th-list"></i></i> Total de Urnas com Manutenção Corretiva realizada por Local </h5>
 					<table class="table table-striped table-bordered table-sm">
 						<thead>
 							<tr class="bg-secondary text-white">
 								<td style="text-align: center;" >Localidade</td>		
 								<td style="text-align: center;" >UEs SEM chamado</td>
 								<td style="text-align: center;" >UEs COM chamado</td>
-								<td style="text-align: center;" >BAT Com carga OK</td>
-								<td style="text-align: center;" >BAT Sem carga </td>
-								<td style="text-align: center;" >BAT com vazamento </td>
-								<td style="text-align: center;" >BAT oxidadas</td>
+								<td style="text-align: center;" >BAT Reserva</td>
+								<td style="text-align: center;" >BAT Substituídas </td>
+								<td style="text-align: center;" >BAT com vazamento* </td>
+								<td style="text-align: center;" >BAT oxidadas* </td>
 							
 							</tr>
 						</thead>
@@ -191,8 +175,8 @@
 								<td style="text-align: center;" ><?php echo $local ?></td>
 								<td style="text-align: center;" ><?php echo $val['tnue_sem_chamado'];?></td>
 								<td style="text-align: center;" ><?php echo $val['tnue_com_chamado'];?></td>
-								<td style="text-align: center;" ><?php echo $val['tbat_carga_ok'];?></td>
-								<td style="text-align: center;" ><?php echo $val['tbat_sem_carga'];?></td>
+								<td style="text-align: center;" ><?php echo $val['tbat_reserva'];?></td>
+								<td style="text-align: center;" ><?php echo $val['tbat_subst'];?></td>
 								<td style="text-align: center;" ><?php echo $val['tbat_vazando'];?></td>
 								<td style="text-align: center;" ><?php echo $val['tbat_oxidada'];?></td>
 								<!-- <td align="center" > -->

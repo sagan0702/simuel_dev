@@ -94,58 +94,52 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					
 					<form method="post">
 						<div class="row">
-
-							<!-- `id_local`, `n_local`, `sede`, `qtde_ue2009`, `qtde_ue2010`, `qtde_ue2011`, `qtde_ue2013`,
-							`qtde_ue2015`, `qtde_ue2020`, `qtde_ue2022`, `qtde_miv_2022`, `qtde_baterias`, `data_atualizacao`, `qtde_infra` -->
-
-
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Local</label></h6>
 								<input type="text" name="n_local" id="n_local" class="form-control"  required></input>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Sede</label></h6>
 								<input type="text" name="sede" id="sede" class="form-control"  required></input>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Nº de Urnas UE2009</label></h6>
 								<input type="text" name="qtde_ue2009" id="qtde_ue2009" class="form-control"  required></input>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Nº de Urnas UE2010</label></h6>
 								<input type="text" name="qtde_ue2010" id="qtde_ue2010" class="form-control"  required></input>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Nº de Urnas UE2011</label></h6>
 								<input type="text" name="qtde_ue2011" id="qtde_ue2011" class="form-control"  required></input>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Nº de Urnas UE2013</label></h6>
 								<input type="text" name="qtde_ue2013" id="qtde_ue2013" class="form-control"  required></input>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Nº de Urnas UE2015</label></h6>
 								<input type="text" name="qtde_ue2015" id="qtde_ue2015" class="form-control" required></input>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Nº de Urnas UE2020</label></h6>
 								<input type="text" name="qtde_ue2020" id="qtde_ue2020" class="form-control" required></input>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Nº de Urnas UE2022</label></h6>
 								<input type="text" name="qtde_ue2022" id="qtde_ue2022" class="form-control"  required></input>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Qtde de Baterias reserva</label></h6>
 								<input type="text" name="qtde_baterias" id="qtde_baterias" class="form-control"  required></input>
 							</div>
-							<div class="form-group">
+							<div class="form-group col-md-3">
 								<label><h6>Valor de QInfra</label></h6>
 								<input type="text" name="qtde_infra" id="qtde_infra" class="form-control" required></input>
 							</div>
-							
 						</div> 
-						
+						<br>
 						<div class="row ">
 							<div class="form-group col-md-6">
 								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Adicionar Local</button>
@@ -155,21 +149,14 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					</form>
 				</div>
 			</div>
-
-			<div class="card-footer text-muted">
+				<div class="card-footer text-muted">
 					SIMUEL 
 				</div>
-
-
 		</div>
 	</div>
 	<div class="container my-4">	
 	</div>
- 
 	<script>
-		
-		
-		
 	</script>
 </body>
 </html>

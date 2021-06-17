@@ -87,7 +87,7 @@
 						<td style="text-align: center;" >Nº de UE2022</td>
 						<td style="text-align: center;" >Nº de Baterias Reserva</td>
 						<td style="text-align: center;" >QInfra</td>
-						<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
+						<td style="text-align: center;" class="text-center">Ação</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -126,33 +126,8 @@
 				</tbody>
 			</table>
 		</div> <!--/.col-sm-12-->
-		<div class="col-sm-12"> <!--- CAMPOS DE PESQUISA -->
-					<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Localizar </h5>
-					<form method="get">
-						<div class="row">
-							<div class="col-sm-2">
-								<div class="form-group">
-									<label> Local</label>
-									<input type="text" name="n_local" id="n_local" class="form-control" value="<?php echo isset($_REQUEST['n_local'])?$_REQUEST['n_local']:''?>" >
-								</div>
-							</div>
-							<div class="col-sm-2">
-								<div class="form-group">
-									<label>Sede</label>
-									<input type="date" name="sede" id="sede" class="form-control" value="<?php echo isset($_REQUEST['sede'])?$_REQUEST['sede']:''?>" >
-								</div>
-							</div>
-							
-							<div class="col-sm-2">
-								
-								<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Pesquisar</button> 
-								
-							</div>
-							<div class="col-sm-2">
-									<a href="<?php echo $_SERVER['PHP_SELF'];?>" class="btn btn-danger"><i class="fa fa-fw fa-sync"></i>Limpar</a>
-							</div>
-						</div>
-					</form>
+				<div class="col-sm-12"> <!--- CAMPOS DE PESQUISA -->
+					
 				</div>
 			</div>
 			<div class="card-footer text-muted">

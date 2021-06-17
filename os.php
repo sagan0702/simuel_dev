@@ -110,11 +110,11 @@
 						$ciclo = $row[0];
 						//var_dump($id_c) ;
 
-						$est = $val['situacao'];
+						$est = $val['estado'];
 							if ($est == 1) {
-								$situacao = "Ativa";
+								$sit = "Ativa";
 								} else {
-								$situacao = "Fechada";
+								$sit= "Fechada";
 							}
 											
 						?>
@@ -125,7 +125,7 @@
 						<td style="text-align: center;" ><?php echo $val['n_os'];?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_minima'])));;?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_maxima'])));;?></td>
-						<td style="text-align: center;"><?php echo $situacao;?></td>
+						<td style="text-align: center;"><?php echo $sit;?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_dias_off'];?></td>
 						<td style="text-align: center;" ><?php echo $val['t_urnas'];?></td>
 						<td style="text-align: center;" ><?php echo $val['t_baterias'];?></td>
@@ -133,7 +133,7 @@
 						<td style="text-align: center;" ><?php echo $val['qtde_dias_disp'];?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_ust'];?></td>
 						<td align="center">
-							<a href="php/os_edit.php?editId=<?php echo $val['id_os'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
+							<!-- <a href="php/os_edit.php?editId=<?php echo $val['id_os'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> |  -->
 							<a href="php/os_delete.php?delId=<?php echo $val['id_os'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
 						</td>
 
@@ -165,7 +165,7 @@
 							</div>
 							<div class="col-sm-1">
 									<label>Situação</label>
-									<input type="text" name="situacao" id="situacao" class="form-control" value="<?php echo isset($_REQUEST['situacao'])?$_REQUEST['situacao']:''?>" placeholder="">
+									<input type="text" name="estado" id="estado" class="form-control" value="<?php echo isset($_REQUEST['estado'])?$_REQUEST['estado']:''?>" placeholder="">
 								
 							</div>	
 							<div class="col-sm-1">

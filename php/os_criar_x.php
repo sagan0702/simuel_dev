@@ -16,7 +16,7 @@ $qtde_dias_disp= $_POST['qtde_dias_disp'];
 $fp_diario= $_POST['fp_diario'];
 $ust= $_POST['ust'];
 $qtde_ga= $_POST['qtde_ga'];
-$situacao = "1";
+$estado = "1";
 
 
 // $sql = "SELECT * FROM os where n_os = '$n_os' and id_ciclo = $id_ciclo";
@@ -31,9 +31,9 @@ $data_inicio = implode("-",array_reverse(explode("/",$data_inicio)));
 $data_fim = implode("-",array_reverse(explode("/",$data_fim)));
 
 //string de inserção
-  $sqlInsertInto = "INSERT INTO os (id_ciclo, id_local, n_os,data_minima,data_maxima,t_urnas,t_baterias, qtde_ust, qtde_dias_periodo,qtde_dias_off, qtde_dias_disp, fp_diario, situacao)
+  $sqlInsertInto = "INSERT INTO os (id_ciclo, id_local, n_os,data_minima,data_maxima,t_urnas,t_baterias, qtde_ust, qtde_dias_periodo,qtde_dias_off, qtde_dias_disp, fp_diario, estado)
   
-   VALUES ($id_ciclo,$id_local,'$n_os','$data_inicio','$data_fim',$t_urnas,$t_baterias,$ust, $qtde_dias_periodo,$qtde_dias_off, $qtde_dias_disp, $fp_diario, '$situacao' )";
+   VALUES ($id_ciclo,$id_local,'$n_os','$data_inicio','$data_fim',$t_urnas,$t_baterias,$ust, $qtde_dias_periodo,$qtde_dias_off, $qtde_dias_disp, $fp_diario, '$estado' )";
 
     if (!$conexao->query($sqlInsertInto)) {
         echo "Error: " . $sql . "<br>" . $conexao->error;

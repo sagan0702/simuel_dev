@@ -386,19 +386,19 @@ extract($_REQUEST);
 								<label for="urna21"><h5>Situação das baterias</h5></label>
 							</div>
 							<div class="col-md-2">
-								<label for="urna22">Recarregadas:</label>
+								<label for="urna22">Reserva:</label>
 								<input type="text" class="form-control" value="0" name="bat_carga_ok" id="bat_carga_ok" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
-								<label for="urna22">Sem carga:</label>
+								<label for="urna22">Substituídas:</label>
 								<input type="text" class="form-control" value="0" name="bat_sem_carga" id="bat_sem_carga" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
-								<label for="urna22">Com vazamento:</label>
+								<label for="urna22">Com vazamento(em garantia):</label>
 								<input type="text" class="form-control"  value="0" name="bat_vazando" id="bat_vazando" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
-								<label for="urna22">Com oxidação:</label>
+								<label for="urna22">Com oxidação(em garantia):</label>
 								<input type="text" class="form-control" value="0" name="bat_oxidada"  id="bat_oxidada" onkeypress="$(this).mask('0000')" >
 							</div>
 						</div>

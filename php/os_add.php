@@ -21,7 +21,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							'id_ciclo'=>$id_ciclo,
 							'data_minima'=>$data_minima,
 							'data_maxima'=>$data_maxima,
-							'situacao'=>$situacao,
+							'estado'=>$estado,
 						);
 			$insert	=	$db->insert('os',$data);
 			if($insert){
