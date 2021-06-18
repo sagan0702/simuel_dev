@@ -28,12 +28,12 @@
 	include_once('php/consulta_ciclo_os.php');
     include ("php/conexao.php");
         // include ("php/bootstrapalert.php");
-        $dadosConexao = mysqli_get_host_info($conexao);
+       
             if (!isset($_SESSION["usuario"])) {
                 header('Location: index.php');
                 exit();
             }
-            include($_SESSION['menu']); 
+            include($_SESSION['menu2']); 
     ?>
 </head>
 <body>
@@ -93,14 +93,15 @@
 				<thead>
 					<tr class="bg-secondary text-white">
 						<td style="text-align: center;" >#</td>
-						<td style="text-align: center;" >Data de Envio</td>
+						<td style="text-align: center;" >Data</td>
+						<td style="text-align: center;" >Hora</td>
 						<td style="text-align: center;" >UE2009</td>
 						<td style="text-align: center;" >UE2010</td>
 						<td style="text-align: center;" >UE2011</td>
 						<td style="text-align: center;" >UE2013</td>
 						<td style="text-align: center;" >UE2015</td>
 						<td style="text-align: center;" >UE2020</td>
-						<td style="text-align: center;" >UE2022</td>
+						<td style="text-align: center;" >UE2022</td> 
 						<td style="text-align: center;" >Total de UEs</td>
 						<td style="text-align: center;" >UEs SEM chamado</td>
 						<td style="text-align: center;" >UEs COM chamado</td>
@@ -108,7 +109,7 @@
 						<td style="text-align: center;" >BAT substituídas </td>
 						<td style="text-align: center;" >BAT com vazamento </td>
 						<td style="text-align: center;" >BAT oxidadas</td>
-						<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
+						<td style="text-align: center;" class="text-center">Ação</td> 
 					</tr>
 				</thead>
 				<tbody>
@@ -129,17 +130,20 @@
 						<?php
 							$data =  substr($val['dt_envio'],0, 10);    
 							$data2 = implode("/",array_reverse(explode("-",$data)));;
+							$hora =  substr($val['dt_envio'],10, 9);  
+						
 							$tot_ue = $totue2009 + $totue2010 + $totue2011 + $totue2013 + $totue2015 + $totue2020 + $totue2022;
 						?>
 						<td style="text-align: center;"><?php echo $s;?></td> 
 						<td style="text-align: center;" ><?php echo $data2;?></td> 
+						<td style="text-align: center;" ><?php echo $hora;?></td> 
 						<td style="text-align: center;" ><?php echo $val['ue2009p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2010p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2011p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2013p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2015p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2020p'];?></td>
-						<td style="text-align: center;" ><?php echo $val['ue2022p'];?></td>
+						<td style="text-align: center;" ><?php echo $val['ue2022p'];?></td> 
 						<td style="text-align: center;" ><?php echo $tot_ue ?></strong></td>
 						<td style="text-align: center;" ><?php echo $val['nue_sem_chamado'];?></td>
 						<td style="text-align: center;" ><?php echo $val['nue_com_chamado'];?></td>
@@ -147,10 +151,10 @@
 						<td style="text-align: center;" ><?php echo $val['bat_subst'];?></td>
 						<td style="text-align: center;" ><?php echo $val['bat_vazando'];?></td>
 						<td style="text-align: center;" ><?php echo $val['bat_oxidada'];?></td>
-						<!-- <td align="center"> -->
+						<td align="center">
 							<!-- <a href="php/producao_local_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> |  -->
-							<!-- <a href="php/producao_local_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a> -->
-						<!-- </td> -->
+							<a href="php/producao_local_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a> 
+						</td>
 					</tr>
 					<?php 
 						}
@@ -274,7 +278,6 @@
 							$s++;
 					?>
 					<tr>
-
 						<td style="text-align: center;" ><?php echo $val['tnue_sem_chamado'];?></td>
 						<td style="text-align: center;" ><?php echo $val['tnue_com_chamado'];?></td>
 						<td style="text-align: center;" ><?php echo $val['tbat_reserva'];?></td>
@@ -295,15 +298,12 @@
 				</tbody>
 			</table>
 			<!---//////////////////////////////////////// -->
-	
 			</div>
 			</div>
-
 			<div class="card-footer text-muted">
 						SIMUEL 
 			</div>
 		</div>
-		
 	</div>
 	<script>
 	</script>

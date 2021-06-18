@@ -15,7 +15,7 @@
                 header('Location: index.php');
                 exit();
             }
-            include($_SESSION['menu']); 
+            include($_SESSION['menu2']); 
     ?>
 </head>
 <body>
@@ -107,8 +107,14 @@
 								$t_urna_os = $row[2];
 								
 								//calcular o percentual
-								$perc_tot =  ($stot_urna * 100) / $t_urna_os;
-								$perc_totf = number_format($perc_tot, 2);
+								if ($t_urna_os == 0 or NULL) {
+
+									$perc_totf = 0;
+								}else {
+									$perc_tot =  ($stot_urna * 100) / $t_urna_os;
+									$perc_totf = number_format($perc_tot, 2);
+								}
+								
 				
 								?>
 								<td style="text-align: center;" ><strong><?php echo $local ?></strong></td>

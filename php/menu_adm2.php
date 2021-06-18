@@ -6,7 +6,7 @@
 <!-- <script src="js/bootstrap.min.js" ></script> -->
 <!-- <script src="../js/bootstrap.min.js" ></script> -->
 
-<link href="css/bootstrap.min.css" rel="stylesheet" >
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet" >
 <link href="css/estilos.css" rel="stylesheet" >
 <script src="js/popper.min.js"></script>
 <script src="js/jquery.js"></script>
@@ -14,11 +14,11 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 
 <script src="js/jquery.mask.min.js"></script>  
-<script src="js/datepicker-pt-BR.js"></script> 
+<script src="js/datepicker-pt-BR.js"></script>  -->
 
 
 
-<!-- <link href="../css/bootstrap.min.css" rel="stylesheet" >
+<link href="../css/bootstrap.min.css" rel="stylesheet" >
 <link href="../css/estilos.css" rel="stylesheet" >
 <script src="../js/popper.min.js"></script>
 <script src="../js/jquery.js"></script>
@@ -26,7 +26,7 @@
 <script src="../js/bootstrap.bundle.min.js"></script>
 
 <script src="../js/jquery.mask.min.js"></script>
-<script src="../js/datepicker-pt-BR.js"></script>  -->
+<script src="../js/datepicker-pt-BR.js"></script> 
 
 
 <!-- <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"> 
@@ -164,7 +164,8 @@
                 <li><a class="dropdown-item" href="manutencao.php">Manutenção</a></li>  
                 <li><a class="dropdown-item" href="parametros.php">Parâmetros</a></li>  
                 <li><a class="dropdown-item" href="php_info.php">PHP Info</a></li>
-                               
+               
+                
               </ul>
 
         </div>

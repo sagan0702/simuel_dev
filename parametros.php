@@ -5,21 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Inicial</title>
+    <title>Parâmetros de sistema</title>
     
 </head>
 <body>
     <?php
+    	include_once('php/formatacao.php');
         session_start();
         include ("php/conexao.php");
         // include ("php/bootstrapalert.php");
         
-        $dadosConexao = mysqli_get_host_info($conexao);
+       
             if (!isset($_SESSION["usuario"])) {
                 header('Location: index.php');
                 exit();
             }
-            include($_SESSION['menu']); 
+            include($_SESSION['menu2']); 
     ?>
 
     <div class="container">

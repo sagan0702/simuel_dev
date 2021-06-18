@@ -14,12 +14,12 @@
         include ("php/conexao.php");
        
         
-        $dadosConexao = mysqli_get_host_info($conexao);
+        
             if (!isset($_SESSION["usuario"])) {
                 header('Location: index.php');
                 exit();
             }
-            include($_SESSION['menu']); 
+            include($_SESSION['menu2']); 
     ?>
 </head>
 <body>

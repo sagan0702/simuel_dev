@@ -37,8 +37,10 @@ if($row == 1) {
 	
         if ($acesso == 1){
             $_SESSION["menu"]='php/menu_adm.php';
+            $_SESSION["menu2"]='php/menu_adm2.php';
         }else{
             $_SESSION["menu"]='php/menu_user.php';
+            $_SESSION["menu2"]='php/menu_user2.php';
         }
 	header('Location: /simuel/p_inicial.php');
 	exit();

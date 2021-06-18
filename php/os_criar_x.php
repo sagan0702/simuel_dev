@@ -2,7 +2,7 @@
 include("conexao.php");
 
 //print_r($_POST); 
-var_dump($_POST); 
+//var_dump($_POST); 
 $id_ciclo= $_POST['id_ciclo'];
 $id_local= $_POST['id_local'];
 $n_os = $_POST['n_os'];

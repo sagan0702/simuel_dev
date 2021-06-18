@@ -20,9 +20,9 @@ $(document).ready( function () {
             dia_off = $('#txt_dias_off').val();
             inicio = $('#txt_inicio').val();
             fim = $('#txt_fim').val();
-            if (dia_off <inicio || dia_off > fim) {
-                alert(` Dia off ${date} INVÁLIDO. A data selecionada é menor que o inicio do período ou maior que o término!`);
-            } else {
+            // if (dia_off <inicio || dia_off > fim) {
+            //     alert(` Dia off ${date} INVÁLIDO. A data selecionada é menor que o inicio do período ou maior que o término!`);
+            // } else {
                 alert(` Dia off ${date} adicionado com sucesso!`);
                 ArrayDiasOff.push(date) ;
                 var ul = document.getElementById("lista");
@@ -36,7 +36,7 @@ $(document).ready( function () {
                     total_dias_off = Number(ArrayDiasOff.length)
                     tdiasoff.innerHTML = total_dias_off;
                 }
-            }
+            //}
         },
     });
 

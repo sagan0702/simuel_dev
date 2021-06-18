@@ -12,14 +12,15 @@
     <?php
         session_start();
         include ("php/conexao.php");
+        include_once('php/formatacao.php');
         // include ("php/bootstrapalert.php");
         
-        $dadosConexao = mysqli_get_host_info($conexao);
+        
             if (!isset($_SESSION["usuario"])) {
                 header('Location: index.php');
                 exit();
             }
-            include($_SESSION['menu']); 
+            include($_SESSION['menu2']); 
     ?>
 
     <div class="container">

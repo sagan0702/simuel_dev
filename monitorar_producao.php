@@ -11,12 +11,12 @@
         include ("php/conexao.php");
         // include ("php/bootstrapalert.php");
         
-        $dadosConexao = mysqli_get_host_info($conexao);
+      
             if (!isset($_SESSION["usuario"])) {
                 header('Location: index.php');
                 exit();
             }
-            include($_SESSION['menu']); 
+            include($_SESSION['menu2']); 
     ?>
 
 </head>
@@ -64,12 +64,12 @@
 						// $ciclo = $row[0];
 						//var_dump($id_c) ;
 
-							$est = $val['situacao'];
-							if ($est == 1) {
-								$situacao = "Ativa";
-								} else {
-								$situacao = "Fechada";
-							}
+							// $est = $val['situacao'];
+							// if ($est == 1) {
+							// 	$situacao = "Ativa";
+							// 	} else {
+							// 	$situacao = "Fechada";
+							// }
 											
 						 ?>
 		
@@ -80,6 +80,7 @@
 					<tr class="bg-secondary text-white">
 						<td style="text-align: center;" >Localidade</td>		
 						<td style="text-align: center;" >Data de Envio</td>
+						<td style="text-align: center;" >Hora</td>
 						<td style="text-align: center;" >UE2009</td>
 						<td style="text-align: center;" >UE2010</td>
 						<td style="text-align: center;" >UE2011</td>
@@ -93,7 +94,7 @@
 						<td style="text-align: center;" >BAT Substituídas </td>
 						<td style="text-align: center;" >BAT com vazamento </td>
 						<td style="text-align: center;" >BAT oxidadas</td>
-						<td style="text-align: center;" class="text-center">Ação</td>
+						<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
 					</tr>
 				</thead>
 				<tbody>
@@ -115,9 +116,12 @@
 						//var_dump($local) ;
 						$data =  substr($val['dt_envio'],0, 10);   
 						$data2 = implode("/",array_reverse(explode("-",$data)));;
+						$hora =  substr($val['dt_envio'],10, 9);  
+						echo $hora;
 						?>
 						<td style="text-align: center;" ><strong><?php echo $local;?></strong></td>
 						<td style="text-align: center;" ><?php echo $data2 ?></td> 
+						<td style="text-align: center;" ><?php echo $hora ?></td> 
 						<td style="text-align: center;" ><?php echo $val['ue2009p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2010p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2011p'];?></td>
@@ -127,14 +131,14 @@
 						<td style="text-align: center;" ><?php echo $val['ue2022p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['nue_sem_chamado'];?></td>
 						<td style="text-align: center;" ><?php echo $val['nue_com_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_carga_ok'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_sem_carga'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_reserva'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_subst'];?></td>
 						<td style="text-align: center;" ><?php echo $val['bat_vazando'];?></td>
 						<td style="text-align: center;" ><?php echo $val['bat_oxidada'];?></td>
-						<td align="center" >
+						<!-- <td align="center" >
 							<a href="php/producao_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i></a>  
 							<a href="php/producao_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a>
-						</td>
+						</td> -->
 
 					</tr>
 					<?php 

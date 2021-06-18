@@ -15,8 +15,8 @@ $userCount	=	$db->getQueryCount('status','id_status');
 							'totue2022'=>$ue2022p,
 							'tnue_sem_chamado'=>$nue_sem_chamado,
 							'tnue_com_chamado'=>$nue_com_chamado,
-							'tbat_carga_ok'=>$bat_carga_ok,
-							'tbat_sem_carga'=>$bat_sem_carga,
+							'tbat_reserva'=>$bat_reserva,
+							'tbat_subst'=>$bat_subst,
 							'tbat_vazando'=>$bat_vazando,
 							'tbat_oxidada'=>$bat_oxidada,
 							

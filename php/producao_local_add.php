@@ -26,8 +26,8 @@ extract($_REQUEST);
 							'ue2022p'=>$ue2022p,
 							'nue_sem_chamado'=>$nue_sem_chamado,
 							'nue_com_chamado'=>$nue_com_chamado,
-							'bat_carga_ok'=>$bat_carga_ok,
-							'bat_sem_carga'=>$bat_sem_carga,
+							'bat_reserva'=>$bat_reserva,
+							'bat_subst'=>$bat_subst,
 							'bat_vazando'=>$bat_vazando,
 							'bat_oxidada'=>$bat_oxidada,
 							'observacao'=>$observacao,
@@ -61,8 +61,8 @@ extract($_REQUEST);
 				$totue2022_v = $val['totue2022'];
 				$tnue_sem_chamado_v = $val['tnue_sem_chamado'];
 				$tnue_com_chamado_v = $val['tnue_com_chamado'];
-				$tbat_carga_ok_v = $val['tbat_carga_ok'];
-				$tbat_carga_ok_v = $val['tbat_sem_carga'];
+				$tbat_reserva_v = $val['tbat_reserva'];
+				$tbat_subst_v = $val['tbat_subst'];
 				$tbat_vazando_v = $val['tbat_vazando']; 
 				$tbat_oxidada_v = $val['tbat_oxidada'];
 		        $tot_prod = $totue2009_v + $totue2010_v + $totue2011_v + $totue2013_v + $totue2015_v + $totue2020_v +$totue2022_v;
@@ -81,8 +81,8 @@ extract($_REQUEST);
 		 $totue2022_v = $totue2022_v + $ue2022p;
 		 $tnue_sem_chamado_v = $tnue_sem_chamado_v + $nue_sem_chamado;
 		 $tnue_com_chamado_v = $tnue_com_chamado_v  + $nue_com_chamado;
-		 $tbat_carga_ok_v = $tbat_carga_ok_v + $bat_carga_ok;
-		 $tbat_sem_carga_v = $tbat_sem_carga_v + $bat_sem_carga;
+		 $tbat_reserva_v = $tbat_reserva_v + $bat_reserva;
+		 $tbat_subst_v = $tbat_subst_v + $bat_subst;
 		 $tbat_vazando_v =  $tbat_vazando_v  + $bat_vazando; 
 		 $tbat_oxidada_v = $tbat_oxidada_v + $bat_oxidada;
 		
@@ -99,8 +99,8 @@ extract($_REQUEST);
 								'totue2022'=>$totue2022_v,
 								'tnue_sem_chamado'=>$tnue_sem_chamado_v,
 								'tnue_com_chamado'=>$tnue_com_chamado_v ,
-								'tbat_carga_ok'=>$tbat_carga_ok_v,
-								'tbat_sem_carga'=>$tbat_carga_ok_v,
+								'tbat_reserva'=>$tbat_reserva_v,
+								'tbat_subst'=>$tbat_subst_v,
 								'tbat_vazando'=>$tbat_vazando_v,
 								'tbat_oxidada'=>$tbat_oxidada_v,
 							);
@@ -217,7 +217,7 @@ extract($_REQUEST);
         width: 150px;
         font-size: 20px;
     }
-	#bat_carga_ok
+	#bat_reserva
     {
         background-color: #F5F6CE;
         color: black;
@@ -226,7 +226,7 @@ extract($_REQUEST);
         width: 150px;
         font-size: 20px;
     }
-	#bat_sem_carga
+	#bat_subst
     {
         background-color: #F5F6CE;
         color: black;
@@ -387,11 +387,11 @@ extract($_REQUEST);
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Reserva:</label>
-								<input type="text" class="form-control" value="0" name="bat_carga_ok" id="bat_carga_ok" onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" value="0" name="bat_reserva" id="bat_reserva" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Substituídas:</label>
-								<input type="text" class="form-control" value="0" name="bat_sem_carga" id="bat_sem_carga" onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" value="0" name="bat_subst" id="bat_subst" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Com vazamento(em garantia):</label>

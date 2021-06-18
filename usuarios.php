@@ -13,12 +13,12 @@
 		session_start();
         include ("php/bootstrapalert.php");
         
-        $dadosConexao = mysqli_get_host_info($conexao);
+        
             if (!isset($_SESSION["usuario"])) {
                 header('Location: index.php');
                 exit();
             }
-            include($_SESSION['menu']); 
+            include($_SESSION['menu2']); 
     ?>
 </head>
 <body>
@@ -64,14 +64,14 @@
 				<thead>
 					<tr class="bg-primary text-white">
 						<!-- <td style="text-align: center;" >#</td> -->
-						<td style="text-align: center;" >#</td>
-						<td style="text-align: center;" >Local</td>
+						<!-- <td style="text-align: center;" >#</td> -->
+						<!-- <td style="text-align: center;" >Local</td> -->
 						<td style="text-align: center;" >Usuario</td>
 						<td style="text-align: center;" >Nome</td>
 						<td style="text-align: center;" >E-mail</td>
 						<td style="text-align: center;" >Senha</td>
 						<td style="text-align: center;" >Nivel de Acesso</td>
-						<td style="text-align: center;" class="text-center">Ação</td>
+						<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
 					</tr>
 				</thead>
 				<tbody>
@@ -83,8 +83,8 @@
 					?>
 					<tr>
 						<!-- <td style="text-align: center;"><?php echo $s;?></td> -->
-						<td style="text-align: center;" ><?php echo $val['id_usuario'];?></td>
-						<td style="text-align: center;" ><?php echo $val['id_local'];?></td>
+						<!-- <td style="text-align: center;" ><?php echo $val['id_usuario'];?></td>
+						<td style="text-align: center;" ><?php echo $val['id_local'];?></td> -->
 						<td style="text-align: center;" ><?php echo $val['usuario'];?></td>
 						<td style="text-align: center;" ><?php echo $val['nome'];?></td>
 						<td style="text-align: center;"><?php echo $val['email'];?></td>
@@ -94,10 +94,10 @@
 						
 						<!-- <td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_minima'])));;?></td> -->
 
-						<td align="center">
+						<!-- <td align="center">
 							<a href="php/usuario_edit.php?editId=<?php echo $val['id_usuario'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
 							<a href="php/usuario_delete.php?delId=<?php echo $val['id_usuario'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
-						</td>
+						</td> -->
 
 					</tr>
 					<?php 
