@@ -189,11 +189,92 @@
 				</div> 
 			</div>
 		</div>
+
+						<div class="row">
+						<div id ="curve_chart" name="curve_chart">  </div>
+					
+					    </div>
+
+
+
+
 					<div class="card-footer text-muted">
 						SIMUEL 
 					</div>
 	</div>
-	<script>
+
+	<?php
+
+# Grab the data from the database
+// $query = "SELECT `ue2009p`, `ue2010p`, `ue2011p`,`ue2013p`,`ue2015p`  FROM `producao`";
+// //$query = "SELECT `id_local`, `ue2009p`, `ue2010p`, `ue2011p`,`ue2013p`,`ue2015p`  FROM `producao`";
+// $mysqli_result = mysqli_query($conexao,$query);
+// $data = array();
+
+$query = "SELECT `ue2009p`, `ue2010p`, `ue2011p`,`ue2013p`,`ue2015p`  FROM `producao`";
+$mysqli_result = $mysqli->query($query);
+$data = array();
+
+
+while (($row = $mysqli_result->fetch_assoc()) !== null)
+{
+    $data[] = $row;
+}
+var_dump($data);
+// $id_loc = $val['id_local'];
+// 						$sql = "SELECT n_local FROM local WHERE id_local = '$id_loc' ";
+// 						$result = mysqli_query($conexao,$sql);
+// 						$row = mysqli_fetch_row($result);
+// 						$local = $row[0];
+
+
+# our converstion function given above.
+
+
+function convertDataToChartForm($data)
+{
+    $newData = array();
+    $firstLine = true;
+
+    foreach ($data as $dataRow)
+    {
+        if ($firstLine)
+        {
+            $newData[] = array_keys($dataRow);
+            $firstLine = false;
+        }
+
+        $newData[] = array_values($dataRow);
+    }
+
+    return $newData;
+}
+
+?>					
+
+	
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {        
+        var data = google.visualization.arrayToDataTable((<?= json_encode(convertDataToChartForm($data)); ?>));
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+	
+
+
 	</script>
 </body>
 </html>

@@ -27,32 +27,7 @@
 
 <script src="../js/jquery.mask.min.js"></script>
 <script src="../js/datepicker-pt-BR.js"></script> 
-
-
-<!-- <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"> 
-<link rel="stylesheet" href="css/bootstrap.min.css" >
-<link rel="stylesheet" href="../css/bootstrap.min.css" >
-<link rel="stylesheet" href="css/all.css" > 
-<link rel="stylesheet" href="../css/all.css" > 
-<link rel="stylesheet" href="../css/estilo.css" > 
-<link rel="stylesheet" href="../css/jquery-ui.css" > 
-<link rel="stylesheet" href="css/jquery-ui.css" > 
-<script src="js/bootstrap.min.js"></script>					
-<script src="js/jquery.min.js"></script>
-<script src="../js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js" ></script>
-<script src="js/jquery.caret.js"></script> 
- <script src="js/jquery-ui.min.js"></script>
-<script src="../js/jquery-ui.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="../js/jquery-ui.js"></script>
-<script src="js/jquery.mask.js"></script>
-<script src="../js/jquery.mask.js"></script>
-<script src="js/datepicker-pt-BR.js"></script>
-<script src="../js/datepicker-pt-BR.js"></script>  -->
-
-
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 
    
@@ -147,6 +122,15 @@
               </ul>
         <!-- </div> -->
         <!-- <div class="btn-group" role="group"> -->
+        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Consultas
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <li><a class="dropdown-item" href="parque.php">Parque de Urnas</a></li>  
+                <li><a class="dropdown-item" href="andamento_STE.php">Acompanhamento STE</a></li>
+                <li><a class="dropdown-item" href="cadastro_nvi_ze.php">NVI x Zonas</a></li>
+              </ul>
+
               <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Cadastros
               </button>
@@ -154,7 +138,6 @@
                 <li><a class="dropdown-item" href="locais.php">Locais</a></li>  
                 <li><a class="dropdown-item" href="usuarios.php">Usuários</a></li>
                 <li><a class="dropdown-item" href="equipamentos.php">Equipamentos</a></li>
-                
               </ul>
 
               <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -164,10 +147,7 @@
                 <li><a class="dropdown-item" href="manutencao.php">Manutenção</a></li>  
                 <li><a class="dropdown-item" href="parametros.php">Parâmetros</a></li>  
                 <li><a class="dropdown-item" href="php_info.php">PHP Info</a></li>
-               
-                
               </ul>
-
         </div>
         <a href="../simuel/php/logout.php" class="btn btn-primary">Sair</a>
       </div>

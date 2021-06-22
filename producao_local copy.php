@@ -226,10 +226,6 @@
 							//calcular o percentual
 							$perc_tot =  ($tot_ue * 100) / $t_urna_os;
 							$perc_tot_st = number_format($perc_tot, 1);
-
-							// calcular a diff para o grafico
-
-							$tot_falta = $t_urna_os - $tot_ue;
 						?>
 						<td style="text-align: center;" ><strong><?php echo $val['totue2009'];?></strong></td>
 						<td style="text-align: center;" ><strong><?php echo $val['totue2010'];?></strong></td>
@@ -304,79 +300,12 @@
 			<!---//////////////////////////////////////// -->
 			</div>
 			</div>
-						<div class="row" col-md-12>
-							<div  id ="chart_div" name="chart_div"  style="width: 600px; height: 350px;"></div>  
-							<div  id ="chart_div2" name="chart_div2" style="width: 600px; height: 350px;"> </div>
-					    </div>
-						<br>
-						<div class="row" col-md-4 > 
-							
-
-					    </div>
-
 			<div class="card-footer text-muted">
 						SIMUEL 
 			</div>
 		</div>
 	</div>
-
-	<!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	<script type="text/javascript"> -->
 	<script>
-	//------------GRAFICO 1 -----------------------!>
-	
-	//carregando modulo visualization
-	google.load("visualization", "1", {packages:["corechart"]});
-	//função de monta e desenha o gráfico
-	function drawChart() {
-	//variavel com armazenamos os dados, um array de array's
-	//no qual a primeira posição são os nomes das colunas
-	var data = google.visualization.arrayToDataTable([
-	['Modelo', 'Total'],
-	['UE2009', <?php echo $val['totue2009'];?>],
-	['UE2010', <?php echo $val['totue2010'];?>],
-	['UE2011', <?php echo $val['totue2011'];?>],
-	['UE2013', <?php echo $val['totue2013'];?>],
-	['UE2015', <?php echo $val['totue2015'];?>],
-	]);
-
-	var data2 = google.visualization.arrayToDataTable([
-	['Modelo', 'Total'],
-	['Concluido', <?php echo $tot_ue;?>],
-	['A Concluir', <?php echo $tot_falta;?>],
-	]);
-
-
-	//opções para exibição do gráfico
-	var options = {
-	title: 'Percentual total por modelo de urna já produzido',//titulo do gráfico
-	is3D: true // false para 2d e true para 3d o padrão é false
-	};
-
-	var options2 = {
-	title: 'Percentual total produzido ',//titulo do gráfico
-	is3D: true // false para 2d e true para 3d o padrão é false
-	};
-	//cria novo objeto PieChart que recebe
-	//como parâmetro uma div onde o gráfico será desenhado
-	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-	//desenha passando os dados e as opções
-	chart.draw(data, options);
-	
-	var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
-	//desenha passando os dados e as opções
-	chart2.draw(data2, options2);
-	
-	}
-	//metodo chamado após o carregamento
-	google.setOnLoadCallback(drawChart);
-
-	
-	
-
 	</script>
-
-
-	
 </body>
 </html>

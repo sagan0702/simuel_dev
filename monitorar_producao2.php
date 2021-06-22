@@ -18,8 +18,9 @@
             }
             include($_SESSION['menu2']); 
     ?>
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	<script type="text/javascript"></script>
+
+
+
 </head>
 <body>
 	<?php
@@ -152,6 +153,8 @@
 							<a href="php/producao_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a>
 						</td> -->
 
+
+						
 					</tr>
 					<?php 
 						}
@@ -185,6 +188,11 @@
 									<a href="<?php echo $_SERVER['PHP_SELF'];?>" class="btn btn-danger"><i class="fa fa-fw fa-sync"></i>Limpar</a>
 							</div>
 						</div>
+						<div class="row">
+						<div id ="chart_div" name="chart_div">  </div>
+					
+					    </div>
+
 					</form>
 				</div> 
 			</div>
@@ -193,7 +201,42 @@
 						SIMUEL 
 					</div>
 	</div>
-	<script>
-	</script>
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+//carregando modulo visualization
+google.load("visualization", "1", {packages:["corechart"]});
+
+//função de monta e desenha o gráfico
+function drawChart() {
+//variavel com armazenamos os dados, um array de array's
+//no qual a primeira posição são os nomes das colunas
+
+
+var data = google.visualization.arrayToDataTable([
+['NVI', 'Total'],
+['<?php $local;?>', <?php echo $val['ue2009p'];?>],
+['<?php $local;?>', <?php echo $val['ue2010p'];?>],
+['<?php $local;?>', <?php echo $val['ue2011p'];?>],
+['<?php $local;?>', <?php echo $val['ue2013p'];?>],
+]);
+//opções para exibição do gráfico
+var options = {
+title: 'Percentual Atingido por NVI',//titulo do gráfico
+is3D: true // false para 2d e true para 3d o padrão é false
+};
+//cria novo objeto PeiChart que recebe
+//como parâmetro uma div onde o gráfico será desenhado
+var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+//desenha passando os dados e as opções
+chart.draw(data, options);
+}
+//metodo chamado após o carregamento
+google.setOnLoadCallback(drawChart);
+</script>
+
+
+
 </body>
 </html>

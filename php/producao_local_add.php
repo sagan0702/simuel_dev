@@ -394,11 +394,11 @@ extract($_REQUEST);
 								<input type="text" class="form-control" value="0" name="bat_subst" id="bat_subst" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
-								<label for="urna22">Com vazamento(em garantia):</label>
+								<label for="urna22">Com vazamento (em garantia):</label>
 								<input type="text" class="form-control"  value="0" name="bat_vazando" id="bat_vazando" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
-								<label for="urna22">Com oxidação(em garantia):</label>
+								<label for="urna22">Com oxidação (em garantia):</label>
 								<input type="text" class="form-control" value="0" name="bat_oxidada"  id="bat_oxidada" onkeypress="$(this).mask('0000')" >
 							</div>
 						</div>

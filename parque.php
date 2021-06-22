@@ -45,8 +45,8 @@
 			<div class="card-header">
 			<h3>Parque de Equipamentos por Localidade</h3>
 				<!-- <i class="fa fa-fw fa-globe"></i> <strong>Pequisar </strong>  -->
-				<a href="php/ciclo_add.php" class="float-left btn btn-dark btn-lg"> 
-				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar </a></div> <!--- BOTÃO DE AÇÃO -->
+				<!-- <a href="php/ciclo_add.php" class="float-left btn btn-dark btn-lg"> 
+				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar </a></div> - BOTÃO DE AÇÃO -->
 			<div class="card-body"> <!--- MENSAGENS -->
 				<?php
 				if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rds"){
@@ -72,9 +72,8 @@
 						<td style="text-align: center;" >UE2015</td>
 						<td style="text-align: center;" >UE2020</td>
 						<td style="text-align: center;" >UE2022</td>
-						<td style="text-align: center;" >Baterias Reserva</td>
-						<td style="text-align: center;" >Atualização</td>
-						<td style="text-align: center;" class="text-center">Ação</td>
+						
+						<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
 					</tr>
 				</thead>
 				<tbody>
@@ -105,13 +104,12 @@
 						<td style="text-align: center;" ><?php echo $val['qtde_ue2015'];?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_ue2020'];?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_ue2022'];?></td>
-						<td style="text-align: center;" ><?php echo $val['qtde_baterias'];?></td>
-						<td style="text-align: center;" ><?php echo $data2;?></td>
 						
-						<td align="center" >
+						
+						<!-- <td align="center" >
 							<a href="php/producao_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i></a>  
 							<a href="php/producao_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a>
-						</td>
+						</td> -->
 
 					</tr>
 					<?php 
@@ -127,11 +125,69 @@
 					
 				</div>
 				
+						<div class="row d-flex justify-content-center"  >
+							<div  id ="chart_div" name="chart_div"  style="width: 700px; height: 500px;"></div>   
+					    </div>	
+
+
+
 			</div>
 			<div class="card-footer text-muted">
 						SIMUEL 
 					</div>
+
+
+						<!-- somar valores por modelo de urna e fazer grafico -->
+
 		</div>
+				<script type="text/javascript"
+   				 src="https://www.google.com/jsapi"></script>
+    				<script type="text/javascript">
+					
+						//carregando modulo visualization
+					google.load("visualization", "1", {packages:["corechart"]});
+
+					//função de monta e desenha o gráfico
+					function drawChart() {
+					//variavel com armazenamos os dados, um array de array's
+					//no qual a primeira posição são os nomes das colunas
+					var data = google.visualization.arrayToDataTable([
+						// ['Modelo', 'Total'],
+						// ['UE2009', <?php echo $val['qtde_ue2009'];?>],
+						// ['UE2010', <?php echo $val['qtde_ue2010'];?>],
+						// ['UE2011', <?php echo $val['qtde_ue2011'];?>],
+						// ['UE2013', <?php echo $val['qtde_ue2013'];?>],
+						// ['UE2015', <?php echo $val['qtde_ue2015'];?>],
+
+						['Modelo', 'Total'],
+						['UE2009', 10],
+						['UE2010', 34],
+						['UE2011', 45],
+						['UE2013', 11],
+						['UE2015', 4],
+
+						]);
+						//opções para exibição do gráfico
+						var options = {
+								title: 'Percentual do parque do urnas por modelo',//titulo do gráfico
+								is3D: true // false para 2d e true para 3d o padrão é false
+						};
+						//cria novo objeto PeiChart que recebe
+						//como parâmetro uma div onde o gráfico será desenhado
+						var chart = new google.visualization
+						.PieChart(document.getElementById('chart_div'));
+						//desenha passando os dados e as opções
+						chart.draw(data, options);
+					}
+					//metodo chamado após o carregamento
+					google.setOnLoadCallback(drawChart);
+					
+					
+					
+					</script>			
+
+
+
 	
 	</div>
 
