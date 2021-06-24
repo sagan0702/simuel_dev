@@ -166,6 +166,14 @@
 			</table>
 		<!-- </div>  -->
 		<div class="col-sm-12"> 
+
+
+						<div class="row" col-md-12>
+							<div  id ="chart_div" name="chart_div"  style="width: 600px; height: 350px;"></div>  
+							<div  id ="chart_div2" name="chart_div2" style="width: 600px; height: 350px;"> </div>
+					    </div>
+					
+
 <!--------------- FORM TABELA 2  TABELA DE STATUS - RESUMO PARTE 1 - URNAS -------------------->
 	<?php
 
@@ -282,12 +290,12 @@
 							$s++;
 					?>
 					<tr>
-						<td style="text-align: center;" ><?php echo $val['tnue_sem_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tnue_com_chamado'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_reserva'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_subst'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_vazando'];?></td>
-						<td style="text-align: center;" ><?php echo $val['tbat_oxidada'];?></td>
+						<td style="text-align: center;" ><strong><?php echo $val['tnue_sem_chamado'];?></strong></td>
+						<td style="text-align: center;" ><strong><?php echo $val['tnue_com_chamado'];?></strong></td>
+						<td style="text-align: center;" ><strong><?php echo $val['tbat_reserva'];?></strong></td>
+						<td style="text-align: center;" ><strong><?php echo $val['tbat_subst'];?></strong></td>
+						<td style="text-align: center;" ><strong><?php echo $val['tbat_vazando'];?></strong></td>
+						<td style="text-align: center;" ><strong><?php echo $val['tbat_oxidada'];?></strong></td>
 						<!-- <td align="center"> -->
 							<!-- <a href="php/producao_local_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> |  -->
 							<!-- <a href="php/producao_local_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a> -->
@@ -304,11 +312,7 @@
 			<!---//////////////////////////////////////// -->
 			</div>
 			</div>
-						<div class="row" col-md-12>
-							<div  id ="chart_div" name="chart_div"  style="width: 600px; height: 350px;"></div>  
-							<div  id ="chart_div2" name="chart_div2" style="width: 600px; height: 350px;"> </div>
-					    </div>
-						<br>
+						
 						<div class="row" col-md-4 > 
 							
 

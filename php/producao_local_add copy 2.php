@@ -10,30 +10,7 @@ extract($_REQUEST);
 // 	}else{
 		//converter para data br -> data mysql
 		//var_dump($_POST);
-		// $sql = "SELECT * FROM status WHERE id_local = '$ids_local' ";
-		// $result = mysqli_query($conexao,$sql);
-		// $row = mysqli_fetch_row($result);
-		// $s_bat_reserva = $row[10];
-		// $bat_subst = $val['tbat_subst'];
-
-		// $s_bat_atual = $s_bat_reserva - $bat_subst;
-		// // var_dump($s_bat_reserva) ;
-		// echo "bat reserva ".$s_bat_reserva;
-		// echo "bat subst ".$bat_subst ;
-		// echo "bat atual ".$s_bat_atual;
-
-
-	// INSERE OS VALORES DO FORM NA TABELA PRODUCAO
-		session_start();
-		include ("conexao.php");
-		$ids_local = $_SESSION['id_local'];
-		$sql = "SELECT * FROM status WHERE id_local = '$ids_local' ";
-		$result = mysqli_query($conexao,$sql);
-		$row = mysqli_fetch_row($result);
-		$s_bat_reserva = $row[10];
-
 		$userCount	=	$db->getQueryCount('producao','id_producao');
-		var_dump($s_bat_reserva) ;
 		if($userCount[0]['total']<20){
 			$data	=	array(
 							'id_ciclo'=>$id_ciclo,
@@ -49,7 +26,7 @@ extract($_REQUEST);
 							'ue2022p'=>$ue2022p,
 							'nue_sem_chamado'=>$nue_sem_chamado,
 							'nue_com_chamado'=>$nue_com_chamado,
-							'bat_reserva'=>$s_bat_reserva,
+							'bat_reserva'=>$bat_reserva,
 							'bat_subst'=>$bat_subst,
 							'bat_vazando'=>$bat_vazando,
 							'bat_oxidada'=>$bat_oxidada,
@@ -84,7 +61,7 @@ extract($_REQUEST);
 				$totue2022_v = $val['totue2022'];
 				$tnue_sem_chamado_v = $val['tnue_sem_chamado'];
 				$tnue_com_chamado_v = $val['tnue_com_chamado'];
-				$tbat_reserva_v = $s_bat_reserva;
+				$tbat_reserva_v = $val['tbat_reserva'];
 				$tbat_subst_v = $val['tbat_subst'];
 				$tbat_vazando_v = $val['tbat_vazando']; 
 				$tbat_oxidada_v = $val['tbat_oxidada'];
@@ -93,7 +70,7 @@ extract($_REQUEST);
 		}else{
 			
 		} 			
-		//------- somar/atualizar os valores de status com os valores da producao atual
+		//------- somar os valores de status com os valores da producao atual
 
 		 $totue2009_v = $totue2009_v + $ue2009p; 
 		 $totue2010_v = $totue2010_v + $ue2010p;
@@ -104,7 +81,7 @@ extract($_REQUEST);
 		 $totue2022_v = $totue2022_v + $ue2022p;
 		 $tnue_sem_chamado_v = $tnue_sem_chamado_v + $nue_sem_chamado;
 		 $tnue_com_chamado_v = $tnue_com_chamado_v  + $nue_com_chamado;
-		 $tbat_reserva_v = $tbat_reserva_v - $bat_subst;
+		 $tbat_reserva_v = $tbat_reserva_v + $bat_reserva;
 		 $tbat_subst_v = $tbat_subst_v + $bat_subst;
 		 $tbat_vazando_v =  $tbat_vazando_v  + $bat_vazando; 
 		 $tbat_oxidada_v = $tbat_oxidada_v + $bat_oxidada;
@@ -157,8 +134,6 @@ extract($_REQUEST);
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-		
 	<title>Adicionar Produção Local</title>
 	<style>
 	#ue2009p
@@ -245,7 +220,7 @@ extract($_REQUEST);
 	#bat_reserva
     {
         background-color: #F5F6CE;
-        color: gray;
+        color: black;
         text-align: center;
         font-weight: bold;
         width: 150px;
@@ -381,10 +356,10 @@ extract($_REQUEST);
 								<label for="urna22"><h5>UE2022:</h5></label>
 								<input type="text" class="form-control" name="ue2022p" id="ue2022p" onfocusout="totalUrna()" value="0" onkeypress="$(this).mask('0000')"  >
 							</div>
-							<!-- <div class="col-md-2">
+							<div class="col-md-2">
 								<label for="urna22"><h5>Total de Urnas:</h5></label>
                                 <div id="total_urnas"></div>
-							</div> -->
+							</div>
 						</div>
 						</br> <!--- QUEBRA DE LINHA NO LAYOUT -->
 						<div class="form-row">
@@ -411,25 +386,11 @@ extract($_REQUEST);
 								<label for="urna21"><h5>Situação das baterias</h5></label>
 							</div>
 							<div class="col-md-2">
-									<?php 
-									$ids_local = $_SESSION['id_local'];
-									// echo "valor de id_local = ". $ids_local;
-									// $id_loc = $val['id_local'];
-									$sql = "SELECT * FROM status WHERE id_local = '$ids_local' ";
-									$result = mysqli_query($conexao,$sql);
-									$row = mysqli_fetch_row($result);
-									$s_bat_reserva = $row[10];
-									// var_dump($s_bat_reserva) ;
-									
-									?>
-
-								<label for="urna22">Reserva <br> atual:  </label>
-								<input type="text" class="form-control"  disabled  value="<?php  echo "$s_bat_reserva" ?>	" name="bat_reserva" id="bat_reserva"  >							
-								
-								
+								<label for="urna22">Reserva:</label>
+								<input type="text" class="form-control" value="0" name="bat_reserva" id="bat_reserva" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
-								<label for="urna22">Substituídas: <br>. </label>
+								<label for="urna22">Substituídas:</label>
 								<input type="text" class="form-control" value="0" name="bat_subst" id="bat_subst" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">

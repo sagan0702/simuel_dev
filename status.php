@@ -201,7 +201,10 @@
 
 					</div> 
 					</div> 
-					
+						<div class="row d-flex justify-content-center"  >
+							<div  id ="chart_div" name="chart_div"  style="width: 700px; height: 500px;"></div>   
+					    </div>	
+
 					<div class="card-footer text-muted">
 						SIMUEL 
 					</div>
@@ -210,8 +213,52 @@
 					
 	</div>
 
-	<script>
-		
+	
+		<script type="text/javascript"
+   				 src="https://www.google.com/jsapi"></script>
+    				<script type="text/javascript">
+					
+						//carregando modulo visualization
+					google.load("visualization", "1", {packages:["corechart"]});
+
+					//função de monta e desenha o gráfico
+					function drawChart() {
+					//variavel com armazenamos os dados, um array de array's
+					//no qual a primeira posição são os nomes das colunas
+					var data = google.visualization.arrayToDataTable([
+						// ['Modelo', 'Total'],
+						// ['UE2009', <?php echo $val['qtde_ue2009'];?>],
+						// ['UE2010', <?php echo $val['qtde_ue2010'];?>],
+						// ['UE2011', <?php echo $val['qtde_ue2011'];?>],
+						// ['UE2013', <?php echo $val['qtde_ue2013'];?>],
+						// ['UE2015', <?php echo $val['qtde_ue2015'];?>],
+
+						['Modelo', 'Total'],
+						['UE2009', 10],
+						['UE2010', 34],
+						['UE2011', 45],
+						['UE2013', 11],
+						['UE2015', 4],
+
+						]);
+						//opções para exibição do gráfico
+						var options = {
+								title: 'Percentual do parque do urnas por modelo',//titulo do gráfico
+								is3D: true // false para 2d e true para 3d o padrão é false
+						};
+						//cria novo objeto PeiChart que recebe
+						//como parâmetro uma div onde o gráfico será desenhado
+						var chart = new google.visualization
+						.PieChart(document.getElementById('chart_div'));
+						//desenha passando os dados e as opções
+						chart.draw(data, options);
+					}
+					//metodo chamado após o carregamento
+					google.setOnLoadCallback(drawChart);
+					
+					
+					
+					</script>			
 	</script>
 </body>
 </html>

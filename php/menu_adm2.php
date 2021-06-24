@@ -119,6 +119,7 @@
                 <li><a class="dropdown-item" href="status.php">Status Total</a></li>
                 <li><a class="dropdown-item" href="monitorar_producao.php">Consultar Produção Enviada</a></li>
                 <li><a class="dropdown-item" href="#">Consultas</a></li>
+                <li><a href="producao_local.php" class="btn btn-primary">Simular Produção (Testes) </a></li>
               </ul>
         <!-- </div> -->
         <!-- <div class="btn-group" role="group"> -->

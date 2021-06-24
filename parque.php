@@ -138,6 +138,23 @@
 
 
 						<!-- somar valores por modelo de urna e fazer grafico -->
+						<?php 	
+						$sql = "SELECT * FROM status";
+						$result = mysqli_query($conexao,$sql);
+						$row = mysqli_fetch_row($result);
+						$a = $row[0];
+						$b = $row[1];
+						$c = $row[2];
+						$d = $row[3];
+
+						echo "a - ".$a;
+						echo "b - ".$b;
+						echo "c - ".$c;
+						echo "d - ".$d;
+
+						?>
+
+
 
 		</div>
 				<script type="text/javascript"

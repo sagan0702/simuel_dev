@@ -12,7 +12,17 @@ include('conexao.php');
 
 if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
 	
-	
+
+	//------- pegar o valor de bat-reserva
+	// $ids_local = $_SESSION['id_local'];
+	// $sql = "SELECT * FROM status WHERE id_local = '$ids_local' ";
+	// $result = mysqli_query($conexao,$sql);
+	// $row = mysqli_fetch_row($result);
+	// $s_bat_reserva = $row[10];
+
+
+
+
 	//------- pegar os valores da producao que será deletada
 	$delId = $_REQUEST['delId'];
 	$sql = "SELECT * FROM producao WHERE id_producao = $delId ";
@@ -114,7 +124,7 @@ if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
 	$totue2022 = $totue2022 - $ue2022p;
 	$tnue_sem_chamado = $tnue_sem_chamado - $nue_sem_chamado_p;
 	$tnue_com_chamado = $tnue_com_chamado  - $nue_com_chamado_p;
-	$tbat_reserva =  $tbat_reserva  - $bat_reserva_p;
+	$tbat_reserva =  $tbat_reserva  - $bat_subst;
 	$tbat_subst = $tbat_subst - $bat_subst_p;
 	$tbat_vazando = $tbat_vazando - $bat_vazando_p; 
 	$tbat_oxidada = $tbat_oxidada - $bat_oxidada_p;
