@@ -119,7 +119,7 @@
                 <li><a class="dropdown-item" href="status.php">Status Total</a></li>
                 <li><a class="dropdown-item" href="monitorar_producao.php">Consultar Produção Enviada</a></li>
                 <li><a class="dropdown-item" href="#">Consultas</a></li>
-                <li><a href="producao_local.php" class="btn btn-primary">Simular Produção (Testes) </a></li>
+               
               </ul>
         <!-- </div> -->
         <!-- <div class="btn-group" role="group"> -->
@@ -131,6 +131,18 @@
                 <li><a class="dropdown-item" href="andamento_STE.php">Acompanhamento STE</a></li>
                 <li><a class="dropdown-item" href="cadastro_nvi_ze.php">NVI x Zonas</a></li>
               </ul>
+
+              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Peças de Urna
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <li><a class="dropdown-item" href="pecas_solicitar.php">Solicitar</a></li>  
+                <li><a class="dropdown-item" href="pecas_consultar.php">Consultar</a></li>
+                <li><a class="dropdown-item" href="pecas.php">Gerenciar</a></li>
+                
+              </ul>
+
+
 
               <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Cadastros

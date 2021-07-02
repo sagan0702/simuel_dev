@@ -1,25 +1,22 @@
-<?php include_once('php/config.php');?>
+<?php include_once('config.php');?>
 <!doctype html>
 <html lang="pt-BR">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Parque de Equipamentos</title>
+	<title>Parque de Equipamentos - Consulta no Banco ASI Web - ORACLE</title>
 	<?php 
-	include_once('php/formatacao.php');
-    include ("php/bootstrapalert.php");
+	include_once('formatacao.php');
+    include ("bootstrapalert.php");
 	?>
 	<?php
         session_start();
-        include ("php/conexao.php");
-       
-        
-        
+        include ("conexao.php");
             if (!isset($_SESSION["usuario"])) {
                 header('Location: index.php');
                 exit();
             }
-            include($_SESSION['menu']); 
+            // include($_SESSION['menu']); 
     ?>
 </head>
 <body>
@@ -37,13 +34,27 @@
 	if(isset($_REQUEST['estado']) and $_REQUEST['estado']!=""){
 		$condition	.=	' AND estado LIKE "%'.$_REQUEST['estado'].'%" ';
 	}
+	
+	
+	//ACESSO AO BANCO
+	
+
+
 		
+	
+
+
 	$userData	=	$db->getAllRecords('local','*',$condition,'ORDER BY id_local ');
 	?>
-   	<div class="container">
+   
+ 
+ 
+ 
+ 
+   <div class="container">
 		<div class="card"> <!--- FORM DE PESQUISA -->
 			<div class="card-header">
-			<h3>Parque de Equipamentos por Localidade</h3>
+			<h3>Parque de Equipamentos por Localidade -  ASIWEB / ORACLE</h3>
 				<!-- <i class="fa fa-fw fa-globe"></i> <strong>Pequisar </strong>  -->
 				<!-- <a href="php/ciclo_add.php" class="float-left btn btn-dark btn-lg"> 
 				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar </a></div> - BOTÃO DE AÇÃO -->
@@ -59,6 +70,9 @@
 					echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Há alguma coisa errada. <strong>Tente novamente!</strong></div>';
 				}
 				?>
+		
+				
+		
 		<div>   <!--- MOSTRA A TABELA DE REGISTROS  -->
 		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Equipamentos por local </h5>
 			<table class="table table-striped table-bordered table-sm">
@@ -72,7 +86,6 @@
 						<td style="text-align: center;" >UE2015</td>
 						<td style="text-align: center;" >UE2020</td>
 						<td style="text-align: center;" >UE2022</td>
-						
 						<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
 					</tr>
 				</thead>
@@ -84,8 +97,6 @@
 							$s++;
 					?>
 					<tr>
-
-						
 						<?php
 						$id_loc = $val['id_local'];
 						$sql = "SELECT n_local FROM local WHERE id_local = '$id_loc' ";
@@ -104,8 +115,6 @@
 						<td style="text-align: center;" ><?php echo $val['qtde_ue2015'];?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_ue2020'];?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_ue2022'];?></td>
-						
-						
 						<!-- <td align="center" >
 							<a href="php/producao_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i></a>  
 							<a href="php/producao_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a>
@@ -120,22 +129,15 @@
 					<?php } ?>
 				</tbody>
 			</table>
-						
 					</form>
-					
 				</div>
-				
 						<div class="row d-flex justify-content-center"  >
 							<div  id ="chart_div" name="chart_div"  style="width: 700px; height: 500px;"></div>   
 					    </div>	
-
-
-
 			</div>
 			<div class="card-footer text-muted">
 						SIMUEL 
 					</div>
-
 						<!-- somar valores por modelo de urna e fazer grafico -->
 						<!-- <?php 	
 						$sql = "SELECT * FROM status WHERE ";
@@ -143,9 +145,6 @@
 						$row = mysqli_fetch_array($result, MYSQLI_NUM);
 						printf ("%s (%s)\n", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5]);
 						?> -->
-
-
-
 		</div>
 				<script type="text/javascript"
    				 src="https://www.google.com/jsapi"></script>
@@ -188,16 +187,9 @@
 					}
 					//metodo chamado após o carregamento
 					google.setOnLoadCallback(drawChart);
-					
-					
-					
 					</script>			
 
-
-
-	
 	</div>
-
 	
 </body>
 </html>

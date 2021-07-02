@@ -44,6 +44,7 @@
 		}
 			
 	 }		
+					
 			//CALCULANDO VALORES USANDO SELECT SUM
 			//1 - TOTAIS DE URNAS PRODUZIDAS POR MODELO - TODOS OS LOCAIS
 			$sql = "SELECT SUM(totue2009),SUM(totue2010),SUM(totue2011),SUM(totue2013),SUM(totue2015),SUM(totue2020), SUM(totue2022) FROM status ORDER BY id_local";
@@ -56,18 +57,39 @@
 			$ue2015_prod = $row[4];
 			$ue2020_prod = $row[5];
 			$ue2022_prod = $row[6];
-		
+			
+			
+			// echo "Total de UE 2009 produzidas até o momento: ".$ue2009_prod;
+			// echo "Total de UE 2015 produzidas até o momento: ".$ue2015_prod;
+
 	 		//TOTAIS DE URNAS PRODUZIDAS POR LOCAL	
 			for ($loc = 1; $loc <=5; ++$loc) {	
 				$sql = "SELECT SUM(totue2009),SUM(totue2010),SUM(totue2011),SUM(totue2013),SUM(totue2015),SUM(totue2020), SUM(totue2022), id_local FROM status WHERE id_local = $loc";
 				$result2 = mysqli_query($conexao,$sql);
 				$row = mysqli_fetch_array($result2);
 				$produelocal[$loc] = $row[0] + $row[1] + $row[2] + $row[3] + $row[4] + $row[5];
+				// echo "Total de Urnas Produzidas do NVI ".$loc." é = ".$produelocal[$loc] ;
+			
 			
 				}
 				for ($n = 1;  $n <=5; ++$n) {	
 					$prodloc[$n]= $produelocal[$n];
+					
 				}
+	
+				// echo "Total de Urnas Produzidas no NVI 1  é = ".$prodloc[1];
+				// ?><html><br></html><?php
+				// echo "Total de Urnas Produzidas no NVI 2  é = ".$prodloc[2];
+				// ?><html><br></html><?php
+				// echo "Total de Urnas Produzidas no NVI 3  é = ".$prodloc[3];
+				// ?><html><br></html><?php
+				// echo "Total de Urnas Produzidas no NVI 4  é = ".$prodloc[4];
+				// ?><html><br></html><?php
+				// echo "Total de Urnas Produzidas no NVI 5  é = ".$prodloc[5];
+				// ?><html><br></html><?php
+
+			
+
 			//2 - TOTAIS DE URNAS EXISTENTES POR MODELO  - TODOS OS LOCAIS
 
 			$sql = "SELECT SUM(qtde_ue2009),SUM(qtde_ue2010),SUM(qtde_ue2011),SUM(qtde_ue2013),SUM(qtde_ue2015),SUM(qtde_ue2020), SUM(qtde_ue2022) FROM local ORDER BY id_local";
@@ -81,6 +103,7 @@
 			$ue2020_total = $row[5];
 			$ue2022_total = $row[6];
 			$idlocal[] = $val['id_local'];
+		
 			
 			//TOTAIS DE URNAS EXISTENTES POR LOCAL	
 			for ($loc = 1;  $loc <=5; ++$loc) {	
@@ -89,14 +112,28 @@
 				$row = mysqli_fetch_array($result2);
 				$totuelocal[$loc] = $row[0] + $row[1] + $row[2] + $row[3] + $row[4] + $row[5];
 				//echo "Total de Urnas do NVI ".$loc." é = ".$totuelocal[$loc];
-			
+				?><html><br></html><?php
 				// $totloc[$n]= $totuelocal[$loc];
+				
 			}
 
 			for ($n = 1;  $n <=5; ++$n) {	
 				$totloc[$n]= $totuelocal[$n];
 				
 			}
+
+			// echo "Total Geral de Urnas do NVI 1  é = ".$totloc[1];
+			// ?><html><br></html><?php
+			// echo "Total Geral de Urnas do NVI 2  é = ".$totloc[2];
+			// ?><html><br></html><?php
+			// echo "Total Geral de Urnas do NVI 3  é = ".$totloc[3];
+			// ?><html><br></html><?php
+			// echo "Total Geral de Urnas do NVI 4  é = ".$totloc[4];
+			// ?><html><br></html><?php
+			// echo "Total Geral de Urnas do NVI 5  é = ".$totloc[5];
+			// ?><html><br></html><?php
+
+
 
 			//3 - O QUE RESTA - DIFERENÇA ENTRE O PRODUZIDO E O EXISTENTE - TODOS OS LOCAIS
 
@@ -108,12 +145,25 @@
 			$ue2020_rest = $ue2020_total - $ue2020_prod;
 			$ue2022_rest = $ue2022_total - $ue2022_prod;
 
+		
+
 			for ($loc = 1; $loc <=5; ++$loc) {	
 				$restuelocal[$loc] = $totuelocal[$loc]-$produelocal[$loc];
 				$restloc[$loc]= $restuelocal[$loc];
-				
-				
+				// echo "Restante de Urnas do NVI ".$loc." é = ".$restuelocal[$loc];
+				?><html><br></html><?php
 			}
+			// echo "Restante de Urnas do NVI 1 : ".$restuelocal[1];
+			// ?><html><br></html><?php
+			// echo "Restante de Urnas do NVI 2 : ".$restuelocal[2];
+			// ?><html><br></html><?php
+			// echo "Restante de Urnas do NVI 3 : ".$restuelocal[3];
+			// ?><html><br></html><?php
+			// echo "Restante de Urnas do NVI 4 : ".$restuelocal[4];
+			// ?><html><br></html><?php
+			// echo "Restante de Urnas do NVI 5 : ".$restuelocal[5];
+			// ?><html><br></html><?php
+
 
 	?>
    	<div class="container">

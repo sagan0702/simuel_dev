@@ -49,13 +49,16 @@ function calcularOS() {
     qtde_dias_off = $('#tdiasoff').val();
     turnas = $('#txt_t_urnas').val();
     tbaterias = $('#txt_t_baterias').val();
-    fp_diario = $('#fp_diario').val();
+    var fp_diario = document.getElementById('fp_diario').innerText;
+    //var select = document.getElementById('n_local');
     local = $('#n_local').val()
-      
+    // COLOCAR O VALOR DO FP DIARIO DENTRO DO CADASTRO DE CICLOS   
     // var total_dias_off = 0
     var ntbat = Number(tbaterias)
     var nturnas = Number(turnas)
-    var fp_diario = Number(fp_diario)
+    // var nfp_diario = Number(fp_diario)
+    alert(` FP Diário bruto é  ${fp_diario} `);
+    
     // var qtde_dias_off = Number(qtde_dias_off)
     
     // if (n_os == '' || inicio == '' || fim == '' || turnas == ''|| tbaterias == ''){
@@ -70,9 +73,7 @@ function calcularOS() {
         //Quantidade de dias uteis do período:
         qtde_dias = workingDaysBetweenDates(inicio, fim) 
         qtde_dias_periodo.innerHTML = `${qtde_dias}`
-        //total_urnas.innerHTML = `${total_urnas}`
-        //Quantidade de dias disponíveis apos dias-off: 
-        //alert(` Total de Dias ${qtde_dias} Total de Dias Off: ${total_dias_off} Total de Dias disp ${qddisp}`);
+      
 
         var total_dias_off = tdiasoff.innerHTML 
         var qddisp = (qtde_dias - total_dias_off)
@@ -84,10 +85,11 @@ function calcularOS() {
         qtde_ga.innerHTML = `${qga_n}`
                 
         //Quantidade de UST:  
-        var qust =  (qga / qinfra)
+        //qust = qga/proloc
+        var qust =  (qga / fp_diario)
         var Q_UST = qust.toFixed(1).toLocaleString('pt-BR')
         qtde_ust.innerHTML = `${Q_UST}`
-        //qtde_ust.innerHTML = "oooo"
+        
   
 }
 

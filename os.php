@@ -146,6 +146,16 @@
 					<?php } ?>
 				</tbody>
 			</table>
+
+					<div class="row ">
+							<div class="col-sm-2">
+								<button name="gera_sei" value="search" id="gera_sei" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Gerar OS p/ SEI</button> 
+							</div>
+							
+					</div>			
+
+			<br>
+
 		</div> <!--/.col-sm-12-->
 		<div class="col-sm-12"> <!--- CAMPOS DE PESQUISA -->
 					<h5 class="card-title"><i  class="fa fa-fw fa-search"></i> Pesquisar OS </h5>

@@ -113,15 +113,21 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 								<label><h6>Estado </label></h6>
 								<input type="text" name="estado" id="estado" maxlength="12" class="form-control" value="<?php echo $row[0]['estado']; ?>" placeholder="" required>
 							</div>
-							
-						</div>
-						<div class="row">
 							<div class="form-group col-md-6">
 									<label><h6>Estado: 1-Ativo / 0-Fechado </label></h6>
 							</div>
+							
+							
 						</div>
+					
 
-						
+						<div class="row">
+							<div class="form-group col-md-1">
+									<label><h6>Fator de Produção </label></h6>
+									<input type="text" name="fator_prod" id="fator_prod" maxlength="4" class="form-control" value="<?php echo $row[0]['fator_prod']; ?>" placeholder="" required>
+							</div>
+
+						</div>
 
 						<!-- <div class="form-check">
 							<fieldset>

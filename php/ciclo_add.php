@@ -22,6 +22,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							'data_inicio'=>$data_inicio,
 							'data_fim'=>$data_fim,
 							'estado'=>$estado,
+							'fator_prod'=>$fator_prod,
 						);
 			$insert	=	$db->insert('ciclo',$data);
 			if($insert){
@@ -48,11 +49,18 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	<title>Adicionar Ciclo</title>
   	<?php include_once('formatacao.php');
 
+
+	$sql = "SELECT  FROM status ORDER BY id_local";
+			$result2 = mysqli_query($conexao,$sql);
+			$row = mysqli_fetch_row($result2);
+			$ue2009_prod = $row[0];
+
 	?>
 </head>
 <body>
 
-	<!--- MENSAGENS -->
+	<!--- MENSAGENS // COLOCAR O VALOR DO FP DIARIO DENTRO DO CADASTRO DE CICLOS  -->
+	
    	<div class="container">
 		
 		<?php  
@@ -91,22 +99,24 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 							</div>
 						</div>
 						<div class="row">
-		
 								<div class="col-md-3 ">
 									<label>Data de Início</label>
 									<input type="text" class="form-control" name="data_inicio" id="data_inicio" required />
 								</div>
-
 								<div class="col-md-3 ">
 									<label for="campo4">Data de Término:</label>
 									<input type="text" class="form-control" name="data_fim" id="data_fim" required/>
 								</div>
-							
+						</div> 
+						<div class="row">
+								<div class="col-md-3 ">
+									<label>Fator de Produção</label>
+									<input type="text" class="form-control" name="fator_prod" id="fator_prod" onkeypress="$(this).mask('000')" required />
+								</div>
 						</div> 
 						<div class="form-group">
 							<label></label>
 							<input type="hidden" name="estado" id="estado"  value = "1" required>
-
 						</div>
 						<div class="row ">
 							<div class="form-group">

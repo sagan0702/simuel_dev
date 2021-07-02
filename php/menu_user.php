@@ -134,6 +134,19 @@
                 
               </ul> -->
 
+
+              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Peças de Urna
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <li><a class="dropdown-item" href="pecas_solicitar.php">Solicitar</a></li>  
+                <li><a class="dropdown-item" href="pecas_consultar.php">Consultar</a></li>
+               
+                
+              </ul>  
+
+
+
               <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Configurações
               </button>

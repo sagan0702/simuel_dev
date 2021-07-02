@@ -46,8 +46,21 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Adicionar OS</title>
-  	<?php include_once('formatacao.php');?>
-	<?php include("aux_criar_os.php");?>
+  	<?php include_once('formatacao.php');
+	include("aux_criar_os.php");
+    include("conexao.php");
+    
+    //pega o FP 
+    $sql = "SELECT  fator_prod  FROM ciclo";
+    $result2 = mysqli_query($conexao,$sql);
+	$row = mysqli_fetch_array($result2);
+	$fator_prod = $row[0];
+    //echo "O fator de produção puxado do banco ciclo é: ".$fator_prod;
+
+   
+    
+    
+    ?>
 	<script src="../js/funcaoOS.js"></script> 
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
@@ -78,7 +91,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
     }
    
  
-    #fp_diario{
+    #div_fp_diario{
         background-color: whitesmoke;
         color: green;
         text-align: center;
@@ -290,16 +303,19 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                                 <label><h6>QInfra : </h6></label>
                                 <div id="qtde_infra"></div>
                         </div>	
-                        <div class="form-group col-md-1" >
-                                <label><h6>FP:   </h6></label>
-                                    <div id ="fp_diario">
-                                        <?=$fp_diario?> 
-                                    </div>
-                        </div>
+
+                        <div class="form-group col-md-1">
+                                <label><h6>FP :  </h6></label>
+                                <div id="fp_diario"> <?=$fator_prod?> </div>
+                        </div>	
+
                         <div class="form-group col-md-1" >
                             <div id="txt_id_local" type="hidden"></div>
                         </div>
                     </div>    
+
+                   
+
                     <div class="row">
                                 <div class="form-group col-md-2">
                                     <label>Local: </label>
@@ -311,11 +327,11 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                                     <label for="campo2">Nº da OS:</label>
                                     <input type="text" class="form-control" name="n_os" id="txt_n_os" required onkeypress="$(this).mask('00/0000')"/>
                                 </div>
-                                <div class="form-group col-md-2">
+                                <!-- <div class="form-group col-md-2">
                                     <label>Local2: </label>
                                     <div id ="local_sel"> </select>
                                     </div>
-                                </div>
+                                </div> -->
                     </div>
                     <div class="row">
                         <div class="form-group col-md-2">
