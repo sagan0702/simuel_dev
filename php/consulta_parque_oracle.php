@@ -12,31 +12,38 @@
 	<?php
         session_start();
         include ("conexao.php");
-            if (!isset($_SESSION["usuario"])) {
-                header('Location: index.php');
-                exit();
-            }
-           
-
-
-
-
-
-			
-			$conn = oci_connect('SIMUEL_OP', 'mtZVWPFZbcZQlPwOmlj5', 'srvoda1.tre-pb.gov.br/ADM');
+            // if (!isset($_SESSION["usuario"])) {
+            //     header('Location: index.php');
+            //     exit();
+            // }
+        
+				$conn = oci_connect('SIMUEL_OP', 'mtZVWPFZbcZQlPwOmlj5', 'srvoda1.tre-pb.gov.br/ADM');
 				if (!$conn) {
 					$e = oci_error();
 					trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
 				}
-				//$sql1 = 'SELECT CD_PATRIMONIO, MATERIAL FROM ASIWEB.VW_PB_PATRIMONIO WHERE ROWNUM <= 10' ;
-				// $sql1 = 'SELECT CD_PATRIMONIO, MATERIAL FROM ASIWEB.VW_PB_PATRIMONIO WHERE LOCALIZACAO =  \'SECAO DE COMPRAS\' ' ;
-				$sql1 = "SELECT CD_PATRIMONIO, MATERIAL FROM ASIWEB.VW_PB_PATRIMONIO WHERE LOCALIZACAO =  'SECAO DE COMPRAS' " ;
+
+
+				//SELECT DISTINCT COUNT(product_name) FROM product;
+			
+				// $sql1 = "SELECT CD_PATRIMONIO, MATERIAL FROM ASIWEB.VW_PB_PATRIMONIO WHERE MATERIAL = 'URNA ELETRONICA PARA VOTACAO' AND LOCALIZACAO =  'NUCLEO DE VOTO INFORMATIZADO- NVI PATOS' " ;
+				
+				//Exemplo de COUNT()
+				$sql1 = "SELECT DISTINCT COUNT(MATERIAL) FROM ASIWEB.VW_PB_PATRIMONIO WHERE LOCALIZACAO =  'NUCLEO DE VOTO INFORMATIZADO- NVI PATOS' ";
+				
+				//Exemplo de Pesquisa
+				//$sql1 = "SELECT *  FROM ASIWEB.VW_PB_PATRIMONIO WHERE MATERIAL = 'URNA ELETRONICA PARA VOTACAO' AND 
+				//LOCALIZACAO =  'NUCLEO DE VOTO INFORMATIZADO- NVI PATOS' " ;
 				$stid = oci_parse($conn, $sql1);
 				oci_execute($stid);
+				//$saida = 
+				//echo $saida;
 				//SELECT * FROM ASIWEB.VW_PB_PATRIMONIO WHERE LOCALIZACAO = 'SECAO DE COMPRAS';
 				while (($row = oci_fetch_assoc($stid)) != false) {
-					echo $row['CD_PATRIMONIO'] . " " . $row['MATERIAL'] . "<br>\n";
+					echo $row['CD_PATRIMONIO'] . " " . $row['MATERIAL'] . " " . $row['MODELO'] . "<br>\n";
 				}
+
+				// //
 
 				oci_free_statement($stid);
 				oci_close($conn);

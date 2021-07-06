@@ -27,6 +27,12 @@ extract($_REQUEST);
 		session_start();
 		include ("conexao.php");
 		$ids_local = $_SESSION['id_local'];
+
+
+
+
+
+		
 		$sql = "SELECT * FROM status WHERE id_local = '$ids_local' ";
 		$result = mysqli_query($conexao,$sql);
 		$row = mysqli_fetch_row($result);
@@ -353,29 +359,29 @@ extract($_REQUEST);
 							</div>
 							<div class="col-md-2">
 								<label for="urna09"><h5>UE2009:</h5></label>
-								<input type="text" class="form-control" name="ue2009p" id="ue2009p" value="0" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()">
+								<input type="text" class="form-control" name="ue2009p" id="ue2009p" value="" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()">
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna10"><h5>UE2010:</h5></label>
-								<input type="text" class="form-control" name="ue2010p" id="ue2010p" value="0"  onkeypress="$(this).mask('0000')" onfocusout="totalUrna()" >
+								<input type="text" class="form-control" name="ue2010p" id="ue2010p" value=""  onkeypress="$(this).mask('0000')" onfocusout="totalUrna()" >
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna11"><h5>UE2011:</h5></label>
-								<input type="text" class="form-control"  name="ue2011p" id="ue2011p" value="0" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()">
+								<input type="text" class="form-control"  name="ue2011p" id="ue2011p" value="" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()">
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna13"><h5>UE2013:</h5></label>
-								<input type="text" class="form-control" name="ue2013p" id="ue2013p" value="0" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()">
+								<input type="text" class="form-control" name="ue2013p" id="ue2013p" value="" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()">
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna15"><h5>UE2015:</h5></label>
-								<input type="text" class="form-control" name="ue2015p" id="ue2015p" value="0" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()" >
+								<input type="text" class="form-control" name="ue2015p" id="ue2015p" value="" onkeypress="$(this).mask('0000')" onfocusout="totalUrna()" >
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-2 ">
 								<label for="urna21"><h5>UE2020:</h5></label>
-								<input type="text" class="form-control" name="ue2020p" id="ue2020p" value="0"  onfocusout="totalUrna()" onkeypress="$(this).mask('0000')"  >
+								<input type="text" class="form-control" name="ue2020p" id="ue2020p" value=""  onfocusout="totalUrna()" onkeypress="$(this).mask('0000')"  >
 							</div>
 							<div class="col-md-2">
 								<label for="urna22"><h5>UE2022:</h5></label>
@@ -398,11 +404,11 @@ extract($_REQUEST);
 							</div>
 							<div class="col-md-2 ">
 								<label for="urna21">Urnas COM chamado aberto:</label>
-								<input type="text" class="form-control" name="nue_com_chamado"  id="nue_com_chamado" onkeypress="$(this).mask('0000')" value="0" required>
+								<input type="text" class="form-control" name="nue_com_chamado"  id="nue_com_chamado" onkeypress="$(this).mask('0000')" value="" required>
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Urnas SEM chamado aberto:</label>
-								<input type="text" class="form-control" name="nue_sem_chamado" id="nue_sem_chamado" onkeypress="$(this).mask('0000')" value="0" required>
+								<input type="text" class="form-control" name="nue_sem_chamado" id="nue_sem_chamado" onkeypress="$(this).mask('0000')" value="" required>
 							</div>
 						</div>	
 						</br> <!--- QUEBRA DE LINHA NO LAYOUT -->
@@ -430,7 +436,7 @@ extract($_REQUEST);
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Substituídas: <br>. </label>
-								<input type="text" class="form-control" value="0" name="bat_subst" id="bat_subst" onkeypress="$(this).mask('0000')" >
+								<input type="text" class="form-control" value="" name="bat_subst" id="bat_subst" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">
 								<label for="urna22">Com vazamento (em garantia):</label>

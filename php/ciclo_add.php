@@ -50,12 +50,12 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
   	<?php include_once('formatacao.php');
 
 
-	$sql = "SELECT  FROM status ORDER BY id_local";
-			$result2 = mysqli_query($conexao,$sql);
-			$row = mysqli_fetch_row($result2);
-			$ue2009_prod = $row[0];
+	// $sql = "SELECT  FROM status ORDER BY id_local";
+	// 		$result2 = mysqli_query($conexao,$sql);
+	// 		$row = mysqli_fetch_row($result2);
+	// 		$ue2009_prod = $row[0];
 
-	?>
+	// ?>
 </head>
 <body>
 

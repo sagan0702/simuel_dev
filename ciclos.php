@@ -70,6 +70,7 @@
 						<td style="text-align: center;" >Data de Término</td>
 						<td style="text-align: center;" >Situação</td>
 						<td style="text-align: center;" >Data de Atualização</td>
+						<td style="text-align: center;" >FP</td>
 						<td style="text-align: center;" class="text-center">Ação</td>
 					</tr>
 				</thead>
@@ -101,6 +102,7 @@
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_fim'])));;?></td>
 						<td style="text-align: center;"><?php echo $estado;?></td>
 						<td style="text-align: center;"><?php echo $data_atua;?></td>
+						<td style="text-align: center;"><?php echo $val['fator_prod'];?></td>
 						<td align="center">
 							<a href="php/ciclo_edit.php?editId=<?php echo $val['id_ciclo'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
 							<a href="php/ciclo_delete.php?delId=<?php echo $val['id_ciclo'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
