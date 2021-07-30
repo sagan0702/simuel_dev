@@ -26,10 +26,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						);
 			$insert	=	$db->insert('ciclo',$data);
 			if($insert){
-				header('location:/simuel/ciclos.php?msg=ras');
+				header('location:/simuel_dev/ciclos.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel/ciclos.php?msg=rna');
+				header('location:/simuel_dev/ciclos.php?msg=rna');
 				exit;
 			}
 		}else{
@@ -43,19 +43,17 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Adicionar Ciclo</title>
-  	<?php include_once('formatacao.php');
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adicionar Ciclo</title>
+ <?php 
+ include_once('formatacao.php');
 
 
-	// $sql = "SELECT  FROM status ORDER BY id_local";
-	// 		$result2 = mysqli_query($conexao,$sql);
-	// 		$row = mysqli_fetch_row($result2);
-	// 		$ue2009_prod = $row[0];
+	
 
-	// ?>
+ ?>
 </head>
 <body>
 
@@ -84,7 +82,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			<div class="card-header">
 			<h3>Adicionar Ciclo</h3>
 			<!-- <i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Ciclo</strong>  -->
-				<a href="/simuel/ciclos.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel_dev/ciclos.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Ciclos</a>
 			</div>
 			<div class="card-body">		
@@ -94,24 +92,24 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						<div class="row">
 							<div class="col-md-3 ">
 								<label>Nº do Ciclo </label>
-								<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" 
+								<input type="text" name="n_ciclo" id="n_ciclo" style="text-align:center" class="form-control" 
 								placeholder="" onkeypress="$(this).mask('00/0000')" required/> 
 							</div>
 						</div>
 						<div class="row">
 								<div class="col-md-3 ">
 									<label>Data de Início</label>
-									<input type="text" class="form-control" name="data_inicio" id="data_inicio" required />
+									<input type="text" class="form-control" name="data_inicio" id="data_inicio" style="text-align:center" required />
 								</div>
 								<div class="col-md-3 ">
 									<label for="campo4">Data de Término:</label>
-									<input type="text" class="form-control" name="data_fim" id="data_fim" required/>
+									<input type="text" class="form-control" name="data_fim" id="data_fim" style="text-align:center" required/>
 								</div>
 						</div> 
 						<div class="row">
 								<div class="col-md-3 ">
 									<label>Fator de Produção</label>
-									<input type="text" class="form-control" name="fator_prod" id="fator_prod" onkeypress="$(this).mask('000')" required />
+									<input type="text" class="form-control" name="fator_prod" id="fator_prod" onkeypress="$(this).mask('000')" style="text-align:center" required />
 								</div>
 						</div> 
 						<div class="form-group">

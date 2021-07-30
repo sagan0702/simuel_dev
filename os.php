@@ -110,13 +110,7 @@
 						$ciclo = $row[0];
 						//var_dump($id_c) ;
 
-						$est = $val['estado'];
-							if ($est == 1) {
-								$sit = "Ativa";
-								} else {
-								$sit= "Fechada";
-							}
-											
+						
 						?>
 
 						<!-- <td style="text-align: center;"><?php echo $s;?></td> -->
@@ -125,7 +119,7 @@
 						<td style="text-align: center;" ><?php echo $val['n_os'];?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_minima'])));;?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_maxima'])));;?></td>
-						<td style="text-align: center;"><?php echo $sit;?></td>
+						<td style="text-align: center;"><?php echo $val['estado'];?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_dias_off'];?></td>
 						<td style="text-align: center;" ><?php echo $val['t_urnas'];?></td>
 						<td style="text-align: center;" ><?php echo $val['t_baterias'];?></td>
@@ -133,7 +127,7 @@
 						<td style="text-align: center;" ><?php echo $val['qtde_dias_disp'];?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_ust'];?></td>
 						<td align="center">
-							<!-- <a href="php/os_edit.php?editId=<?php echo $val['id_os'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> |  -->
+							<a href="php/os_edit.php?editId=<?php echo $val['id_os'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
 							<a href="php/os_delete.php?delId=<?php echo $val['id_os'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
 						</td>
 
@@ -155,6 +149,7 @@
 					</div>			
 
 			<br>
+			<br>
 
 		</div> <!--/.col-sm-12-->
 		<div class="col-sm-12"> <!--- CAMPOS DE PESQUISA -->
@@ -173,15 +168,14 @@
 									<label>Data Máxima</label>
 									<input type="date" name="data_maxima" id="data_maxima" class="form-control" value="<?php echo isset($_REQUEST['data_maxima'])?$_REQUEST['data_maxima']:''?>" placeholder="Selecione">
 							</div>
-							<div class="col-sm-1">
-									<label>Situação</label>
-									<input type="text" name="estado" id="estado" class="form-control" value="<?php echo isset($_REQUEST['estado'])?$_REQUEST['estado']:''?>" placeholder="">
-								
-							</div>	
-							<div class="col-sm-1">
-									<label p class="text-secondary"><h6>Situação: 1-Ativa  0-Fechada </label></h6>
-							</div>
-						</div>	
+							
+						</div>
+						
+						
+						<br>
+						<br>
+
+
 						<div class="row ">
 							<div class="col-sm-2">
 								<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Pesquisar</button> 

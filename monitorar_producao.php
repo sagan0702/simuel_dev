@@ -55,25 +55,6 @@
 				?>
 		<div>  
 
-		<?php
-						
-						
-						// $id_c = $val['id_ciclo'];
-						// $sql2 = "SELECT n_ciclo FROM `ciclo` WHERE id_ciclo = $id_c";
-						// $result2 = mysqli_query($conexao,$sql2);
-						// $row = mysqli_fetch_row($result2);
-						// $ciclo = $row[0];
-						//var_dump($id_c) ;
-
-							// $est = $val['situacao'];
-							// if ($est == 1) {
-							// 	$situacao = "Ativa";
-							// 	} else {
-							// 	$situacao = "Fechada";
-							// }
-											
-						 ?>
-		
 
 		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Urnas com manutenção realizada </h5>
 			<table class="table table-striped table-bordered table-sm">
@@ -87,16 +68,16 @@
 						<td style="text-align: center;" >UE2011</td>
 						<td style="text-align: center;" >UE2013</td>
 						<td style="text-align: center;" >UE2015</td>
-						<td style="text-align: center;" >UE2020</td>
-						<td style="text-align: center;" >UE2022</td>
+						<!-- <td style="text-align: center;" >UE2020</td>
+						<td style="text-align: center;" >UE2022</td> -->
 						<td style="text-align: center;" >Total de UE</td>
 						<td style="text-align: center;" >UEs SEM chamado</td>
 						<td style="text-align: center;" >UEs COM chamado</td>
 						<td style="text-align: center;" >BAT Reserva</td>
 						<td style="text-align: center;" >BAT Substituídas </td>
-						<td style="text-align: center;" >BAT com vazamento </td>
-						<td style="text-align: center;" >BAT oxidadas</td>
-						<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
+						<!-- <td style="text-align: center;" >BAT com vazamento </td>
+						<td style="text-align: center;" >BAT oxidadas</td> -->
+						<td style="text-align: center;" class="text-center">Ação</td> 
 					</tr>
 				</thead>
 				<tbody>
@@ -138,19 +119,19 @@
 						<td style="text-align: center;" ><?php echo $val['ue2011p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2013p'];?></td>
 						<td style="text-align: center;" ><?php echo $val['ue2015p'];?></td>
-						<td style="text-align: center;" ><?php echo $val['ue2020p'];?></td>
-						<td style="text-align: center;" ><?php echo $val['ue2022p'];?></td>
+						<!-- <td style="text-align: center;" ><?php echo $val['ue2020p'];?></td>
+						<td style="text-align: center;" ><?php echo $val['ue2022p'];?></td> -->
 						<td style="text-align: center;" ><?php echo $tot_ue2; ?></td>
 						<td style="text-align: center;" ><?php echo $val['nue_sem_chamado'];?></td>
 						<td style="text-align: center;" ><?php echo $val['nue_com_chamado'];?></td>
 						<td style="text-align: center;" ><?php echo $val['bat_reserva'];?></td>
 						<td style="text-align: center;" ><?php echo $val['bat_subst'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_vazando'];?></td>
-						<td style="text-align: center;" ><?php echo $val['bat_oxidada'];?></td>
-						<!-- <td align="center" >
-							<a href="php/producao_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i></a>  
-							<a href="php/producao_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a>
-						</td> -->
+						<!-- <td style="text-align: center;" ><?php echo $val['bat_vazando'];?></td>
+						<td style="text-align: center;" ><?php echo $val['bat_oxidada'];?></td> -->
+						<td align="center" >
+							<a href="php/mon_prod_detalhe.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i></a>  Detalhe
+							<!-- <a href="php/producao_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i></a> -->
+						</td> 
 
 					</tr>
 					<?php 

@@ -80,7 +80,15 @@
 			$ue2015_total = $row[4];
 			$ue2020_total = $row[5];
 			$ue2022_total = $row[6];
-			$idlocal[] = $val['id_local'];
+			if ($val['id_local']="") {
+				$idlocal[] = 0;
+
+			} else {
+				
+				$idlocal[] = $val['id_local'];
+
+			}
+			
 			
 			//TOTAIS DE URNAS EXISTENTES POR LOCAL	
 			for ($loc = 1;  $loc <=5; ++$loc) {	
@@ -139,7 +147,7 @@
 						<thead>
 							<tr class="bg-secondary text-white">
 								<td style="text-align: center;" >Localidade</td>		
-								<td style="text-align: center;" >Data de Envio</td>
+								<td style="text-align: center;" >Última atualização</td>
 								<td style="text-align: center;" >UE2009</td>
 								<td style="text-align: center;" >UE2010</td>
 								<td style="text-align: center;" >UE2011</td>
@@ -281,6 +289,7 @@
 								<td style="text-align: center;" >UEs COM chamado</td>
 								<td style="text-align: center;" >BAT Reserva</td>
 								<td style="text-align: center;" >BAT Substituídas </td>
+								<td style="text-align: center;" >BAT Carregadas (BA) </td>
 								<td style="text-align: center;" >BAT com vazamento* </td>
 								<td style="text-align: center;" >BAT oxidadas* </td>
 							
@@ -310,6 +319,7 @@
 								<td style="text-align: center;" ><?php echo $val['tnue_com_chamado'];?></td>
 								<td style="text-align: center;" ><?php echo $val['tbat_reserva'];?></td>
 								<td style="text-align: center;" ><?php echo $val['tbat_subst'];?></td>
+								<td style="text-align: center;" ><?php echo $val['tbat_barriga_aluguel'];?></td>
 								<td style="text-align: center;" ><?php echo $val['tbat_vazando'];?></td>
 								<td style="text-align: center;" ><?php echo $val['tbat_oxidada'];?></td>
 								<!-- <td align="center" > -->

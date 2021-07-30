@@ -7,15 +7,6 @@
 	<title>Peças de Urna</title>
 	<?php 
 
-	// session_start();
-        
-	// if (!isset($_SESSION["usuario"])){
-		
-	// header('Location: index.php');
-	// exit();
-		
-	// }
-
 	include_once('php/formatacao.php');
     include ("php/bootstrapalert.php");
 

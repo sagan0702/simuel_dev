@@ -27,10 +27,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					);
 	$update	=	$db->update('ciclo',$data,array('id_ciclo'=>$editId));
 	if($update){
-		header('location: /simuel/ciclos.php?msg=rus');
+		header('location: /simuel_dev/ciclos.php?msg=rus');
 		exit;
 	}else{
-		header('location: /simuel/ciclos.php?msg=rnu');
+		header('location: /simuel_dev/ciclos.php?msg=rnu');
 		exit;
 	}
 }
@@ -50,7 +50,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		<!--- MENSAGENS -->
 	
    	<div class="container">
-		<h2><Editar Ciclo </h2>
+		<h2>Editar Ciclo </h2>
 		<?php
 		if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="un"){
 			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> O campo é obrigatório!</div>';
@@ -78,25 +78,25 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		<div class="card">  
 			<div class="card-header">
 				<!-- <i class="fa fa-fw fa-plus-circle"></i> -->
-				<strong><h3>Editar Ciclo</h3></strong><a href="/simuel/ciclos.php" class="float-right btn btn-dark btn-sm">
+				<strong><h3>Editar Ciclo</h3></strong><a href="/simuel_dev/ciclos.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Ciclos</a>
 			</div>
 			<div class="card-body">
 				<div class="col-sm-6">
 					<form method="post">
-						<div class="form-group">
-							<label><h6>Nº do Ciclo</label></h6>
-							<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" value="<?php echo $row[0]['n_ciclo']; ?>" placeholder="" onkeypress="$(this).mask('00/0000')" required>
+						<div class="form-group col-md-2">
+							<label>Nº do Ciclo:</label>
+							<input type="text" name="n_ciclo" style="text-align:center" id="n_ciclo" class="form-control" value="<?php echo $row[0]['n_ciclo']; ?>" placeholder="" onkeypress="$(this).mask('00/0000')" required>
 						</div>
 
 						<div class="row">
-							<div class="form-group col-md-4">
+							<div class="form-group col-md-4" >
 								<?php
 								$datai = $row[0]['data_inicio'];
 								$datai= implode("/",array_reverse(explode("-",$datai))); 
 								?>
-								<label><h6>Data Inicio </label></h6>
-								<input type="text" name="data_inicio" id="data_inicio" class="form-control" value="<?php 
+								<label>Data Inicio: </label>
+								<input type="text" style="text-align:center" name="data_inicio" id="data_inicio" class="form-control" value="<?php 
 								echo $datai ?>" placeholder="" required>
 							</div>
 							<div class="form-group col-md-4">
@@ -104,42 +104,26 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 								$dataf = $row[0]['data_fim'];
 								$dataf= implode("/",array_reverse(explode("-",$dataf))); 
 								?>
-								<label><h6>Data Fim </label></h6>
-								<input type="text" name="data_fim" id="data_fim" maxlength="12" class="form-control" value="<?php echo $dataf ?>" placeholder="" required>
+								<label>Data Fim: </label>
+								<input type="text" style="text-align:center" name="data_fim" id="data_fim" maxlength="12" class="form-control" value="<?php echo $dataf ?>" placeholder="" required>
 							</div>
 						</div>	
-						<div class="row">
-							<div class="form-group col-md-1">
-								<label><h6>Estado </label></h6>
-								<input type="text" name="estado" id="estado" maxlength="12" class="form-control" value="<?php echo $row[0]['estado']; ?>" placeholder="" required>
+						
+						<div class="row"> 
+							<label>Estado:</label>
+							<div class="form-group col-sm-4"> <!--- EDIT RADIO --->
+								<input type="radio" name="estado" <?=$row[0]['estado']=="Ativo" ? "checked" : ""?> value="Ativo">Ativo </br>
+								<input type="radio" name="estado" <?=$row[0]['estado']=="Fechado" ? "checked" : ""?> value="Fechado">Fechado
 							</div>
-							<div class="form-group col-md-6">
-									<label><h6>Estado: 1-Ativo / 0-Fechado </label></h6>
-							</div>
-							
-							
 						</div>
-					
-
+						<br>
 						<div class="row">
-							<div class="form-group col-md-1">
-									<label><h6>Fator de Produção </label></h6>
-									<input type="text" name="fator_prod" id="fator_prod" maxlength="4" class="form-control" value="<?php echo $row[0]['fator_prod']; ?>" placeholder="" required>
+							<div class="form-group col-md-2">
+									<label>Fator de Produção: </label>
+									<input type="text" name="fator_prod" id="fator_prod" maxlength="4" class="form-control" value="<?php echo $row[0]['fator_prod']; ?>" placeholder="" style="text-align:center" required>
 							</div>
-
 						</div>
-
-						<!-- <div class="form-check">
-							<fieldset>
-								<legend>Estado</legend>   
-								<input type = "radio" name="r_estado" id="r_estado" value = "1" checked />
-								<label for = "dobro">Aberto</label>   
-								<input type = "radio" name="r_estado" id="r_estado" value = "0" />
-								<label for = "cubo">Fechado</label>
-							</fieldset>
-						</div> -->
-
-
+						<br>
 						<div class="form-group">
 							<input type="hidden" name="editId" id="editId" value="<?php echo $_REQUEST['editId']?>">
 							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-edit"></i> Atualizar dados</button>
@@ -154,9 +138,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 	</div>
 
-	<!-- <div="datai" hiden><?php echo $row[0]['data_inicio']; ?></div>
-	<div="dataf" hiden><?php echo $row[0]['data_fim']; ?></div> -->
-
+	
 	    <script>
 		$('#data_inicio').datepicker({	
 			format: "yyyy/mm/dd",

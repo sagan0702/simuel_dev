@@ -1,44 +1,8 @@
 <?php include_once('config.php');
 if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
-	extract($_REQUEST);
-	if($n_os==""){
-		header('location:'.$_SERVER['PHP_SELF'].'?msg=un');
-		exit;
-	}elseif($data_minima==""){
-		header('location:'.$_SERVER['PHP_SELF'].'?msg=ue');
-		exit;
-	}elseif($data_maxima==""){
-		header('location:'.$_SERVER['PHP_SELF'].'?msg=up');
-		exit;
-	}else{
-		//converter para data br -> data mysql
-		$data_minima = implode("-",array_reverse(explode("/",$data_minima)));
-		$data_maxima = implode("-",array_reverse(explode("/",$data_maxima)));
-		$userCount	=	$db->getQueryCount('os','id_os');
-		if($userCount[0]['total']<20){
-			$data	=	array(
-							'n_os'=>$n_os,
-							'id_ciclo'=>$id_ciclo,
-							'data_minima'=>$data_minima,
-							'data_maxima'=>$data_maxima,
-							'estado'=>$estado,
-						);
-			$insert	=	$db->insert('os',$data);
-			if($insert){
-				header('location:/simuel/os.php?msg=ras');
-				exit;
-			}else{
-				header('location:/simuel/os.php?msg=rna');
-				exit;
-			}
-		}else{
-			header('location:'.$_SERVER['PHP_SELF'].'?msg=dsd');
-			exit;
-		}
-	}
+
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -57,214 +21,17 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	$fator_prod = $row[0];
     //echo "O fator de produção puxado do banco ciclo é: ".$fator_prod;
 
-   
-    
-    
     ?>
 	<script src="../js/funcaoOS.js"></script> 
-    <link rel="stylesheet" type="text/css" href="css/estilo.css">
-
-<style> 
-   #n_ciclo{
-        background-color: whitesmoke;
-        color: green;
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-        width: 150px;
-    } 
-    #data_inicio{
-        background-color: whitesmoke;
-        color: green;
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-        
-    }
-
-    #data_fim{
-        background-color: whitesmoke;
-        color:green;
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-    }
-   
- 
-    #div_fp_diario{
-        background-color: whitesmoke;
-        color: green;
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-        width: 100px;
-    } 
-    #qtde_infra{
-        background-color: yellow;
-        color: green;
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-        width: 100px;
-    }
-
-    #qtde_dias_periodo{
-        background-color: yellow;
-        color: red;
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-        padding: 5px, 0, 5px, 0;
-    }
-    #qtde_dias_disp{
-        background-color: yellow;
-        color: red;
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-        padding: 15px, 0, 15px, 0;
-    }
     
-    #qtde_ga{
-        background-color: yellow;
-        color: red;
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-        padding: 15px, 0, 15px, 0;
-    }
-
-    #qtde_ust{
-        background-color: yellow;
-        color: red;
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-        padding: 15px, 0, 15px, 0;
-    }
-
-    #txt_inicio
-    {
-        background-color: whitesmoke;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        width: 150px;
-        font-size: 20px;
-    }
-    #txt_fim
-    {
-        background-color: whitesmoke;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        width: 150px;
-        font-size: 20px;
-    }
-
-    #txt_dias_off
-    {
-        background-color: whitesmoke;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        width: 150px;
-        font-size: 20px;
-    }
-
-    #txt_t_urnas
-    {
-        background-color: whitesmoke;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        width: 100px;
-        font-size: 20px;
-    }
-
-    #txt_t_baterias
-    {
-        background-color: whitesmoke;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        width: 100px;
-        font-size: 20px;
-    }
-
-    #txt_n_os
-    {
-        background-color: whitesmoke;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        width: 150px;
-        font-size: 20px;
-    }
-    #n_local
-    {
-        background-color: whitesmoke;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        width: 150px;
-        font-size: 20px;
-    }
-    #txt_n_ciclo
-    {
-        background-color: yellow;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        width: 150px;
-        font-size: 20px;
-    }
-
-    #tdiasoff
-    {
-        background-color: whitesmoke;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        width: 100px;
-        font-size: 20px;
-    }
-
-    #btn_calcularOS
-    {
-
-    /* padding: 25px, 25px, 25px, 25px; */
-    margin-top: 35px ;    
-    margin-bottom: 35px   ;
-    }
-
-    #btn_gravarOS
-    {
-
-    /* padding: 25px, 25px, 25px, 25px; */
-    margin-bottom: 35px   ;
-    margin-top: 55px ;  
-       
-    }
+    <link rel="stylesheet" type="text/css" href="/simuel_dev/css/os_add.css">
 
 
-    /* #p_total
-    {
-        background-color: whitesmoke;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-        width: 100px;
-        font-size: 12px;
-    } */
-
-
-</style>
 </head>
 <body>
 	<!--- MENSAGENS -->
    	<div class="container">
-		<h3>Adicionar OS</h3>
+		
 		<?php  
 		if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="un"){
 			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> O campo é obrigatório!</div>';
@@ -281,8 +48,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		}
 		?>
 		<div class="card">   <!---CARD ADICIONAR --->
-			<div class="card-header"><i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar OS</strong> 
-				<a href="/simuel/os.php" class="float-right btn btn-dark btn-sm">
+			<div class="card-header">
+			<h3>Adicionar OS</h3>
+				<!-- <i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar OS</strong>  -->
+				<a href="/simuel_dev/os.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar OS</a>
 			</div>
 			<div class="card-body">		
@@ -314,7 +83,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                         </div>
                     </div>    
 
-                   
 
                     <div class="row">
                                 <div class="form-group col-md-2">
@@ -372,13 +140,202 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                                     </div>
                         </div>
                     </div>    
-                    <div class="form-group col-md-6">
-                        <div class="form-group col-md-6">
-                                <button id="btn_calcularOS" 
-                                        class="btn btn-primary" onclick="calcularOS()">Calcular</button>  
-                        </div>  
+                    <p>
+
+                    </p>
+<!-- ----------------------------------------function -->
+
+		<div class="card">
+			<h5 class="card-header">Grupos de Atividades desta OS:</h5>
+                	<div class="card-body">
+                        <div class="form-group">
+                            <p>
+                            <label> Selecione os GA desta OS: </label>
+                            </p>
+							<div class="row justify-content-sm-center">
+
+								<div class="col-4"> 
+									<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="ga651" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.5.1-Recarregar as baterias internas das urnas eletrônicas
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga652" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.5.2-Medir a carga das baterias
+										</label>
+									</div>
+									<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="ga653" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.5.3-Recarregar as baterias de reposição
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga654" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.5.4-Exercitar os componentes internos e realizar testes funcionais utilizando o STE
+										</label>
+									</div>
+									<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="ga655" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.5.5-Promover a limpeza dos gabinetes e dos cabos
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga656" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.5.6-Separar as urnas para manutenção corretiva
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga657" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.5.7-Realizar Testes de Aceite nas urnas novas
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga658" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.5.8-Realizar testes funcionais nas urnas para diversos fins
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga659" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.5.9-Atualizar o software embarcado das urnas eletrônicas
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6510" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.5.10-Instalar a certificação digital
+										</label>
+									</div>	
+
+								</div>
+								<div class="col-4">
+									
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6511" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.5.11-Retirar as mídias armazenadas nas urnas (Flash Card e/ou Memória de Resultado-MR')
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6512" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.5.12-Remover os lacres de eleição
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6513" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.5.13-Identificar e substituir as peças não especialistas faltantes ou danificadas
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6514" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.5.14-Inserir os dados sobre as urnas eletrônicas manutenidas nos sistemas LogusWeb, STE, Aceitus e outros
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6515" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.5.15-Anotar os dados de conservação em caso de indisponibilidade do sistema/equipamento
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6516" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.5.16-Verificar degradação dos LCDs
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6517" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.5.17-Verificar ocorrência de manchas no protetor acrílico do display do TE (modelo 2009)
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6518" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.5.18-Vistoria e separação de urnas por motivos diversos dentro do local de armazenamento
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6519" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.5.19-Extrair dados de flashcards em sistema da Justiça Eleitoral
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga6520" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.5.20-Executar testes exaustivos de hardware nas urnas eletrônicas durante simulados de votação
+										</label>
+									</div>
+								</div>
+								<div class="col-4">
+									
+									<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="ga661" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.6.1-Organizar o local de armazenamento
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga662" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.6.2-Movimentar as urnas eletrônicas de e para as bancadas para a manutenção preventiva
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga663" checked>
+										<label class="form-check-label" for="flexCheckDefault">
+										6.6.3-Verificar a infraestrutura do local de armazenamento e preencher o formulário CheckList do Local de Armazenamento, do sistema LogusWeb
+										</label>
+										</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga664" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.6.4-Medir a temperatura e umidade do ar do local de armazenamento, utilizando o Termo Higrômetro disponibilizado pela Justiça Eleitoral
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga665" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.6.5-Receber e conferir os suprimentos, as baterias e as bobinas para as urnas eletrônicas
+
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="ga666" checked>
+										<label class="form-check-label" for="flexCheckChecked">
+										6.6.6-Remover as etiquetas das mídias retiradas das urnas após as eleições oficiais, retirando o excesso de sujeira das mesmas
+									</div>
+								</div>
+							</div>
+                        </form>
+           			 </div><!-- -----	---------------------------------------- -->       
+     	</div>
+				<div class="card-footer text-muted">		
+                            Depois de preencher as informações acima clique em "Calcular" e depois em "Gravar OS"
+                </div>
+					<div class="d-grid gap-2 d-md-block">
+						
+                        <button id="btn_calcularOS" class="btn btn-primary"  onclick="calcularOS()"><i class="fa fa-fw fa-calculator"></i>Calcular</button>  
+                      
+						
+						<a href="<?php echo $_SERVER['PHP_SELF'];?>" class="btn btn-danger">
+						<i class="fa fa-fw fa-sync"></i>Limpar</a>
+						
                     </div>
-                    <div class="row">
+					<form class="row g-3">
                             <div class="form-group col-md-2">
                                 <label>Dias do período:  </label>
                                 <div id="qtde_dias_periodo"></div> 
@@ -395,7 +352,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
                                 <label>UST:  </label>
                                 <div id="qtde_ust"></div>
                             </div>    
-                    </div>
+					</form>
                    <div class="row">  
                         <div class="form-group col-md-8">
                                 <button id="btn_gravarOS" class="btn btn-primary" onclick="gravarOS()" >Gravar OS</button>  
@@ -411,3 +368,26 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		            </div>
 </body>
 </html>
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Editar GA
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       TESTE
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

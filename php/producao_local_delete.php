@@ -13,12 +13,7 @@ include('conexao.php');
 if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
 	
 
-	//------- pegar o valor de bat-reserva
-	// $ids_local = $_SESSION['id_local'];
-	// $sql = "SELECT * FROM status WHERE id_local = '$ids_local' ";
-	// $result = mysqli_query($conexao,$sql);
-	// $row = mysqli_fetch_row($result);
-	// $s_bat_reserva = $row[10];
+	
 
 
 
@@ -176,12 +171,12 @@ if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
 		var_dump($row);
 		// $update	=	$db->update('status',$data,array('id_local'=>'delId'));	
 		$db->delete('producao',array('id_producao'=>$_REQUEST['delId']));
-		header('location: /simuel/producao_local.php?msg=rds');
+		header('location: /simuel_dev/producao_local.php?msg=rds');
 		if($insert){
-			header('location:/simuel/producao_local.php?msg=ras');
+			header('location:/simuel_dev/producao_local.php?msg=ras');
 			exit;
 		}else{
-			header('location:/simuel/producao_local.php?msg=ras');
+			header('location:/simuel_dev/producao_local.php?msg=ras');
 			// header('location:/simuel/producao_local.php?msg=rna');
 			exit;
 		}

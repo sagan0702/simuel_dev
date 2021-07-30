@@ -7,15 +7,6 @@
 	<title>Equipamentos</title>
 	<?php 
 
-	// session_start();
-        
-	// if (!isset($_SESSION["usuario"])){
-		
-	// header('Location: index.php');
-	// exit();
-		
-	// }
-
 	include_once('php/formatacao.php');
     include ("php/bootstrapalert.php");
 
@@ -58,7 +49,7 @@
 			<div class="card-header">
 			<h3>Gerenciar Equipamentos</h3>
 				<!-- <i class="fa fa-fw fa-globe"></i> <strong>Pequisar </strong>  -->
-				<a href="php/ciclo_add.php" class="float-left btn btn-dark btn-lg"> 
+				<a href="php/equipamentos_add.php" class="float-left btn btn-dark btn-lg"> 
 				<i class="fa fa-fw fa-plus-circle"></i>  Adicionar Equipamento</a></div> <!--- BOTÃO DE AÇÃO -->
 			<div class="card-body"> <!--- MENSAGENS -->
 				<?php
@@ -96,6 +87,16 @@
 							$s++;
 					?>
 					<tr>
+
+
+							<!-- connverter data mysql -> data BR
+       						$data_inicio = implode("/",array_reverse(explode("-",$data_inicio)));
+       						$data_fim = implode("/",array_reverse(explode("-",$data_fim))); -->	
+							<?php
+							$data =  substr($val['fim_garantia'],0, 10);   
+							$fim_garantia = implode("/",array_reverse(explode("-",$data)));
+       						?>	
+
 						<td style="text-align: center;"><?php echo $s;?></td>
 						<td style="text-align: center;" ><?php echo $val['tipo'];?></td>
 						<td style="text-align: center;"><?php echo $val['modelo'];?></td>
@@ -103,7 +104,7 @@
 						<td style="text-align: center;"><?php echo $val['fabricante'];?></td>
 						<td style="text-align: center;" ><?php echo $val['tipo_bateria'];?></td>
 						<td style="text-align: center;" ><?php echo $val['em_garantia'];?></td>
-						<td style="text-align: center;" ><?php echo $val['fim_garantia'];?></td>
+						<td style="text-align: center;" ><?php echo $fim_garantia;?></td>
 						<td align="center">
 							<a href="php/equipamentos_edit.php?editId=<?php echo $val['id_equip'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
 							<a href="php/equipamentos_delete.php?delId=<?php echo $val['id_equip'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>

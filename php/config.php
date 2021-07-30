@@ -1,6 +1,6 @@
 <?php
 include_once('Database.php');
-define('SS_DB_NAME', 'simuel');
+define('SS_DB_NAME', 'simuel_dev');
 define('SS_DB_USER', 'sevin');
 define('SS_DB_PASSWORD', '@sevin2021!');
 define('SS_DB_HOST', 'localhost');

@@ -28,10 +28,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		);
 	$update	=	$db->update('pecas',$data,array('id_peca'=>$editId));
 	if($update){
-		header('location: /simuel/pecas.php?msg=rus');
+		header('location: /simuel_dev/pecas.php?msg=rus');
 		exit;
 	}else{
-		header('location: /simuel/pecas.php?msg=rnu');
+		header('location: /simuel_dev/pecas.php?msg=rnu');
 		exit;
 	}
 }
@@ -140,17 +140,6 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						</div> 
 					  	<br>
 						
-
-						<!-- <div class="form-check">
-							<fieldset>
-								<legend>Estado</legend>   
-								<input type = "radio" name="r_estado" id="r_estado" value = "1" checked />
-								<label for = "dobro">Aberto</label>   
-								<input type = "radio" name="r_estado" id="r_estado" value = "0" />
-								<label for = "cubo">Fechado</label>
-							</fieldset>
-						</div> -->
-
 
 						<div class="form-group">
 							<input type="hidden" name="editId" id="editId" value="<?php echo $_REQUEST['editId']?>">

@@ -1,3 +1,200 @@
+
+<?php include_once('config.php');
+if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
+	extract($_REQUEST);
+	if($n_ciclo==""){
+		header('location:'.$_SERVER['PHP_SELF'].'?msg=un');
+		exit;
+	}elseif($data_inicio==""){
+		header('location:'.$_SERVER['PHP_SELF'].'?msg=ue');
+		exit;
+	}elseif($data_fim==""){
+		header('location:'.$_SERVER['PHP_SELF'].'?msg=up');
+		exit;
+	}else{
+	
+		//converter para data br -> data mysql
+		$data_inicio = implode("-",array_reverse(explode("/",$data_inicio)));
+		$data_fim = implode("-",array_reverse(explode("/",$data_fim)));
+		$userCount	=	$db->getQueryCount('pecas_req','id_req');
+		if($userCount[0]['total']<20){
+			$data	=	array(
+					'id_local'=>$id_local,
+					'id_peca'=>$id_peca,
+					'codigo'=>$codigo,
+					'data'=>$data,
+					'id_usuario'=>$id_usuario,
+					'quant_solicitada'=>$quant_solicitada,
+						);
+			$insert	=	$db->insert('pecas_req',$data);
+			if($insert){
+				header('location:/simuel_dev/pecas.php?msg=ras');
+				exit;
+			}else{
+				header('location:/simuel_dev/pecass.php?msg=rna');
+				exit;
+			}
+		}else{
+			header('location:'.$_SERVER['PHP_SELF'].'?msg=dsd');
+			exit;
+		}
+	}
+}
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitar Peças</title>
+ <?php 
+ include_once('formatacao.php');
+
+
+	
+
+ ?>
+</head>
+<body>
+
+	<!--- MENSAGENS // COLOCAR O VALOR DO FP DIARIO DENTRO DO CADASTRO DE CICLOS  -->
+	
+   	<div class="container">
+		
+		<?php  
+		if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="un"){
+			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> O campo é obrigatório!</div>';
+		}elseif(isset($_REQUEST['msg']) and $_REQUEST['msg']=="ue"){
+			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> O campo é obrigatório!</div>';
+		}elseif(isset($_REQUEST['msg']) and $_REQUEST['msg']=="up"){
+			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> O campo é obrigatório!</div>';
+		}elseif(isset($_REQUEST['msg']) and $_REQUEST['msg']=="ras"){
+			echo	'<div class="alert alert-success"><i class="fa fa-thumbs-up"></i> Item inserido com sucesso!</div>';
+		}elseif(isset($_REQUEST['msg']) and $_REQUEST['msg']=="rna"){
+			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Item NÃO inserido! <strong>Tente novamente!</strong></div>';
+		}elseif(isset($_REQUEST['msg']) and $_REQUEST['msg']=="dsd"){
+			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Please delete and then try again <strong>We set limit for security reasons!</strong></div>';
+		}
+
+		?>
+
+		<div class="card">   <!---CARD ADICIONAR --->
+			<div class="card-header">
+			<h3>Solicitar Peças de Urna</h3>
+			<!-- <i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Ciclo</strong>  -->
+				<a href="/simuel_dev/pecas.php" class="float-right btn btn-dark btn-sm">
+				<i class="fa fa-fw fa-globe"></i> Gerenciar Peças</a>
+			</div>
+			<div class="card-body">		
+				<div class="col">
+					<form method="post">
+						<div class="row">
+							<div class="col-md-1 ">
+								<label>Código </label>
+								<input type="text" name="codigo" id="codigo" class="form-control" 
+								placeholder="" onkeypress="$(this).mask('0000')" required/> 
+							</div>
+					
+								<div class="col-md-6 ">
+									<label>Nome da Peça</label>
+									<input type="text" class="form-control" name="descricao" id="descricao" required />
+								</div>
+								<div class="col-md-1 ">
+									<label>Quantidade</label>
+									<input type="text" class="form-control" name="quantidade" id="quantidade" onkeypress="$(this).mask('000')" required />
+								</div>
+								<div class="col-md-4">
+								<button type="submit" name="submit" value="" id="" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Adicionar Peça</button>
+
+							</div>
+						</div> 
+
+
+						<div class="form-group">
+							<label></label>
+							<input type="hidden" name="estado" id="estado"  value = "1" required>
+						</div>
+						
+						<br>
+						<div class="form-group">
+								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Fazer requisição</button>
+
+						</div>
+					
+					</form>
+				</div>
+			
+			</div>
+			<div class="card-footer text-muted">
+				SIMUEL 
+		</div>
+		</div>
+	</div>
+	<div class="container my-4">	
+	</div>
+ 
+	<script>
+		$('#data_inicio').datepicker({	
+			format: "yyyy/mm/dd",	
+			language: "pt-BR",
+			startDate: '+0d',
+			
+		});
+		
+		$('#data_fim').datepicker({	
+				
+			format: "yyyy/mm/dd",
+			language: "pt-BR",
+			startDate: '+0d',
+			onSelect: function addDiasOff (date) {
+            inicio = $('#data_inicio').val();
+            fim = $('#data_fim').val();
+            if (fim < inicio) {
+                alert(` Data  ${date} INVÁLIDO. A data selecionada é menor que o inicio do período!`);
+            } else {
+
+			}
+		}
+
+		});
+		
+		
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
 <?php include_once('php/config.php');?>
 <!doctype html>
 <html lang="pt-BR">
@@ -46,7 +243,32 @@
 		$condition	.=	' AND modeloUE LIKE "%'.$_REQUEST['modeloUE'].'%" ';
 	}
 	
-		
+
+	// `id_req`, `id_local`, `id_peca`, `codigo`, `data`, `id_usuario`, `quant_solicitada`, `quant_legal`, `quant_fornecida`SELECT * FROM `pecas_req`
+
+
+
+	$userCount	=	$db->getQueryCount('pecas_req','id_req');
+	// if($userCount[0]['total']<50){
+		$data	=	array(
+						'id_local'=>$id_local,
+						'id_peca'=>$id_peca,
+						'codigo'=>$codigo,
+						'data'=>$data,
+						'id_usuario'=>$id_usuario,
+						'quant_solicitada'=>$quant_solicitada,
+						
+					);
+		$insert	=	$db->insert('pecas',$data);
+		if($insert){
+			header('location:/simuel_dev/pecas.php?msg=ras');
+			exit;
+		}else{
+			header('location:/simuel_dev/pecas.php?msg=rna');
+			exit;
+		}
+
+
 	$userData	=	$db->getAllRecords('pecas_req','*',$condition,'ORDER BY id_req DESC');
 	?>
    	<div class="container">
@@ -114,11 +336,11 @@
 								<input type="text" class="form-control" name="codigo" id="codigo" value="0" onkeypress="$(this).mask('000-0')" onfocusout="totalUrna()">
 							</div>
 							<div class="col-md-2 ">
-								<label for="urna10">Descrição</label>
+								<label for="urna10">Nome da Peça</label>
 								<input type="text" class="form-control" name="descricao" id="descricao" value="0"   >
 							</div>
 							<div class="col-md-2 ">
-								<label for="urna11">Quantidade:</label>
+								<label for="urna11">Quantidade solicitada:</label>
 								<input type="text" class="form-control"  name="ue2011p" id="ue2011p" value="0" onkeypress="$(this).mask('0000')" >
 							</div>
 							

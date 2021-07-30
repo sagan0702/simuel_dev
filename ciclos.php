@@ -13,8 +13,6 @@
         session_start();
         include ("php/conexao.php");
        
-        
-        
             if (!isset($_SESSION["usuario"])) {
                 header('Location: index.php');
                 exit();
@@ -59,7 +57,7 @@
 					echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Há alguma coisa errada. <strong>Tente novamente!</strong></div>';
 				}
 				?>
-		<div>   <!--- MOSTRA A TABELA DE REGISTROS  -->
+		<div>   <!--- MOSTRA A TABELA DE REGISTROS  GRAVADOS-->
 		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Ciclos Cadastrados </h5>
 			<table class="table table-striped table-bordered table-sm">
 				<thead>
@@ -83,31 +81,22 @@
 					?>
 					<tr>
 						<?php
-						$est = $val['estado'];
-							if ($est == 1) {
-								$estado = "Ativo";
-								} else {
-								$estado = "Fechado";
-							}
-						
-						
+					
 							$data_atua =  substr($val['data_atualizacao'],0, 10);    
 							$data_atua = implode("/",array_reverse(explode("-",$data_atua)));;
 						
 						?>
-
 						<td style="text-align: center;"><?php echo $s;?></td>
 						<td style="text-align: center;" ><?php echo $val['n_ciclo'];?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_inicio'])));;?></td>
 						<td style="text-align: center;" ><?php echo implode("/",array_reverse(explode("-",$val['data_fim'])));;?></td>
-						<td style="text-align: center;"><?php echo $estado;?></td>
+						<td style="text-align: center;"><?php echo $val['estado'];?></td>
 						<td style="text-align: center;"><?php echo $data_atua;?></td>
 						<td style="text-align: center;"><?php echo $val['fator_prod'];?></td>
 						<td align="center">
 							<a href="php/ciclo_edit.php?editId=<?php echo $val['id_ciclo'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> | 
 							<a href="php/ciclo_delete.php?delId=<?php echo $val['id_ciclo'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a>
 						</td>
-
 					</tr>
 					<?php 
 						}
@@ -118,6 +107,9 @@
 				</tbody>
 			</table>
 		</div> <!--/.col-sm-12-->
+		
+					</p>
+					<br>
 		<div class="col-sm-12"> <!--- CAMPOS DE PESQUISA -->
 
 					<h5 class="card-title"><i class="fa fa-fw fa-search"></i> Pesquisar Ciclos </h5>
@@ -125,24 +117,22 @@
 						<div class="row">
 								<div class="col-md-1">
 									<label> Ciclo</label>
-									<input type="text" name="n_ciclo" id="n_ciclo" class="form-control" value="<?php echo isset($_REQUEST['n_ciclo'])?$_REQUEST['n_ciclo']:''?>" placeholder="00/0000" onkeypress="$(this).mask('00/0000')">
+									<input type="text" name="n_ciclo" id="n_ciclo" style="text-align:center" class="form-control" value="<?php echo isset($_REQUEST['n_ciclo'])?$_REQUEST['n_ciclo']:''?>" placeholder="00/0000" onkeypress="$(this).mask('00/0000')">
 								</div>
 								<div class="col-sm-2">
 									<label>Data de Início</label>
-									<input type="date" name="data_inicio" id="data_inicio" class="form-control" value="<?php echo isset($_REQUEST['data_inicio'])?$_REQUEST['data_inicio']:''?>" placeholder="Selecione" >
+									<input type="date" name="data_inicio" style="text-align:center" id="data_inicio" class="form-control" value="<?php echo isset($_REQUEST['data_inicio'])?$_REQUEST['data_inicio']:''?>" placeholder="Selecione" >
 								</div>
 								<div class="col-sm-2">
 									<label>Data de Término</label>
-									<input type="date" name="data_fim" id="data_fim" class="form-control" placeholder="Selecione" value="<?php echo isset($_REQUEST['data_fim'])?$_REQUEST['data_fim']:''?>" >
+									<input type="date" name="data_fim" style="text-align:center" id="data_fim" class="form-control" placeholder="Selecione" value="<?php echo isset($_REQUEST['data_fim'])?$_REQUEST['data_fim']:''?>" >
 								</div>
-								<div class="col-sm-1">
-									<label>Situação</label>
-									<input type="text" name="estado" id="estado" class="form-control"  onkeypress="$(this).mask('0')" value="<?php echo isset($_REQUEST['estado'])?$_REQUEST['estado']:''?>" >
-								</div>
-								<div class="form-group col-md-1">
-									<label p class="text-secondary" ><h6>Situação: 1-Ativo  0-Fechado </label></h6>
-								</div>	
+							
+
 						</div>
+
+						<br>
+						<br>
 						<div class="row">
 							<div class="col-sm-2">
 								<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i>Pesquisar</button> 

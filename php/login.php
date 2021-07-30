@@ -16,7 +16,7 @@ $row = mysqli_num_rows($result);
 
 while ($campo = $result->fetch_assoc()) {
     
-    $id = $campo['id_usuario'];
+    $id_usuario = $campo['id_usuario'];
     $usuario = $campo['usuario'];
     $email = $campo['email'];
     $id_local = $campo['id_local'];
@@ -28,8 +28,8 @@ while ($campo = $result->fetch_assoc()) {
 
 
 if($row == 1) {
-	$_SESSION['usuario'] = $usuario;
-	$_SESSION['id_usuario'] = $id;
+	$_SESSION['id_usuario'] = $id_usuario;
+    $_SESSION['usuario'] = $usuario;
     $_SESSION['id_local'] = $id_local;
 	$_SESSION['local'] = $local;
     $_SESSION["qtde_infra"] = $qtde_infra;
@@ -38,11 +38,13 @@ if($row == 1) {
         if ($acesso == 1){
             $_SESSION["menu"]='php/menu_adm.php';
             $_SESSION["menu2"]='php/menu_adm2.php';
+            header('Location: /simuel_dev/p_inicial_adm.php');
         }else{
             $_SESSION["menu"]='php/menu_user.php';
             $_SESSION["menu2"]='php/menu_user2.php';
+            header('Location: /simuel_dev/p_inicial.php');
         }
-	header('Location: /simuel/p_inicial.php');
+	
 	exit();
 } else {
 	$_SESSION['nao_autenticado'] = true;

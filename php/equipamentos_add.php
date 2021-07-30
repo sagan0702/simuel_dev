@@ -13,6 +13,8 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 	}else{
 		
 		//converter para data br -> data mysql
+
+		$em_garantia = $_POST['garantia'];
 		$fim_garantia = implode("-",array_reverse(explode("/",$fim_garantia)));
 	
 			if($userCount[0]['total']<20){
@@ -27,10 +29,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						);
 			$insert	=	$db->insert('equipamentos',$data);
 			if($insert){
-				header('location:/simuel/equipamentos.php?msg=ras');
+				header('location:/simuel_dev/equipamentos.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel/equipamentos.php?msg=rna');
+				header('location:/simuel_dev/equipamentos.php?msg=rna');
 				exit;
 			}
 		}else{
@@ -74,7 +76,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 		<div class="card">   <!---CARD ADICIONAR --->
 			<div class="card-header"><i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Equipamento</strong> 
-				<a href="/simuel/ciclos.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel_dev/equipamentos.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Equipamentos</a>
 			</div>
 			<div class="card-body">		
@@ -83,37 +85,52 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					<form method="post">
 						
 					<form method="post">
-						<div class="form-group">
-							<label><h6>Tipo</label></h6>
-							<input type="text" name="tipo" id="tipo" class="form-control" value="<?php echo $row[0]['tipo']; ?>" placeholder="" required>
+						<div class="form-group col-md-2">
+							<label><h6>Tipo:</label></h6>
+							<input type="text" name="tipo" id="tipo" class="form-control" value="" placeholder="" required>
 						</div>
-						<div class="form-group">
-							<label><h6>Modelo</label></h6>
-							<input type="text" name="modelo" id="modelo" class="form-control" value="<?php echo $row[0]['modelo']; ?>" placeholder="" required>
+						<div class="form-group col-md-4">
+							<label><h6>Modelo:</label></h6>
+							<input type="text" name="modelo" id="modelo" class="form-control" value="" placeholder="" required>
 						</div>
-						<div class="form-group">
-							<label><h6>Descrição</label></h6>
-							<input type="text" name="descricao" id="descricao" class="form-control" value="<?php echo $row[0]['descricao']; ?>" placeholder="" required>
+						<div class="form-group col-md-12">
+							<label><h6>Descrição:</label></h6>
+							<input type="text" name="descricao" id="descricao" class="form-control" value="" placeholder="" required>
 						</div>
-						<div class="form-group">
-							<label><h6>Fabricante</label></h6>
-							<input type="text" name="fabricante" id="fabricante" class="form-control" value="<?php echo $row[0]['fabricante']; ?>" placeholder="" required>
+						<div class="form-group col-md-4">
+							<label><h6>Fabricante:</label></h6>
+							<input type="text" name="fabricante" id="fabricante" class="form-control" value="" placeholder="" required>
 						</div>
-						<div class="form-group">
-							<label><h6>Tipo de Bateria</label></h6>
-							<input type="text" name="tipo_bateria" id="tipo_bateria" class="form-control" value="<?php echo $row[0]['tipo_bateria']; ?>" placeholder=""  required>
+						<div class="form-group col-md-4">
+							<label><h6>Tipo de Bateria:</label></h6>
+							<input type="text" name="tipo_bateria" id="tipo_bateria" class="form-control" value="" placeholder=""  required>
 						</div>
-						<div class="form-group">
+						<br>
+						<div class="form-group"> <!--- ADD RADIO --->
 							<label><h6>Em garantia?</label></h6>
-							<input type="text" name="em_garantia" id="em_garantia" class="form-control" value="<?php echo $row[0]['em_garantia']; ?>" placeholder="" required>
-						</div>
+						
+							<div class="form-check">
+							<input class="form-check-input" type="radio" name="garantia" value="SIM" id="radio_garantia_sim" checked>
+							<label class="form-check-label" for="flexRadioDefault1">
+								Sim
+							</label>
+							</div>
+							<div class="form-check">
+							<input class="form-check-input" type="radio" name="garantia" value="NÃO" id="radio_garantia_nao" >
+							<label class="form-check-label" for="flexRadioDefault2">
+								Não
+							</label> 
+							</div>
+							<br>
 						<div class="form-group col-md-6">
 							
-							<label><h6>Fim da Garantia</label></h6>
-							<input type="text" name="fim_garantia" id="fim_garantia" class="form-control" value=  required>						
+							<label><h6>Data do fim da Garantia:</label></h6>
+							<input type="text" name="fim_garantia" id="fim_garantia" class="form-control" value=""  required>						
 						</div>
 
 						</div>
+
+						<br>
 						<div class="row ">
 							<div class="form-group col-md-6">
 								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Adicionar Equipamento</button>

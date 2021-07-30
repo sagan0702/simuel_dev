@@ -30,10 +30,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 	$update	=	$db->update('equipamentos',$data,array('id_equip'=>$editId));
 	if($update){
-		header('location: /simuel/equipamentos.php?msg=rus');
+		header('location: /simuel_dev/equipamentos.php?msg=rus');
 		exit;
 	}else{
-		header('location: /simuel/equipamentos.php?msg=rnu');
+		header('location: /simuel_dev/equipamentos.php?msg=rnu');
 		exit;
 	}
 }
@@ -53,7 +53,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		<!--- MENSAGENS -->
 	
    	<div class="container">
-		<h2><Editar Equipamento </h2>
+		<h2>Editar Equipamento </h2>
 		<?php
 		if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="un"){
 			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> O campo é obrigatório!</div>';
@@ -81,51 +81,54 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		<div class="card">  
 			<div class="card-header">
 				<!-- <i class="fa fa-fw fa-plus-circle"></i> -->
-				<strong><h3>Editar Equipamento</h3></strong><a href="/simuel/equipamentos.php" class="float-right btn btn-dark btn-sm">
+				<strong><h3>Editar Equipamento</h3></strong><a href="/simuel_dev/equipamentos.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Equipamentos</a>
 			</div>
 			<div class="card-body">
 				
-				<div class="col-sm-6">
+				<div class="col">
 					
 
 					<form method="post">
-						<div class="form-group">
-							<label><h6>Tipo</label></h6>
+						<div class="form-group col-sm-1">
+							<label>Tipo</label>
 							<input type="text" name="tipo" id="tipo" class="form-control" value="<?php echo $row[0]['tipo']; ?>" placeholder="" required>
 						</div>
-						<div class="form-group">
-							<label><h6>Modelo</label></h6>
+						<div class="form-group col-sm-2">
+							<label>Modelo</label>
 							<input type="text" name="modelo" id="modelo" class="form-control" value="<?php echo $row[0]['modelo']; ?>" placeholder="" required>
 						</div>
-						<div class="form-group">
-							<label><h6>Descrição</label></h6>
+						<div class="form-group col-sm-6">
+							<label>Descrição</label>
 							<input type="text" name="descricao" id="descricao" class="form-control" value="<?php echo $row[0]['descricao']; ?>" placeholder="" required>
 						</div>
-						<div class="form-group">
-							<label><h6>Fabricante</label></h6>
+						<div class="form-group col-sm-4">
+							<label>Fabricante</label>
 							<input type="text" name="fabricante" id="fabricante" class="form-control" value="<?php echo $row[0]['fabricante']; ?>" placeholder="" required>
 						</div>
-						<div class="form-group">
-							<label><h6>Tipo de Bateria</label></h6>
-							<input type="text" name="tipo_bateria" id="tipo_bateria" class="form-control" value="<?php echo $row[0]['tipo_bateria']; ?>" placeholder=""  required>
+						<div class="form-group col-sm-4">
+							<label>Tipo de Bateria</label>
+							<input type="text" name="tipo_bateria" id="tipo_bateria" class="form-control" value="<?php echo $row[0]['tipo_bateria']; ?>" placeholder=""  required> <br>
 						</div>
-						<div class="form-group">
-							<label><h6>Em garantia?</label></h6>
-							<input type="text" name="em_garantia" id="em_garantia" class="form-control" value="<?php echo $row[0]['em_garantia']; ?>" placeholder="" required>
+						<div class="form-group col-sm-4">
+							<label>Em garantia?</label></br>
+							<input type="radio" name="em_garantia" <?=$row[0]['em_garantia']=="SIM" ? "checked" : ""?> value="SIM">Sim </br>
+							<input type="radio" name="em_garantia" <?=$row[0]['em_garantia']=="NÃO" ? "checked" : ""?> value="NÃO">Não
 						</div>
+						</p>
+							
 						<div class="form-group col-md-6">
 							<?php
 							$datai = $row[0]['fim_garantia'];
 							$datai= implode("/",array_reverse(explode("-",$datai))); 
 							?>
-							<label><h6>Fim da Garantia </label></h6>
+							<label><h6>Fim da Garantia </label> <br>
 							<input type="text" name="fim_garantia" id="fim_garantia" class="form-control" value="<?php 
 							echo $datai ?>"  required>						
 						</div>
 
 						
-						</div>	
+						<br>
 						
 						<div class="form-group">
 							<input type="hidden" name="editId" id="editId" value="<?php echo $_REQUEST['editId']?>">

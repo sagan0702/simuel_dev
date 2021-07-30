@@ -17,32 +17,26 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		$userCount	=	$db->getQueryCount('local','id_local');
 		if($userCount[0]['total']<20){
 			$data	=	array(
-							
-							
-				// `id_local`, `c`, `sede`, `qtde_ue2009`, `qtde_ue2010`, `qtde_ue2011`, `qtde_ue2013`,
-				// `qtde_ue2015`, `qtde_ue2020`, `qtde_ue2022`, `qtde_miv_2022`, `qtde_baterias`, `data_atualizacao`, `qtde_infra`
+			
+				'n_local'=>$n_local,
+				'sede'=>$sede,
+				'qtde_ue2009'=>$qtde_ue2009,
+				'qtde_ue2010'=>$qtde_ue2010,
+				'qtde_ue2011'=>$qtde_ue2011,
+				'qtde_ue2013'=>$qtde_ue2013,
+				'qtde_ue2015'=>$qtde_ue2015,
+				'qtde_ue2020'=>$qtde_ue2020,
+				'qtde_ue2022'=>$qtde_ue2022,
+				'qtde_baterias'=>$qtde_baterias,
+				'qtde_infra'=>$qtde_infra,
 
-							'n_local'=>$n_local,
-							'sede'=>$sede,
-							'qtde_ue2009'=>$qtde_ue2009,
-							'qtde_ue2010'=>$qtde_ue2010,
-							'qtde_ue2011'=>$qtde_ue2011,
-							'qtde_ue2013'=>$qtde_ue2013,
-							'qtde_ue2015'=>$qtde_ue2015,
-							'qtde_ue2020'=>$qtde_ue2020,
-							'qtde_ue2022'=>$qtde_ue2022,
-							'qtde_baterias'=>$qtde_baterias,
-							'qtde_infra'=>$qtde_infra,
-
-
-
-						);
+			);
 			$insert	=	$db->insert('local',$data);
 			if($insert){
-				header('location:/simuel/locais.php?msg=ras');
+				header('location:/simuel_dev/locais.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel/locais.php?msg=rna');
+				header('location:/simuel_dev/locais.php?msg=rna');
 				exit;
 			}
 		}else{
@@ -86,7 +80,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 		<div class="card">   <!---CARD ADICIONAR --->
 			<div class="card-header"><i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Locais</strong> 
-				<a href="/simuel/locais.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel_dev/locais.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Locais</a>
 			</div>
 			<div class="card-body">		

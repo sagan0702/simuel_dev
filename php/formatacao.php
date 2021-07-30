@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../css/estilo.css" > 
 <link rel="stylesheet" href="../css/jquery-ui.css" > 
 <link rel="stylesheet" href="css/jquery-ui.css" > 
+
 <script src="js/bootstrap.min.js"></script>					
 <script src="js/jquery.min.js"></script>
 <script src="../js/jquery.min.js"></script>

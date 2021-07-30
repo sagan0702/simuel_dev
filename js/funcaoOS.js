@@ -57,7 +57,7 @@ function calcularOS() {
     var ntbat = Number(tbaterias)
     var nturnas = Number(turnas)
     // var nfp_diario = Number(fp_diario)
-    alert(` FP Diário bruto é  ${fp_diario} `);
+    // alert(` FP Diário bruto é  ${fp_diario} `);
     
     // var qtde_dias_off = Number(qtde_dias_off)
     
@@ -69,6 +69,36 @@ function calcularOS() {
         
     // }
     //  } else {
+
+    // LER CHECKBOX
+
+    var ga651 = $('#ga651').is(':checked');
+    var ga652 = $('#ga652').is(':checked');
+    var ga653 = $('#ga653').is(':checked');
+    var ga654 = $('#ga654').is(':checked');
+    var ga655 = $('#ga655').is(':checked');
+    var ga656 = $('#ga656').is(':checked');
+    var ga657 = $('#ga657').is(':checked');
+    var ga658 = $('#ga658').is(':checked');
+    var ga659 = $('#ga659').is(':checked');
+    var ga6510 = $('#ga6510').is(':checked');
+    var ga6511 = $('#ga6511').is(':checked');
+    var ga6512 = $('#ga6512').is(':checked');
+    var ga6513 = $('#ga6513').is(':checked');
+    var ga6514 = $('#ga6514').is(':checked');
+    var ga6515 = $('#ga6515').is(':checked');
+    var ga6516 = $('#ga6516').is(':checked');
+    var ga6517 = $('#ga6517').is(':checked');
+    var ga6518 = $('#ga6518').is(':checked');
+    var ga6519 = $('#ga6519').is(':checked');
+    var ga6520 = $('#ga6520').is(':checked');
+    var ga661 = $('#ga661').is(':checked');
+    var ga662 = $('#ga662').is(':checked');
+    var ga663 = $('#ga663').is(':checked');
+    var ga664 = $('#ga664').is(':checked');
+    var ga665 = $('#ga665').is(':checked');
+    var ga666 = $('#ga666').is(':checked');
+   
 
         //Quantidade de dias uteis do período:
         qtde_dias = workingDaysBetweenDates(inicio, fim) 
@@ -108,7 +138,8 @@ function addDiasOff() {
 
 function gravarOS() {
     // alert("Função CriarOS ativada");
-    id_ciclo = $('#txt_id_ciclo').val();
+    id_ciclo1 = $('#txt_id_ciclo').val();
+    id_ciclo = parseInt(id_ciclo1);
     id_local = txt_id_local.innerHTML
     n_os = $('#txt_n_os').val();
     n_ciclo = $('#txt_n_ciclo').val();
@@ -122,6 +153,38 @@ function gravarOS() {
     fp_diario = fp_diario.innerHTML
     ust = qtde_ust.innerHTML
     qtde_ga = qtde_ga.innerHTML
+
+    
+    // LER CHECKBOX
+
+    var ga651 = $('#ga651').is(':checked');
+    var ga652 = $('#ga652').is(':checked');
+    var ga653 = $('#ga653').is(':checked');
+    var ga654 = $('#ga654').is(':checked');
+    var ga655 = $('#ga655').is(':checked');
+    var ga656 = $('#ga656').is(':checked');
+    var ga657 = $('#ga657').is(':checked');
+    var ga658 = $('#ga658').is(':checked');
+    var ga659 = $('#ga659').is(':checked');
+    var ga6510 = $('#ga6510').is(':checked');
+    var ga6511 = $('#ga6511').is(':checked');
+    var ga6512 = $('#ga6512').is(':checked');
+    var ga6513 = $('#ga6513').is(':checked');
+    var ga6514 = $('#ga6514').is(':checked');
+    var ga6515 = $('#ga6515').is(':checked');
+    var ga6516 = $('#ga6516').is(':checked');
+    var ga6517 = $('#ga6517').is(':checked');
+    var ga6518 = $('#ga6518').is(':checked');
+    var ga6519 = $('#ga6519').is(':checked');
+    var ga6520 = $('#ga6520').is(':checked');
+    var ga661 = $('#ga661').is(':checked');
+    var ga662 = $('#ga662').is(':checked');
+    var ga663 = $('#ga663').is(':checked');
+    var ga664 = $('#ga664').is(':checked');
+    var ga665 = $('#ga665').is(':checked');
+    var ga666 = $('#ga666').is(':checked');
+
+
               
         if (n_local == '' || n_os == '' || inicio == '' || fim == '' || turnas == '' || tbaterias == ''){
             alert("Preencha todos os campos.");
@@ -132,7 +195,7 @@ function gravarOS() {
             type: "POST",
             url: '../php/os_criar_x.php',
             cache: false,
-            data:{ id_ciclo:id_ciclo,id_local:id_local,n_os:n_os,inicio:inicio,fim:fim,turnas:turnas,tbaterias:tbaterias,qtde_dias_periodo:qtde_dias_periodo,qtde_dias_off:qtde_dias_off,qtde_dias_disp:qtde_dias_disp,fp_diario:fp_diario,ust:ust,qtde_ga:qtde_ga},
+            data:{ id_ciclo:id_ciclo,id_local:id_local,n_os:n_os,inicio:inicio,fim:fim,turnas:turnas,tbaterias:tbaterias,qtde_dias_periodo:qtde_dias_periodo,qtde_dias_off:qtde_dias_off,qtde_dias_disp:qtde_dias_disp,fp_diario:fp_diario,ust:ust,qtde_ga:qtde_ga,ga651:ga651,ga652:ga652,ga653:ga653,ga654:ga654,ga655:ga655,ga656:ga656,ga657:ga657,ga658:ga658,ga659:ga659,ga6510:ga6510,ga6511:ga6511,ga6512:ga6512,ga6513:ga6513,ga6514:ga6514,ga6515:ga6515,ga6516:ga6516,ga6517:ga6517,ga6518:ga6518,ga6519:ga6519,ga6520:ga6520,ga661:ga661,ga662:ga662,ga663:ga663,ga664:ga664,ga665:ga665,ga666:ga666},
             success: function(dados){
             alert(dados);
             }
