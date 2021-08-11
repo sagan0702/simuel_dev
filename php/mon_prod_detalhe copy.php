@@ -57,9 +57,24 @@ if(isset($_REQUEST['editId']) and $_REQUEST['editId']!=""){
 							$os = $row[0]['id_os'];
 							$local = $row[0]['id_local'];
 							$usuario = $row[0]['id_usuario'];
+							// echo "O ciclo Max é ". max_ciclo();
+							// -?><!--<html><br></html>--><?php 
+							// echo "A OS Max é ". max_os();
+							// ?><!--<html><br></html><?php 
 							
+							// echo "A OS MAX do local 4 Max é ". max_os_local(4);
+							// ?><!--<html><br></html>-->
+							<!-- <?php 
+							?><html><br></html><?php 
+							echo "O id_local é ". $local;
+							?><html><br></html><?php 
+							echo "O id_usuario é ".$usuario;
+							?><html><br></html><?php 
+							echo "O nome do local é: ".identifica_local ($local);	
+							?><html><br></html><?php 
+							echo "O nome do_usuario é: ".identifica_usuario ($usuario);
 
-							?> 
+							?> -->
 
 						<!-- <div class="row"> -->
 														

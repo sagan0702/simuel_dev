@@ -163,7 +163,7 @@
 						}
 					}else{
 					?>
-					<tr><td colspan="6" align="center">Nenhum registro encontrado!</td></tr>
+					<tr><td colspan="6" align="center">Sem dados de movimentação!</td></tr>
 					<?php } ?>
 				</tbody>
 			</table>

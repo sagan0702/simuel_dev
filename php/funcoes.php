@@ -1,9 +1,9 @@
 <?php
-// include('conexao.php');
-// session_start();
+include('conexao.php');
+//session_start();
 
-//  $local = $_SESSION['local'] ;
-//  $id_local = $_SESSION['id_local'] ;
+// $local = $_SESSION['local'] ;
+// $id_local = $_SESSION['id_local'] ;
 
 
 function identifica_ciclo ($id_ciclo) {
@@ -30,7 +30,6 @@ function identifica_os ($id_os) {
     $row = mysqli_fetch_row($result);
     $os_result = $row[0];
     if ($os_result == 0) {
-            
         return  $os_result = "N/A";
     } else {
         return  $os_result;
@@ -42,12 +41,13 @@ function identifica_os ($id_os) {
 function identifica_local ($id_local) {
     include('conexao.php');
     //session_start();  
+    //echo "O id_local é ".$id_local; // DEBUG
     $sql = "SELECT n_local FROM local WHERE id_local = $id_local";
     $result = mysqli_query($conexao,$sql);
     $row = mysqli_fetch_row($result);
     $local_result = $row[0];
-    if ($local_result == 0) {
-            
+    //echo "O local_result é ".$local_result; // DEBUG
+    if ($local_result == "") {
         return  $local_result = "N/A";
     } else {
         return  $local_result;
@@ -55,16 +55,18 @@ function identifica_local ($id_local) {
     mysqli_close($conexao);
 }
 
+										
 
 function identifica_usuario ($id_usuario) {
     include('conexao.php');
     //session_start();  
+    //echo "O id_usuario é ".$id_usuario; // DEBUG
     $sql = "SELECT usuario FROM usuarios WHERE id_usuario = $id_usuario";
     $result = mysqli_query($conexao,$sql);
     $row = mysqli_fetch_row($result);
-    $local_result = $row[0];
-        if ($local_result == 0) {
-            
+    $usuario_result = $row[0];
+    //echo "O usuario_result é ".$usuario_result; // DEBUG
+        if ($usuario_result == "") {
             return  $usuario_result = "N/A";
         } else {
             return  $usuario_result;

@@ -70,14 +70,28 @@ extract($_REQUEST);
 	 
        //print_r($data);
 		$ids_local = $_SESSION['id_local'];
-		echo "valor de id_local = ". $ids_local;
+		//echo "valor de id_local = ". $ids_local;
 	
 		//$ids_local = $_SESSION['id_local'];
 		//echo "valor de id_local = ". $ids_local;
 
 		$condition =	"AND id_local =".$ids_local;
 		$userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local');
-			
+		
+		// $tbat_barriga_aluguel_v = $val['$tbat_barriga_aluguel'];
+		// if 	($tbat_barriga_aluguel_v == "") {
+
+		// 	$tbat_barriga_aluguel_v = 0;
+
+
+		// } else  {
+
+		// 	$tbat_barriga_aluguel_v = $val['$tbat_barriga_aluguel'];
+
+		// }
+
+
+
 		
 		
 			$s	=	'';
@@ -99,8 +113,8 @@ extract($_REQUEST);
 				$tbat_oxidada_v = $val['tbat_oxidada'];
 		        $tot_prod = $totue2009_v + $totue2010_v + $totue2011_v + $totue2013_v + $totue2015_v + $totue2020_v +$totue2022_v;
 			}
-			echo "DUMP VALORES ATUAIS DA TABELA STATUS:";
-			var_dump($userData) ;	
+			//echo "DUMP VALORES ATUAIS DA TABELA STATUS:";
+			//var_dump($userData) ;	
 		//------- SOMAR/ATUALIZAR OS VALORES DE STATUS COM OS VALORES DA PRODUCAO ATUAL
 
 		 $totue2009_v = $totue2009_v + $ue2009p; 
@@ -113,7 +127,7 @@ extract($_REQUEST);
 		 $tnue_sem_chamado_v = $tnue_sem_chamado_v + $nue_sem_chamado;
 		 $tnue_com_chamado_v = $tnue_com_chamado_v  + $nue_com_chamado;
 		 $tbat_reserva_v = $tbat_reserva_v - $bat_subst;
-		 $tbat_subst_v =  $bat_subst;
+		 $tbat_subst_v =  $tbat_subst_v + $bat_subst;
 		 $tbat_barriga_aluguel_v = $tbat_barriga_aluguel_v + $bat_barriga_aluguel;
 		 $tbat_vazando_v =  $tbat_vazando_v  + $bat_vazando; 
 		 $tbat_oxidada_v = $tbat_oxidada_v + $bat_oxidada;
@@ -146,9 +160,25 @@ extract($_REQUEST);
 							);
 						// }
 			
-			echo "DUMP VALORES FINAIS A SEREM GRAVADOS NA TABELA STATUS:";
-			var_dump($data_update) ;	
+			//echo "DUMP VALORES FINAIS A SEREM GRAVADOS NA TABELA STATUS:";
+			//var_dump($data_update) ;	
 			$update	=	$db->update('status',$data,array('id_local'=>$id_local));	
+			
+			
+			//INSERIR QUANTIDADE DE BATERIAS NA TABELA LOCAL
+			$sql = "UPDATE local 
+			SET qtde_baterias = $tbat_reserva_v 
+			WHERE id_local = $id_local";  
+
+				if (!$conexao->query($sql)) {
+					echo "Error: " . $sql . "<br>" . $conexao->error;
+				}else{
+					echo "Produção Gravada com Sucesso!";    
+					header('location: /simuel_dev/producao_local.php');   
+					exit; 
+				}
+
+
 			
 			
 }
@@ -311,7 +341,7 @@ if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="ras"){
 								<input type="number" class="form-control"  disabled  value="<?php  echo $s_bat_reserva ; ?>" name="bat_reserva" id="bat_reserva"  >							
 							</div>
 							<div class="col-md-2">
-								<label for="urna22">Urnas Substituídas: <br>. </label>
+								<label for="urna22">Substituídas / <br> Inservíveis: </label>
 								<input type="number" min="0" class="form-control" value="0" name="bat_subst" id="bat_subst" onkeypress="$(this).mask('0000')" >
 							</div>
 							<div class="col-md-2">

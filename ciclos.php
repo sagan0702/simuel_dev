@@ -81,6 +81,8 @@
 					?>
 					<tr>
 						<?php
+
+						
 					
 							$data_atua =  substr($val['data_atualizacao'],0, 10);    
 							$data_atua = implode("/",array_reverse(explode("-",$data_atua)));;

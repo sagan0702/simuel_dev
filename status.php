@@ -394,13 +394,14 @@
 					//opções para exibição do gráfico
 					var options2009 = {
 						title: 'UE2009',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']
 							
 					};
 					var options2010 = {
 						title: 'UE2010',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
-							
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
 					};
 					// var options2011 = {
 					// 	title: 'UE2011',//titulo do gráfico
@@ -409,24 +410,24 @@
 					// };
 					var options2013 = {
 						title: 'UE2013',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
-							
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
 					};
 
 					var options2015 = {
 						title: 'UE2015',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
-							
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
 					};
 					var options2020 = {
 						title: 'UE2020',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
-							
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
 					};
 					var options2022 = {
 						title: 'UE2022',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
-							
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
 					};
 				//cria novo objeto PieChart que recebe
 				//como parâmetro uma div onde o gráfico será desenhado
@@ -477,30 +478,30 @@
 					//opções para exibição do gráfico
 					var opdatalocal1 = {
 						title: 'NVI JPA',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
-							
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
 					};
 					var opdatalocal2 = {
 						title: 'NVI CGE',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
-							
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
 					};
 					
 					var opdatalocal3 = {
 						title: 'NVI PAT',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
-							
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
 					};
 					var opdatalocal4 = {
 						title: 'NVI PBL',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
-							
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
 					};
 
 					var opdatalocal5 = {
 						title: 'NVI CJZ',//titulo do gráfico
-						is3D: true // false para 2d e true para 3d o padrão é false
-							
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
 					};
 				
 					

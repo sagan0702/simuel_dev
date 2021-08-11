@@ -42,7 +42,7 @@ $ga663 = $_POST['ga663'];
 $ga664 = $_POST['ga664'];
 $ga665 = $_POST['ga665'];
 $ga666 = $_POST['ga666'];
-$estado = "1";
+$estado = "Ativa";
 //$id_ciclo = intval($id_ciclost);
 //echo "Dump de n_os- ";
 //var_dump ($n_os);
@@ -75,16 +75,16 @@ $data_fim = implode("-",array_reverse(explode("/",$data_fim)));
   }
   
 //INSERIR QUANTIDADE INICIAL DE BATERIAS NA TABELA STATUS
-  // $sql = "INSERT INTO status (id_local, tbat_reserva) 
-  // VALUES ($id_local,$t_baterias)";  
+  $sql = "INSERT INTO status (id_local, tbat_reserva) 
+  VALUES ($id_local,$t_baterias)";  
 
-  //   if (!$conexao->query($sql)) {
-  //       echo "Error: " . $sql . "<br>" . $conexao->error;
-  //   }else{
-  //       echo "Ordem de Serviço nº " .$n_os. " salva com sucesso!!!";    
-  //       // header('location: /simuel_dev/os.php?msg=ras');   
-  //       // exit; 
-  //   }
+    if (!$conexao->query($sql)) {
+         echo "Error: " . $sql . "<br>" . $conexao->error;
+     }else{
+        // echo "Ordem de Serviço nº " .$n_os. " salva com sucesso!!!";    
+         //header('location: /simuel_dev/os.php?msg=ras');   
+        exit; 
+    }
 
 
   $conexao->close();

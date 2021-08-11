@@ -2,20 +2,8 @@
 include_once('config.php');
 include('conexao.php');
 
-// include_once('config.php');
-// if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
-// 	$db->delete('producao',array('id_producao'=>$_REQUEST['delId']));
-// 	header('location: /simuel/producao_local.php?msg=rds');
-// 	exit;
-// }
-
 
 if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
-	
-
-	
-
-
 
 
 	//------- pegar os valores da producao que será deletada
@@ -35,8 +23,9 @@ if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
 	$nue_com_chamado_p = $row[13];
 	$bat_reserva_p =  $row[14];
 	$bat_subst_p = $row[15];
-	$bat_vazando_p =  $row[16];
-	$bat_oxidada_p = $row[17];
+	$bat_barriga_aluguel =  $row[16];
+	$bat_vazando_p =  $row[17];
+	$bat_oxidada_p = $row[18];
 	
 	// echo "UE-2009p - > ".$ue2009p;
 	// echo "/ ";
@@ -79,8 +68,9 @@ if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
 	$tnue_com_chamado = $row[9];
 	$tbat_reserva =  $row[10];
 	$tbat_subst = $row[11];
-	$tbat_vazando =  $row[12];
-	$tbat_oxidada = $row[13];
+	$tbat_barriga_aluguel =  $row[12];
+	$tbat_vazando =  $row[13];
+	$tbat_oxidada = $row[14];
 
 	// echo "UE-2009s - > ".$totue2009;
 	// echo "/ ";
@@ -121,6 +111,7 @@ if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
 	$tnue_com_chamado = $tnue_com_chamado  - $nue_com_chamado_p;
 	$tbat_reserva =  $tbat_reserva  - $bat_subst;
 	$tbat_subst = $tbat_subst - $bat_subst_p;
+	$tbat_barriga_aluguel = $tbat_barriga_aluguel - $bat_barriga_aluguel;
 	$tbat_vazando = $tbat_vazando - $bat_vazando_p; 
 	$tbat_oxidada = $tbat_oxidada - $bat_oxidada_p;
 		
@@ -161,6 +152,7 @@ if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
 		`tnue_com_chamado` = $tnue_com_chamado,
 		`tbat_reserva` =  $tbat_reserva,
 		`tbat_subst` = $tbat_subst,
+		`tbat_barriga_aluguel` = $tbat_barriga_aluguel;
 		`tbat_vazando` = $tbat_vazando,
 		`tbat_oxidada` = $tbat_oxidada,
 		`data_atualizacao` = CURRENT_TIMESTAMP

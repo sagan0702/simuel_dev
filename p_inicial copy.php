@@ -24,8 +24,6 @@
         font-size: 20px;
         padding: 0, 0, 0, 0;
     }
-
-	
 </style>
 </head>
 <body>
@@ -105,10 +103,10 @@
 						$data =  substr($val['data_atualizacao'],0, 10);   
 						$data2 = implode("/",array_reverse(explode("-",$data)));;
                         $tot_ue = $totue2009 + $totue2010 + $totue2011 + $totue2013 + $totue2015 + $totue2020 + $totue2022;
-						// $sql = "SELECT qtde_baterias FROM local WHERE id_local = '$id_loc' ";
-						// $result = mysqli_query($conexao,$sql);
-						// $row = mysqli_fetch_row($result);
-						// $local = $row[0];		
+						$sql = "SELECT qtde_baterias FROM local WHERE id_local = '$id_loc' ";
+						$result = mysqli_query($conexao,$sql);
+						$row = mysqli_fetch_row($result);
+						$local = $row[0];		
 						?>
 						<td style="text-align: center;" ><?php echo $local;?></td>
 						<td style="text-align: center;" ><?php echo $val['qtde_ue2009'];?></td>
@@ -158,16 +156,16 @@ $userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local');
 		<caption>Atenção: dados cumulativos</caption>
 			<thead>
 				<tr class="bg-secondary text-white">
-					<td  style="text-align: center;" >UE2009</td>
-					<td  style="text-align: center;" >UE2010</td>
-					<td  style="text-align: center;" >UE2011</td>
-					<td  style="text-align: center;" >UE2013</td>
-					<td  style="text-align: center;" >UE2015</td>
-					<td  style="text-align: center;" >UE2020</td>
-					<td  style="text-align: center;" >UE2022</td>
-					<td  style="text-align: center;" >Total de UE</td>
-					<td  style="text-align: center;" >Total da OS</td>
-					<td  style="text-align: center;" >% Concluído da OS</td>
+					<td style="text-align: center;" >UE2009</td>
+					<td style="text-align: center;" >UE2010</td>
+					<td style="text-align: center;" >UE2011</td>
+					<td style="text-align: center;" >UE2013</td>
+					<td style="text-align: center;" >UE2015</td>
+					<td style="text-align: center;" >UE2020</td>
+					<td style="text-align: center;" >UE2022</td>
+					<td style="text-align: center;" >Total de UE</td>
+					<td style="text-align: center;" >Total da OS</td>
+					<td style="text-align: center;" >% Concluído da OS</td>
 				<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
 				</tr>
 			</thead>
@@ -205,16 +203,16 @@ $userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local');
 
 						$tot_falta = $t_urna_os - $tot_ue;
 					?>
-					<td  style="text-align: center;" ><strong><?php echo $val['totue2009'];?></strong></td>
-					<td  style="text-align: center;" ><strong><?php echo $val['totue2010'];?></strong></td>
-					<td  style="text-align: center;" ><strong><?php echo $val['totue2011'];?></strong></td>
-					<td  style="text-align: center;" ><strong><?php echo $val['totue2013'];?></strong></td>
-					<td  style="text-align: center;" ><strong><?php echo $val['totue2015'];?></strong></td>
-					<td  style="text-align: center;" ><strong><?php echo $val['totue2020'];?></strong></td>
-					<td  style="text-align: center;" ><strong><?php echo $val['totue2022'];?></strong></td>
-					<td  style="text-align: center;" ><strong><?php echo $tot_ue ?></strong></td>
-					<td  style="text-align: center;" ><strong><?php echo $t_urna_os ?></strong></td>
-					<td  style="text-align: center;" ><strong><?php echo $perc_tot_st."%"?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['totue2009'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['totue2010'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['totue2011'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['totue2013'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['totue2015'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['totue2020'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['totue2022'];?></strong></td>
+					<td class="table-success" style="text-align: center;" ><strong><?php echo $tot_ue ?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $t_urna_os ?></strong></td>
+					<td class="table-success" style="text-align: center;" ><strong><?php echo $perc_tot_st."%"?></strong></td>
 											<!-- <td align="center"> -->
 						<!-- <a href="php/producao_local_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> |  -->
 						<!-- <a href="php/producao_local_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a> -->
@@ -229,16 +227,7 @@ $userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local');
 			</tbody>
 		</table>
 	<!--------- FORM TABELA 2  TABELA DE STATUS - RESUMO PARTE 2 - MANUTENCAO PREVENTIVA  / Consulta tabela STATUS----------------->
-
-	<!-- <table>
-    <tr class='row'>
-        <td class="col-lg-2">col 1</td>
-        <td class="col-xs-4 col-sm-3 col-md-4 col-lg-4">col 2</td>
-        <td class="col-xs-6 col-sm-2 col-md-6 col-lg-6">col 3</td>
-    </tr>
-</table>		 -->
-<div class="col-sm-3">
-		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Manutenção Corretiva </h5>
+		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Resumo Total: Manutenção Corretiva (dados cumulativos) </h5>
 		 <!-- <div class="row">
 			<div class="form-group col-md-9">
 			<br><label>Data do último envio: </label> <? $data2; ?> 
@@ -248,9 +237,13 @@ $userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local');
 		<caption>Atenção: dados cumulativos</caption>
 			<thead>
 				<tr class="bg-secondary text-white">
-					<td class="col-sm-2" style="text-align: center;" >UEs SEM chamado aberto</td>
-					<td class="col-sm-2" style="text-align: center;" >UEs COM chamado aberto</td>
-					
+					<td style="text-align: center;" >UEs SEM chamado</td>
+					<td style="text-align: center;" >UEs COM chamado</td>
+					<td style="text-align: center;" >BAT Reserva</td>
+					<td style="text-align: center;" >BAT Substituídas </td>
+					<td style="text-align: center;" >BAT "barriga-aluguel" </td>
+					<td style="text-align: center;" >BAT com vazamento </td>
+					<td style="text-align: center;" >BAT oxidadas</td>
 					<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
 				</tr>
 			</thead>
@@ -262,9 +255,13 @@ $userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local');
 						$s++;
 				?>
 				<tr>
-					<td class="col-sm-2" style="text-align: center;" ><strong><?php echo $val['tnue_sem_chamado'];?></strong></td>
-					<td class="col-sm-2" style="text-align: center;" ><strong><?php echo $val['tnue_com_chamado'];?></strong></td>
-					
+					<td style="text-align: center;" ><strong><?php echo $val['tnue_sem_chamado'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['tnue_com_chamado'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['tbat_reserva'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['tbat_subst'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['tbat_barriga_aluguel'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['tbat_vazando'];?></strong></td>
+					<td style="text-align: center;" ><strong><?php echo $val['tbat_oxidada'];?></strong></td>
 					<!-- <td align="center"> -->
 						<!-- <a href="php/producao_local_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> |  -->
 						<!-- <a href="php/producao_local_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a> -->
@@ -277,61 +274,18 @@ $userData	=	$db->getAllRecords('status','*',$condition,'ORDER BY id_local');
 				<tr><td colspan="6" align="center">Sem movimentação para mostrar!</td></tr>
 				<?php } ?>
 			</tbody>
-		</table>	
+		</table>			
+
+
+
+
+
+
+
+
+
+
 		
-
-	</div>	
-		<!--------- FORM TABELA 3  TABELA DE STATUS - RESUMO PARTE 3 - URNAS  / Consulta tabela STATUS----------------->
-
-	<div class="col-sm-4">		
-		<h5 class="card-title"><i class="fa fa-th-list"></i></i> Situação de Baterias  </h5>
-		 <!-- <div class="row">
-			<div class="form-group col-md-9">
-			<br><label>Data do último envio: </label> <? $data2; ?> 
-			</div>
-		</div> -->
-		<table class="table table-striped table-bordered -sm table-sm">
-		<caption>Atenção: dados cumulativos</caption>
-			<thead>
-				<tr class="bg-secondary text-white">
-					<td class="col-sm-2" style="text-align: center;" >Reserva</td>
-					<td class="col-sm-2" style="text-align: center;" >Substituídas </td>
-					<td class="col-sm-2" style="text-align: center;" >"Barriga-aluguel" </td>
-					<td class="col-sm-2" style="text-align: center;" >Com vazamento </td>
-					<td class="col-sm-2" style="text-align: center;" >Oxidadas</td>
-					<!-- <td style="text-align: center;" class="text-center">Ação</td> -->
-				</tr>
-			</thead>
-			<tbody>
-				<?php 
-				if(count($userData)>0){
-					$s	=	'';
-					foreach($userData as $val){
-						$s++;
-				?>
-				<tr>
-					<td class="col-sm-2" style="text-align: center;" ><strong><?php echo $val['tbat_reserva'];?></strong></td>
-					<td class="col-sm-2" style="text-align: center;" ><strong><?php echo $val['tbat_subst'];?></strong></td>
-					<td class="col-sm-2" style="text-align: center;" ><strong><?php echo $val['tbat_barriga_aluguel'];?></strong></td>
-					<td class="col-sm-2" style="text-align: center;" ><strong><?php echo $val['tbat_vazando'];?></strong></td>
-					<td class="col-sm-2" style="text-align: center;" ><strong><?php echo $val['tbat_oxidada'];?></strong></td>
-					<!-- <td align="center"> -->
-						<!-- <a href="php/producao_local_edit.php?editId=<?php echo $val['id_producao'];?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Editar</a> |  -->
-						<!-- <a href="php/producao_local_delete.php?delId=<?php echo $val['id_producao'];?>" class="text-danger" onClick="return confirm('Você tem certeza que quer apagar esse registro?');"><i class="fa fa-fw fa-trash"></i>Apagar</a> -->
-					<!-- </td> -->
-				</tr>
-				<?php 
-					}
-				}else{
-				?>
-				<tr><td colspan="6" align="center">Sem movimentação para mostrar!</td></tr>
-				<?php } ?>
-			</tbody>
-		</table>
-		</div>				
-
-
-
 						
             <footer>
             </footer>

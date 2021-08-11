@@ -17,10 +17,10 @@
 
 
    
-<title>SIMUEL2-DEV</title>
+<title>SIMUEL v2</title>
 <style>
 #div_local{
-        background-color:red;
+        background-color:#FF6347;
         color: black;
         text-align: center;
         font-weight: bold;
@@ -50,7 +50,7 @@
   <div class="container">
 
       <div class="row">
-              <h4> SIMUEL DEV</h4> 
+              <h4> SIMUEL v2</h4> 
       </div>
       <div class="row">
       <!-- <div class="row justify-content-md-rigth"> -->
