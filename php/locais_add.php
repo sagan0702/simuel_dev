@@ -33,10 +33,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			);
 			$insert	=	$db->insert('local',$data);
 			if($insert){
-				header('location:/simuel_dev/locais.php?msg=ras');
+				header('location:/simuel/locais.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel_dev/locais.php?msg=rna');
+				header('location:/simuel/locais.php?msg=rna');
 				exit;
 			}
 		}else{
@@ -80,7 +80,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 		<div class="card">   <!---CARD ADICIONAR --->
 			<div class="card-header"><i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Locais</strong> 
-				<a href="/simuel_dev/locais.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel/locais.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Locais</a>
 			</div>
 			<div class="card-body">		

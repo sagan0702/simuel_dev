@@ -26,10 +26,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						);
 			$insert	=	$db->insert('ciclo',$data);
 			if($insert){
-				header('location:/simuel_dev/ciclos.php?msg=ras');
+				header('location:/simuel/ciclos.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel_dev/ciclos.php?msg=rna');
+				header('location:/simuel/ciclos.php?msg=rna');
 				exit;
 			}
 		}else{
@@ -82,7 +82,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			<div class="card-header">
 			<h3>Adicionar Ciclo</h3>
 			<!-- <i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Ciclo</strong>  -->
-				<a href="/simuel_dev/ciclos.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel/ciclos.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Ciclos</a>
 			</div>
 			<div class="card-body">		

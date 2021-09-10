@@ -111,13 +111,13 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			
 			if($insert){
 				echo "Registro salvo com sucesso!";
-				//header('location:/simuel_dev/producao_local.php?msg=ras');
-				header('location:/simuel_dev/producao_local.php');
+				//header('location:/simuel/producao_local.php?msg=ras');
+				header('location:/simuel/producao_local.php');
 				
 				exit;
 			}else{
 				echo "ERRO!";
-				header('location:/simuel_dev/producao_local.php');
+				header('location:/simuel/producao_local.php');
 				exit;
 			}
 		}else{
@@ -175,7 +175,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 		<div class="card">   <!---CARD ADICIONAR --->
 			<div class="card-header"> <h3>Adicionar Produção Local</h3> 
-				<a href="/simuel_dev/producao_local.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel/producao_local.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Produção</a>
 			</div>
 			<div class="card-body">		

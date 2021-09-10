@@ -2,7 +2,7 @@
 $bdServidor = '127.0.0.1';
 $bdUsuario = 'sevin';
 $bdSenha = '@sevin2021!';
-$bdBanco = 'simuel_dev';
+$bdBanco = 'simuel2';
 $conexao = mysqli_connect($bdServidor, $bdUsuario, $bdSenha, $bdBanco);
 
 // Checa conexão

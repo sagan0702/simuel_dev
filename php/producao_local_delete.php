@@ -163,12 +163,12 @@ if(isset($_REQUEST['delId']) and $_REQUEST['delId']!=""){
 		var_dump($row);
 		// $update	=	$db->update('status',$data,array('id_local'=>'delId'));	
 		$db->delete('producao',array('id_producao'=>$_REQUEST['delId']));
-		header('location: /simuel_dev/producao_local.php?msg=rds');
+		header('location: /simuel/producao_local.php?msg=rds');
 		if($insert){
-			header('location:/simuel_dev/producao_local.php?msg=ras');
+			header('location:/simuel/producao_local.php?msg=ras');
 			exit;
 		}else{
-			header('location:/simuel_dev/producao_local.php?msg=ras');
+			header('location:/simuel/producao_local.php?msg=ras');
 			// header('location:/simuel/producao_local.php?msg=rna');
 			exit;
 		}

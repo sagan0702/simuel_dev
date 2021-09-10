@@ -126,7 +126,7 @@
 				</div>
 				
 						<div class="row d-flex justify-content-center"  >
-							<div  id ="chart_div" name="chart_div"  style="width: 700px; height: 500px;"></div>   
+							<div  id ="chart_local1" name="chart_local1"  style="width: 700px; height: 500px;"></div>   
 					    </div>	
 
 
@@ -134,66 +134,201 @@
 			</div>
 			<div class="card-footer text-muted">
 						SIMUEL 
-					</div>
+			</div>
 
-						<!-- somar valores por modelo de urna e fazer grafico -->
-						<!-- <?php 	
-						$sql = "SELECT * FROM status WHERE ";
-						$result = mysqli_query($conexao,$sql);
-						$row = mysqli_fetch_array($result, MYSQLI_NUM);
-						printf ("%s (%s)\n", $row[0], $row[1], $row[2], $row[3], $row[4], $row[5]);
-						?> -->
+			<?php
+			
+			//SELECT NVI 1
+						$sql = "SELECT * FROM local WHERE id_local = 1";
+						$result = $conexao->query($sql);
+						if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+							$ue2009_nvi_jpa = $row["qtde_ue2009"]; 
+							$ue2010_nvi_jpa = $row["qtde_ue2010"];
+							$ue2011_nvi_jpa = $row["qtde_ue2011"];
+							$ue2013_nvi_jpa = $row["qtde_ue2013"];
+							$ue2015_nvi_jpa = $row["qtde_ue2015"];
+							$ue2020_nvi_jpa = $row["qtde_ue2020"];
+							$ue2020_nvi_jpa = $row["qtde_ue2022"];
+						}
+						} else {
+						echo "0 results";
+						}
+						$conexao->close();
 
 
+			//SELECT NVI 2
+
+
+
+			//SELECT NVI 3
+
+
+
+
+			//SELECT NVI 4
+
+
+			
+			
+			//SELECT NVI 5
+
+
+
+
+			?>
+
+
+
+					
 
 		</div>
-				<script type="text/javascript"
-   				 src="https://www.google.com/jsapi"></script>
-    				<script type="text/javascript">
-					
-						//carregando modulo visualization
-					google.load("visualization", "1", {packages:["corechart"]});
-
-					//função de monta e desenha o gráfico
-					function drawChart() {
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+				<script type="text/javascript">
+				//carregando modulo visualization
+				google.load("visualization", "1", {packages:["corechart"]});
+                // GRAFICO TOTAL DE URNAS DO TRE POR MODELO
+				//função de monta e desenha o gráfico
+				function drawChart(){
 					//variavel com armazenamos os dados, um array de array's
 					//no qual a primeira posição são os nomes das colunas
-					var data = google.visualization.arrayToDataTable([
-						// ['Modelo', 'Total'],
-						// ['UE2009', <?php echo $val['qtde_ue2009'];?>],
-						// ['UE2010', <?php echo $val['qtde_ue2010'];?>],
-						// ['UE2011', <?php echo $val['qtde_ue2011'];?>],
-						// ['UE2013', <?php echo $val['qtde_ue2013'];?>],
-						// ['UE2015', <?php echo $val['qtde_ue2015'];?>],
-
+					var data2009 = google.visualization.arrayToDataTable([
 						['Modelo', 'Total'],
-						['UE2009', 10],
-						['UE2010', 34],
-						['UE2011', 45],
-						['UE2013', 11],
-						['UE2015', 4],
-
+						['UE2009',<?php echo $ue2009_nvi_jpa ?>],
+						['UE2010',<?php echo $ue2009_nvi_jpa ?>],
+						['UE2011',<?php echo $ue2009_nvi_jpa ?>],
+						['UE2013',<?php echo $ue2009_nvi_jpa ?>],
+						['UE2015',<?php echo $ue2009_nvi_jpa ?>],
+						['UE2020',<?php echo $ue2009_nvi_jpa ?>],
+						['UE2022',<?php echo $ue2009_nvi_jpa ?>],
 						]);
-						//opções para exibição do gráfico
-						var options = {
-								title: 'Percentual do parque do urnas por modelo',//titulo do gráfico
-								is3D: true // false para 2d e true para 3d o padrão é false
-						};
-						//cria novo objeto PeiChart que recebe
-						//como parâmetro uma div onde o gráfico será desenhado
-						var chart = new google.visualization
-						.PieChart(document.getElementById('chart_div'));
-						//desenha passando os dados e as opções
-						chart.draw(data, options);
+					
+			
+					//opções para exibição do gráfico
+					var options2009 = {
+						title: 'UE2009',//titulo do gráfico
+						is3D: true, // false para 2d e true para 3d o padrão é false
+					
+							
 					}
-					//metodo chamado após o carregamento
-					google.setOnLoadCallback(drawChart);
-					
-					
-					
-					</script>			
 
 
+
+				//cria novo objeto PieChart que recebe
+				//como parâmetro uma div onde o gráfico será desenhado
+					var chart2009 = new google.visualization.PieChart(document.getElementById('chart_ue2009'));
+					
+					
+				//desenha passando os dados e as opções
+					chart2009.draw(data2009, options2009);
+					
+				}
+				google.setOnLoadCallback(drawChart);
+ 				
+				
+				// GRAFICO TOTAL DE URNAS DO TRE POR MODELO
+				function drawChart2(){
+					//variavel com armazenamos os dados, um array de array's
+					//no qual a primeira posição são os nomes das colunas
+					var local1 = google.visualization.arrayToDataTable([
+						['NVI JPA', 'Total'],
+						['UE2009',<?php echo $ue2009_nvi_jpa ?>],
+						['UE2010',<?php echo $ue2010_nvi_jpa ?>],
+						['UE2011',<?php echo $ue2011_nvi_jpa ?>],
+						['UE2013',<?php echo $ue2013_nvi_jpa ?>],
+						['UE2015',<?php echo $ue2015_nvi_jpa ?>],
+						['UE2020',<?php echo $ue2020_nvi_jpa ?>],
+						['UE2022',<?php echo $ue2022_nvi_jpa ?>],
+						]);
+					var local2 = google.visualization.arrayToDataTable([
+						['NVI CGE', 'Total'],
+						['UE2009',<?php echo $prodloc[1] ?>],
+						['UE2010',<?php echo $restuelocal[1] ?>],
+						['UE2011',<?php echo $restuelocal[1] ?>],
+						['UE2013',<?php echo $restuelocal[1] ?>],
+						['UE2015',<?php echo $restuelocal[1] ?>],
+						['UE2020',<?php echo $restuelocal[1] ?>],
+						['UE2022',<?php echo $restuelocal[1] ?>],
+						]);
+					var local3 = google.visualization.arrayToDataTable([
+						['NVI PAT', 'Total'],
+						['UE2009',<?php echo $prodloc[1] ?>],
+						['UE2010',<?php echo $restuelocal[1] ?>],
+						['UE2011',<?php echo $restuelocal[1] ?>],
+						['UE2013',<?php echo $restuelocal[1] ?>],
+						['UE2015',<?php echo $restuelocal[1] ?>],
+						['UE2020',<?php echo $restuelocal[1] ?>],
+						['UE2022',<?php echo $restuelocal[1] ?>],
+						]);
+					var local4 = google.visualization.arrayToDataTable([
+						['NVI PBL', 'Total'],
+						['UE2009',<?php echo $prodloc[1] ?>],
+						['UE2010',<?php echo $restuelocal[1] ?>],
+						['UE2011',<?php echo $restuelocal[1] ?>],
+						['UE2013',<?php echo $restuelocal[1] ?>],
+						['UE2015',<?php echo $restuelocal[1] ?>],
+						['UE2020',<?php echo $restuelocal[1] ?>],
+						['UE2022',<?php echo $restuelocal[1] ?>],
+						]);	
+					var local5 = google.visualization.arrayToDataTable([
+						['NVI CJZ', 'Total'],
+						['UE2009',<?php echo $prodloc[1] ?>],
+						['UE2010',<?php echo $restuelocal[1] ?>],
+						['UE2011',<?php echo $restuelocal[1] ?>],
+						['UE2013',<?php echo $restuelocal[1] ?>],
+						['UE2015',<?php echo $restuelocal[1] ?>],
+						['UE2020',<?php echo $restuelocal[1] ?>],
+						['UE2022',<?php echo $restuelocal[1] ?>],
+						]);
+					
+					//opções para exibição do gráfico
+					var opdatalocal1 = {
+						title: 'NVI JPA',//titulo do gráfico
+						is3D: true, // false para 2d e true para 3d o padrão é false
+							
+					};
+					var opdatalocal2 = {
+						title: 'NVI CGE',//titulo do gráfico
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
+					};
+					
+					var opdatalocal3 = {
+						title: 'NVI PAT',//titulo do gráfico
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
+					};
+					var opdatalocal4 = {
+						title: 'NVI PBL',//titulo do gráfico
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
+					};
+
+					var opdatalocal5 = {
+						title: 'NVI CJZ',//titulo do gráfico
+						is3D: true, // false para 2d e true para 3d o padrão é false
+						colors: ['#008000', '#8B0000']	
+					};
+				
+					
+				//cria novo objeto PieChart que recebe
+				//como parâmetro uma div onde o gráfico será desenhado
+					var datalocal1 = new google.visualization.PieChart(document.getElementById('chart_local1'));
+					var datalocal2 = new google.visualization.PieChart(document.getElementById('chart_local2'));
+					var datalocal3 = new google.visualization.PieChart(document.getElementById('chart_local3'));
+					var datalocal4 = new google.visualization.PieChart(document.getElementById('chart_local4'));
+					var datalocal5 = new google.visualization.PieChart(document.getElementById('chart_local5'));
+					//desenha passando os dados e as opções
+					datalocal1.draw(local1, opdatalocal1);
+					datalocal2.draw(local2, opdatalocal2);
+					datalocal3.draw(local3, opdatalocal3);
+					datalocal4.draw(local4, opdatalocal4);
+					datalocal5.draw(local5, opdatalocal5);
+				}
+				//metodo chamado após o carregamento
+				google.setOnLoadCallback(drawChart2);
+				</script>
 
 	
 	</div>

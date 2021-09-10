@@ -148,10 +148,10 @@ extract($_REQUEST);
 			$update	=	$db->update('status',$data,array('id_local'=>$id_local));	
 			//$update	=	$db->update('status',$data,array('id_local'=>$id_local));		
 			if($insert){
-				header('location:/simuel_dev/producao_local.php?msg=ras');
+				header('location:/simuel/producao_local.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel_dev/producao_local.php?msg=rna');
+				header('location:/simuel/producao_local.php?msg=rna');
 				exit;
 			}
 		}else{
@@ -187,7 +187,7 @@ extract($_REQUEST);
 	// var_dump($id_ciclo, $id_os, $id_local );
     ?>
 	<script src="../js/funcaoOS.js"></script> 
-	<link rel="stylesheet" type="text/css" href="/simuel_dev/css/producao_local_add.css">
+	<link rel="stylesheet" type="text/css" href="/simuel/css/producao_local_add.css">
 </head>
 <body>
 			

@@ -70,7 +70,7 @@ $data_fim = implode("-",array_reverse(explode("/",$data_fim)));
     echo "Error: " . $sql . "<br>" . $conexao->error;
   }else{
     echo "Ordem de Serviço nº " .$n_os. " salva com sucesso!!!";    
-    // header('location: /simuel_dev/os.php?msg=ras');   
+    // header('location: /simuel/os.php?msg=ras');   
     // exit; 
   }
   
@@ -82,7 +82,7 @@ $data_fim = implode("-",array_reverse(explode("/",$data_fim)));
          echo "Error: " . $sql . "<br>" . $conexao->error;
      }else{
         // echo "Ordem de Serviço nº " .$n_os. " salva com sucesso!!!";    
-         //header('location: /simuel_dev/os.php?msg=ras');   
+         //header('location: /simuel/os.php?msg=ras');   
         exit; 
     }
 

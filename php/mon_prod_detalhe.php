@@ -40,7 +40,7 @@ if(isset($_REQUEST['editId']) and $_REQUEST['editId']!=""){
 		<div class="card">  
 			<div class="card-header">
 				<!-- <i class="fa fa-fw fa-plus-circle"></i> -->
-				<strong><h3>Detalhe de Produção:</h3></strong><a href="/simuel_dev/monitorar_producao.php" class="float-right btn btn-dark btn-sm">
+				<strong><h3>Detalhe de Produção:</h3></strong><a href="/simuel/monitorar_producao.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar OS</a>
 			</div>
 			<div class="card-body">

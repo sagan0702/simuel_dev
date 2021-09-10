@@ -31,10 +31,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					);
 	$update	=	$db->update('local',$data,array('id_local'=>$editId));
 	if($update){
-		header('location: /simuel_dev/locais.php?msg=rus');
+		header('location: /simuel/locais.php?msg=rus');
 		exit;
 	}else{
-		header('location: /simuel_dev/locais.php?msg=rnu');
+		header('location: /simuel/locais.php?msg=rnu');
 		exit;
 	}
 }
@@ -83,7 +83,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		<div class="card">  
 			<div class="card-header">
 				<!-- <i class="fa fa-fw fa-plus-circle"></i> -->
-				<strong><h3>Editar Local</h3></strong><a href="/simuel_dev/locais.php" class="float-right btn btn-dark btn-sm">
+				<strong><h3>Editar Local</h3></strong><a href="/simuel/locais.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Locais</a>
 			</div>
 			<div class="card-body">
