@@ -28,10 +28,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						);
 			$insert	=	$db->insert('pecas_req',$data);
 			if($insert){
-				header('location:/simuel_dev/pecas.php?msg=ras');
+				header('location:/simuel/pecas.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel_dev/pecass.php?msg=rna');
+				header('location:/simuel/pecass.php?msg=rna');
 				exit;
 			}
 		}else{
@@ -84,7 +84,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			<div class="card-header">
 			<h3>Solicitar Peças de Urna</h3>
 			<!-- <i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Ciclo</strong>  -->
-				<a href="/simuel_dev/pecas.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel/pecas.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Peças</a>
 			</div>
 			<div class="card-body">		
@@ -261,10 +261,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					);
 		$insert	=	$db->insert('pecas',$data);
 		if($insert){
-			header('location:/simuel_dev/pecas.php?msg=ras');
+			header('location:/simuel/pecas.php?msg=ras');
 			exit;
 		}else{
-			header('location:/simuel_dev/pecas.php?msg=rna');
+			header('location:/simuel/pecas.php?msg=rna');
 			exit;
 		}
 

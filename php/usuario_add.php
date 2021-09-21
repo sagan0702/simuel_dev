@@ -27,10 +27,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						);
 			$insert	=	$db->insert('usuarios',$data);
 			if($insert){
-				header('location:/simuel_dev/usuarios.php?msg=ras');
+				header('location:/simuel/usuarios.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel_dev/usuarios.php?msg=rna');
+				header('location:/simuel/usuarios.php?msg=rna');
 				exit;
 			}
 		}else{
@@ -74,7 +74,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 		<div class="card">   <!---CARD ADICIONAR --->
 			<div class="card-header"><i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Ciclo</strong> 
-				<a href="/simuel_dev/usuarios.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel/usuarios.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Usuários</a>
 			</div>
 			<div class="card-body">		

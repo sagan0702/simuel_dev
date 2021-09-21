@@ -28,10 +28,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		);
 	$update	=	$db->update('pecas',$data,array('id_peca'=>$editId));
 	if($update){
-		header('location: /simuel_dev/pecas.php?msg=rus');
+		header('location: /simuel/pecas.php?msg=rus');
 		exit;
 	}else{
-		header('location: /simuel_dev/pecas.php?msg=rnu');
+		header('location: /simuel/pecas.php?msg=rnu');
 		exit;
 	}
 }

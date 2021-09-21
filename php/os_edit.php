@@ -17,10 +17,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					);
 	$update	=	$db->update('os',$data,array('id_os'=>$editId));
 	if($update){
-		header('location: /simuel_dev/os.php?msg=rus');
+		header('location: /simuel/os.php?msg=rus');
 		exit;
 	}else{
-		header('location: /simuel_dev/os.php?msg=rnu');
+		header('location: /simuel/os.php?msg=rnu');
 		exit;
 	}
  }
@@ -61,7 +61,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		<div class="card">  
 			<div class="card-header">
 				<!-- <i class="fa fa-fw fa-plus-circle"></i> -->
-				<strong><h3>Editar OS</h3></strong><a href="/simuel_dev/os.php" class="float-right btn btn-dark btn-sm">
+				<strong><h3>Editar OS</h3></strong><a href="/simuel/os.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar OS</a>
 			</div>
 			<div class="card-body">

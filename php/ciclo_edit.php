@@ -27,10 +27,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 					);
 	$update	=	$db->update('ciclo',$data,array('id_ciclo'=>$editId));
 	if($update){
-		header('location: /simuel_dev/ciclos.php?msg=rus');
+		header('location: /simuel/ciclos.php?msg=rus');
 		exit;
 	}else{
-		header('location: /simuel_dev/ciclos.php?msg=rnu');
+		header('location: /simuel/ciclos.php?msg=rnu');
 		exit;
 	}
 }
@@ -78,7 +78,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 		<div class="card">  
 			<div class="card-header">
 				<!-- <i class="fa fa-fw fa-plus-circle"></i> -->
-				<strong><h3>Editar Ciclo</h3></strong><a href="/simuel_dev/ciclos.php" class="float-right btn btn-dark btn-sm">
+				<strong><h3>Editar Ciclo</h3></strong><a href="/simuel/ciclos.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Ciclos</a>
 			</div>
 			<div class="card-body">

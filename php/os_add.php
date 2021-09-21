@@ -24,7 +24,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
     ?>
 	<script src="../js/funcaoOS.js"></script> 
     
-    <link rel="stylesheet" type="text/css" href="/simuel_dev/css/os_add.css">
+    <link rel="stylesheet" type="text/css" href="/simuel/css/os_add.css">
 
 
 </head>
@@ -51,7 +51,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 			<div class="card-header">
 			<h3>Adicionar OS</h3>
 				<!-- <i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar OS</strong>  -->
-				<a href="/simuel_dev/os.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel/os.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar OS</a>
 			</div>
 			<div class="card-body">		

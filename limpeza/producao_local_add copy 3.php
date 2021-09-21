@@ -102,10 +102,10 @@ extract($_REQUEST);
 			$update	=	$db->update('status',$data,array('id_local'=>$id_local));	
 			
 			if($insert){
-				header('location:/simuel_dev/producao_local.php?msg=ras');
+				header('location:/simuel/producao_local.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel_dev/producao_local.php?msg=rna');
+				header('location:/simuel/producao_local.php?msg=rna');
 				exit;
 			}
 		}else{

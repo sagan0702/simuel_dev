@@ -29,10 +29,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						);
 			$insert	=	$db->insert('equipamentos',$data);
 			if($insert){
-				header('location:/simuel_dev/equipamentos.php?msg=ras');
+				header('location:/simuel/equipamentos.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel_dev/equipamentos.php?msg=rna');
+				header('location:/simuel/equipamentos.php?msg=rna');
 				exit;
 			}
 		}else{
@@ -76,7 +76,7 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 
 		<div class="card">   <!---CARD ADICIONAR --->
 			<div class="card-header"><i class="fa fa-fw fa-plus-circle"></i> <strong>Adicionar Equipamento</strong> 
-				<a href="/simuel_dev/equipamentos.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel/equipamentos.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Equipamentos</a>
 			</div>
 			<div class="card-body">		

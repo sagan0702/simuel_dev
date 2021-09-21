@@ -149,7 +149,7 @@
               </ul>
 
         </div>
-        <a href="../simuel_dev/php/logout.php" class="btn btn-primary">Sair</a>
+        <a href="../simuel/php/logout.php" class="btn btn-primary">Sair</a>
       </div>
 
 

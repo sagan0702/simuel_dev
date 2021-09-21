@@ -47,11 +47,11 @@ extract($_REQUEST);
 			$insert	=	$db->insert('producao',$data);
 			if($insert){
 				
-				// header('location:/simuel_dev/producao_local.php?msg=ras');
+				// header('location:/simuel/producao_local.php?msg=ras');
 				// exit;
 			}else{
 			
-				// header('location:/simuel_dev/producao_local.php?msg=rna');
+				// header('location:/simuel/producao_local.php?msg=rna');
 				// exit;
 			}
 		// }else{
@@ -174,7 +174,7 @@ extract($_REQUEST);
 					echo "Error: " . $sql . "<br>" . $conexao->error;
 				}else{
 					echo "Produção Gravada com Sucesso!";    
-					header('location: /simuel_dev/producao_local.php');   
+					header('location: /simuel/producao_local.php');   
 					exit; 
 				}
 
@@ -214,7 +214,7 @@ if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="ras"){
 	$ids_local = $_SESSION['id_local'];
 ?>
 	<!-- <script src="../js/funcaoOS.js"></script>  -->
-	<link rel="stylesheet" type="text/css" href="/simuel_dev/css/producao_local_add.css">
+	<link rel="stylesheet" type="text/css" href="/simuel/css/producao_local_add.css">
 </head>
 <body>
 		
@@ -234,7 +234,7 @@ if(isset($_REQUEST['msg']) and $_REQUEST['msg']=="ras"){
 		
 		<div class="card">   <!---CARD ADICIONAR --->
 			<div class="card-header"> <h3>Adicionar Produção Local</h3> 
-				<a href="/simuel_dev/producao_local.php" class="float-right btn btn-dark btn-sm">
+				<a href="/simuel/producao_local.php" class="float-right btn btn-dark btn-sm">
 				<i class="fa fa-fw fa-globe"></i> Gerenciar Produção</a>
 			</div>
 			<div class="card-body">		

@@ -28,10 +28,10 @@ if(isset($_REQUEST['submit']) and $_REQUEST['submit']!=""){
 						);
 			$insert	=	$db->insert('pecas',$data);
 			if($insert){
-				header('location:/simuel_dev/pecas.php?msg=ras');
+				header('location:/simuel/pecas.php?msg=ras');
 				exit;
 			}else{
-				header('location:/simuel_dev/pecas.php?msg=rna');
+				header('location:/simuel/pecas.php?msg=rna');
 				exit;
 			}
 		// }else{
